@@ -2,6 +2,10 @@
 
 [![Resume](https://img.shields.io/badge/Resume-Download-informational?style=flat-square&logo=adobeacrobatreader&logoColor=white&color=green)](https://raw.githubusercontent.com/w22116972/w22116972/main/Resume.pdf)
 
+### Featured Projects
+
+TODO...
+
 ### Technical Writing
 
 [Leetcode Pattern for Interview](https://github.com/w22116972/coding-interview-pattern)
