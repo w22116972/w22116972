@@ -7,8 +7,10 @@
 - **RESTful API** and **GraphQL** by **Spring** framework
 - Implement text auto-complete, search, query to **graph database Neo4j**
 
-### Senior Java Experiences
+### Java Experiences
 - Diagnosed and resolved **OutOfMemoryError** issues by analyzing heap dumps, optimizing object allocation, and fine-tuning JVM parameters, improving system stability under high-load conditions
+  - Resolved excessive I/O threads retention issue by releasing driver resources cached in memory, resulting in reducing heap memory usage
+  - Optimized memory usage by caching results of Java internal methods, reducing pressure from frequent `StringBuilder` allocations
 - Tuned JVM configurations (heap size, GC, thread pool) to reduce latency and prevent memory leaks in long-running backend services
 
 ### Cloud Infrastructure
