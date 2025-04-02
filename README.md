@@ -1,7 +1,9 @@
-# $${Tech\ Stack</span>}$$
+# Tech Stack
 
 ### Distributed systems
-- TODO
+- Implemented retry and timeout strategies with exponential backoff to ensure service reliability in the face of transient failures, resulting in fault tolerance
+- Minimized response times by introducing multi-tier caching for local Caffeine and remote Redis for frequently accessed data in high-traffic endpoints, resulting in improved latency
+- Improved system observability and reliability by implementing the Prometheus stack to collect metrics, visualize performance, and proactively detect anomalies in distributed services
 
 ### Graph API Development
 - **RESTful API** and **GraphQL** by **Spring** framework
@@ -9,8 +11,9 @@
 
 ### Java Experiences
 - Diagnosed and resolved \textbf{OutOfMemoryError} issues by analyzing heap dumps, optimizing object allocation, and fine-tuning JVM parameters, improving system stability under high-load conditions
-  - Resolved excessive I/O threads retention issue by releasing driver resources cached in memory, resulting in reducing heap memory usage
+  - Resolved excessive I/O threads retention issue by releasing driver resources cached in memory based on eviction policy, resulting in reducing heap memory usage
   - Optimized memory usage by caching results of Java internal methods, reducing pressure from frequent `StringBuilder` allocations
+  - Resolved 10M+ nodes returned from database by using pagination and limit
 - Tuned JVM configurations (heap size, GC, thread pool) to reduce latency and prevent memory leaks in long-running backend services
 
 ### Cloud Infrastructure
@@ -20,8 +23,12 @@
 
 ### Code Quality
 - Refactored legacy code by applying SOLID principles and design patterns to improve code maintainability
-- Improved codebase security by following Oracle Secure Coding Guidelines and integrating Aqua Trivy into the CI pipeline to identify and prevent vulnerabilities early in the development lifecycle
-
+- Applied Oracle Secure Coding Guidelines by enforcing safe class design, input validation, overflow and floating-point error handling, robust exception handling, secure logging, and defensive copying, resulting in improved codebase security
+  - [Oracle Secure Coding Guideline Note](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Oracle%20Secure%20Coding%20Guidelines%20for%20Java.md)
+- Strengthened security across codebase, container images, and CI/CD pipelines by leveraging Aqua Trivy to identify and fix Java vulnerable dependencies, insecure Dockerfile patterns, vulnerable base images, Helm chart misconfigurations.
+  - TODO: dockerfile non-root solution and why
+  - Adopt Amazon Corretto to replace Eclipse Temurin on alpine image
+  
 ---
 
 ### Technical Writing
