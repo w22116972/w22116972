@@ -1,4 +1,4 @@
-# $${\color{RoyalBlue}Tech\ Stack</span> | Backend\ Focus }$$
+# $${Tech\ Stack</span>}$$
 
 ### Distributed systems
 - TODO
@@ -8,7 +8,7 @@
 - Implement text auto-complete, search, query to **graph database Neo4j**
 
 ### Java Experiences
-- Diagnosed and resolved **OutOfMemoryError** issues by analyzing heap dumps, optimizing object allocation, and fine-tuning JVM parameters, improving system stability under high-load conditions
+- Diagnosed and resolved \textbf{OutOfMemoryError} issues by analyzing heap dumps, optimizing object allocation, and fine-tuning JVM parameters, improving system stability under high-load conditions
   - Resolved excessive I/O threads retention issue by releasing driver resources cached in memory, resulting in reducing heap memory usage
   - Optimized memory usage by caching results of Java internal methods, reducing pressure from frequent `StringBuilder` allocations
 - Tuned JVM configurations (heap size, GC, thread pool) to reduce latency and prevent memory leaks in long-running backend services
