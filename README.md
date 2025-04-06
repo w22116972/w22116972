@@ -24,11 +24,8 @@
 
 ### Code Quality
 - Improved code maintainability by refactoring legacy code based on SOLID principles and design patterns
-- Improved codebase security by applying Oracle Secure Coding Guidelines on enforcing safe class design, input validation, overflow and floating-point error handling, robust exception handling, secure logging, and defensive copying
-  - [Oracle Secure Coding Guideline Note](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Oracle%20Secure%20Coding%20Guidelines%20for%20Java.md)
-- Strengthened security across codebase, container images, and CI/CD pipelines by leveraging Aqua Trivy to identify and fix Java vulnerable dependencies, insecure Dockerfile patterns, vulnerable base images, Helm chart misconfigurations
-  - [Dockerfile Best Practices](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Dockerfile%20Best%20Practices.md)
-  - Adopt Amazon Corretto to replace Eclipse Temurin on alpine image for free vulnerability
+- Improved codebase security by applying Oracle Secure Coding Guidelines[^10] on enforcing safe class design, input validation, overflow and floating-point error handling, robust exception handling, secure logging, and defensive copying
+- Strengthened security across codebase, container images, and CI/CD pipelines by leveraging Aqua Trivy to identify and fix Java vulnerable dependencies, insecure Dockerfile patterns[^11], vulnerable base images[^12], Helm chart misconfigurations
   
 ---
 
@@ -43,3 +40,10 @@
 [Implementing Strategy Pattern on Spring Framework](https://medium.com/@w22116972/implementing-strategy-pattern-on-spring-framework-1a9760831ee5)
 
 [Leetcode Pattern for Interview](https://github.com/w22116972/coding-interview-pattern)
+
+
+[^10]: [Oracle Secure Coding Guideline Note](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Oracle%20Secure%20Coding%20Guidelines%20for%20Java.md)
+
+[^11]: [Dockerfile Best Practices](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Dockerfile%20Best%20Practices.md)
+
+[^12]: Adopt `amazoncorretto:21.0.6-alpine3.21` to replace `eclipse-temurin:21.0.6_7-jdk-alpine-3.21` on alpine image for free vulnerability
