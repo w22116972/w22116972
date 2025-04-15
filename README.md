@@ -31,15 +31,22 @@
 
 ### Technical Writing
 
-[Google Technical Writing](https://medium.com/@w22116972/google-technical-writing-21a89129bfbc)
+#### Best Practices
 
-[Logging Best Practices](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Logging%20Best%20Practices.md)
+- [Logging Best Practices](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Logging%20Best%20Practices.md)
+- [Implementing Strategy Pattern on Spring Framework](https://medium.com/@w22116972/implementing-strategy-pattern-on-spring-framework-1a9760831ee5)
+- [Replace hardcode access key by service account](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Use%20IAM%20roles%20for%20Service%20Account.md)
 
-[Json Style Guide](https://github.com/w22116972/wiki/blob/main/docs/best-practices/JSON%20Style%20Guide.md)
+#### Style Guide
 
-[Implementing Strategy Pattern on Spring Framework](https://medium.com/@w22116972/implementing-strategy-pattern-on-spring-framework-1a9760831ee5)
+- [Google Technical Writing](https://medium.com/@w22116972/google-technical-writing-21a89129bfbc)
+- [Json Style Guide](https://github.com/w22116972/wiki/blob/main/docs/best-practices/JSON%20Style%20Guide.md)
 
-[Leetcode Pattern for Interview](https://github.com/w22116972/coding-interview-pattern)
+
+
+#### Miscellaneous
+
+- [Leetcode Pattern for Interview](https://github.com/w22116972/coding-interview-pattern)
 
 
 [^10]: [Oracle Secure Coding Guideline Note](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Oracle%20Secure%20Coding%20Guidelines%20for%20Java.md)
