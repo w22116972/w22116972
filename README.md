@@ -29,13 +29,24 @@
   
 ---
 
-### Technical Writing
+# Technical Writing
+
+## Cloud
+
+- [Use service account to replace hardcode access key](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Use%20IAM%20roles%20for%20Service%20Account.md)
+- [Use CI/CD variables to replace declaring secret](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Secret%20in%20k8s.md)
+
+## Spring
+
+- [Implementing Strategy Pattern on Spring Framework](https://medium.com/@w22116972/implementing-strategy-pattern-on-spring-framework-1a9760831ee5)
+
+## Style Guide
 
 #### Best Practices
 
 - [Logging Best Practices](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Logging%20Best%20Practices.md)
-- [Implementing Strategy Pattern on Spring Framework](https://medium.com/@w22116972/implementing-strategy-pattern-on-spring-framework-1a9760831ee5)
-- [Replace hardcode access key by service account](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Use%20IAM%20roles%20for%20Service%20Account.md)
+
+
 
 #### Style Guide
 
