@@ -17,7 +17,7 @@
 - Resolved large data nodes by using mega node as group to represent large nodes
 
 ### Cloud Infrastructure
-- Led cloud migration by containerizing legacy applications with Docker and deploying them to **Kubernetes** (**AWS EKS**), using Helm for application deployment and AWS CDK to provision cloud infrastructure, enabling scalable, portable, and fully automated environments
+- Led cloud migration by containerizing legacy applications with Docker and deploying them to Kubernetes (AWS EKS), using Helm for application deployment and AWS CDK to provision cloud infrastructure, enabling scalable, portable, and fully automated environments
 - Optimized Docker images by applying multi-stage builds, minimizing dependencies, and selecting minimal, vulnerability-free base images. This reduced image size by over 60%, accelerated CI/CD pipeline performance, and enhanced container security in production environments
 - Integrated CI/CD pipelines into cloud-deployed workloads using GitLab and Helm
 - Improved system observability and reliability by implementing the Prometheus stack to collect metrics, visualize performance, and proactively detect anomalies in distributed services
@@ -31,28 +31,36 @@
 
 # Technical Writing
 
-## Cloud
+## Devops, Cloud
 
-- [Use service account to replace hardcode access key](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Use%20IAM%20roles%20for%20Service%20Account.md)
-- [Use CI/CD variables to replace declaring secret](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Secret%20in%20k8s.md)
+- [Use service account to replace hardcode access key](https://github.com/w22116972/wiki/blob/main/docs/devops/Use%20IAM%20roles%20for%20Service%20Account.md)
+- [Use CI/CD variables to replace declaring secret](https://github.com/w22116972/wiki/blob/main/docs/devops/Secret%20in%20k8s.md)
 
-## Spring
+## Performance
+
+- TODO
+
+# Big Data 
+
+- TODO
+
+## Java, Spring
 
 - [Implementing Strategy Pattern on Spring Framework](https://medium.com/@w22116972/implementing-strategy-pattern-on-spring-framework-1a9760831ee5)
+- [Oracle Secure Coding Guideline Note](https://github.com/w22116972/wiki/blob/main/docs/java/Oracle%20Secure%20Coding%20Guidelines%20for%20Java.md)
+
+## Classic Paper
+
+- [Latency lags bandwidth by David A. Patterson](https://github.com/w22116972/wiki/blob/main/docs/classic-paper/Latency%20lags%20bandwidth.md)
 
 ## Style Guide
 
-#### Best Practices
-
-- [Logging Best Practices](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Logging%20Best%20Practices.md)
-
-
-
-#### Style Guide
-
 - [Google Technical Writing](https://medium.com/@w22116972/google-technical-writing-21a89129bfbc)
-- [Json Style Guide](https://github.com/w22116972/wiki/blob/main/docs/best-practices/JSON%20Style%20Guide.md)
+- [Json Style Guide](https://github.com/w22116972/wiki/blob/main/docs/style-guide/JSON%20Style%20Guide.md)
 
+## Case Study
+
+- [Why Discord is switching from Go to Rust by Discord](https://github.com/w22116972/wiki/blob/main/docs/case-study/why-discord-is-switching-from-go-to-rust.md)
 
 
 #### Miscellaneous
@@ -60,8 +68,8 @@
 - [Leetcode Pattern for Interview](https://github.com/w22116972/coding-interview-pattern)
 
 
-[^10]: [Oracle Secure Coding Guideline Note](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Oracle%20Secure%20Coding%20Guidelines%20for%20Java.md)
+[^10]: [Oracle Secure Coding Guideline Note](https://github.com/w22116972/wiki/blob/main/docs/java/Oracle%20Secure%20Coding%20Guidelines%20for%20Java.md)
 
-[^11]: [Dockerfile Best Practices](https://github.com/w22116972/wiki/blob/main/docs/best-practices/Dockerfile%20Best%20Practices.md)
+[^11]: [Dockerfile Best Practices](https://github.com/w22116972/wiki/blob/main/docs/devops/Dockerfile%20Best%20Practices.md)
 
 [^12]: Adopt `amazoncorretto:21.0.6-alpine3.21` to replace `eclipse-temurin:21.0.6_7-jdk-alpine-3.21` on alpine image for free vulnerability
