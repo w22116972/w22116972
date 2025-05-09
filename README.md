@@ -1,5 +1,7 @@
 # Tech Stack
 
+[Download Resume](./Ander%20Wang.pdf)
+
 ### Java Performance Engineering
 - Diagnosed and resolved OutOfMemoryError issues by analyzing heap dumps, optimizing object allocation, and fine-tuning JVM parameters, improving system stability under high-load conditions
   - Resolved excessive I/O threads retention issue by releasing driver resources cached in memory based on eviction policy
