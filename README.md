@@ -54,7 +54,7 @@
 
 ## Classic Paper
 
-- [Latency lags bandwidth by David A. Patterson](https://github.com/w22116972/wiki/blob/main/docs/classic-paper/Latency%20lags%20bandwidth.md)
+- [David A. Patterson. 2004. Latency lags bandwith](https://github.com/w22116972/wiki/blob/main/docs/classic-paper/Latency%20lags%20bandwidth.md)
 
 ## Style Guide
 
