@@ -1,6 +1,6 @@
 # Tech Stack
 
-[Download Resume](./Ander%20Wang.pdf)
+Experienced backend engineer specializing in Java performance engineering, distributed system design, and cloud infrastructure operations. Proficient in resolving high-load performance bottlenecks, designing scalable distributed graph APIs, and delivering secure, reliable cloud-native applications. Hands-on experience in containerized deployments, infrastructure as code, and observability solutions for production-grade systems.
 
 ### Java Performance Engineering
 - Diagnosed and resolved OutOfMemoryError issues by analyzing heap dumps, optimizing object allocation, and fine-tuning JVM parameters, improving system stability under high-load conditions
@@ -68,6 +68,7 @@
 
 #### Miscellaneous
 
+- [Download Resume](./Ander%20Wang.pdf)
 - [Leetcode Pattern for Interview](https://github.com/w22116972/coding-interview-pattern)
 
 
