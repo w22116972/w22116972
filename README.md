@@ -1,6 +1,6 @@
 # Tech Stack
 
-Experienced backend engineer specializing in **Java performance engineering**, **distributed system design**, and **cloud infrastructure operations**. Proficient in resolving high-load performance bottlenecks, designing scalable distributed graph APIs, and delivering secure, reliable cloud-native applications. Hands-on experience in containerized deployments, infrastructure as code, and observability solutions for production-grade systems.
+Specializing in **Java performance engineering** and **cloud infrastructure operations**. Proficient in resolving high-load performance bottlenecks, designing scalable distributed graph APIs, and delivering secure, reliable cloud-native applications. Hands-on experience in containerized deployments, infrastructure as code, and observability solutions for production-grade systems.
 
 ### Java Performance Engineering
 - Diagnosed and resolved OutOfMemoryError issues by analyzing heap dumps, optimizing object allocation, and fine-tuning JVM parameters, improving system stability under high-load conditions
@@ -28,7 +28,21 @@ Experienced backend engineer specializing in **Java performance engineering**, *
 - Improved code maintainability by refactoring legacy code based on SOLID principles and design patterns
 - Improved codebase security by applying Oracle Secure Coding Guidelines[^10] on enforcing safe class design, input validation, overflow and floating-point error handling, robust exception handling, secure logging, and defensive copying
 - Strengthened security across codebase, container images, and CI/CD pipelines by leveraging Aqua Trivy to identify and fix Java vulnerable dependencies, insecure Dockerfile patterns[^11], vulnerable base images[^12], Helm chart misconfigurations
-  
+
+## Projects
+
+### High traffic reservation system
+> Designed a high-concurrency inventory reservation system handling over 100,000 QPS
+
+- use Redis + Lua script to handle reservation atomically
+- use Virtual thread to handle high traffic
+
+### 1 billion rows challenge
+> Compute 1 billion rows for grouped operations by java application less than 2 seconds
+
+- use `mmap`
+
+
 ---
 
 # Technical Writing
@@ -37,15 +51,18 @@ Experienced backend engineer specializing in **Java performance engineering**, *
 
 - [Percentile-Based Performance Optimization](https://github.com/w22116972/wiki/blob/main/docs/performance-engineering/Percentile-Based%20Performance%20Optimization.md)
 
+# Solutions
+
+- Deduplicate
+- Distributed transaction
+
 ## Devops, Cloud
 
 - [Use service account to replace hardcode access key](https://github.com/w22116972/wiki/blob/main/docs/devops/Use%20IAM%20roles%20for%20Service%20Account.md)
 - [Use CI/CD variables to replace declaring secret](https://github.com/w22116972/wiki/blob/main/docs/devops/Secret%20in%20k8s.md)
 - [Docker Best Practices](https://github.com/w22116972/wiki/blob/main/docs/devops/Dockerfile%20Best%20Practices.md)
 
-# Big Data 
 
-- TODO
 
 ## Java, Spring
 
