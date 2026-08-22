@@ -154,3 +154,7 @@ Discovery is complete only when every first-wave workload has an owner,
 dependency map, data classification, target strategy, acceptance criteria,
 rollback path, and evidence location. Unknowns are allowed, but each one must
 have an owner and a decision deadline before it can affect production traffic.
+
+## Implemented extension
+
+- [Migration discovery and tracking tooling](1-5-migration-discovery-and-tracking-tooling.md) — collector selection, portfolio reconciliation, dependency evidence, application grouping, and migration-status governance.

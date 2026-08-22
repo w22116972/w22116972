@@ -208,3 +208,9 @@ effects and normalizes by business output.
 > memory and compute improvement are intentionally not presented as verified
 > outcomes because their baseline calculation and comparison window were not
 > retained.
+
+## Implemented extensions
+
+- [Reliability and disaster recovery modernization](4-3-reliability-and-disaster-recovery-modernization.md)
+- [NGINX Ingress to Envoy Gateway modernization](4-4-nginx-ingress-to-envoy-gateway-modernization.md)
+- [Sustainability and resource-efficiency review](4-5-sustainability-and-resource-efficiency-review.md)

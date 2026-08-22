@@ -2,14 +2,60 @@
 
 ## Solutions
 
-- [Legacy Application Migration and Modernization to Amazon EKS](docs/solutions/migrate-modernize-to-eks/README.md)
-- [Agentic AIOps on Amazon Bedrock and Amazon EKS](docs/solutions/agentic-aiops-bedrock/README.md)
-- [Amazon EKS Reliability and Cost Optimization](docs/solutions/eks-reliability-cost-optimization/README.md)
-- [GitOps Platform Modernization with Argo CD](docs/solutions/gitops-platform-modernization/README.md)
-- [Resilient Amazon EKS Disaster Recovery](docs/solutions/eks-disaster-recovery/README.md)
-- [Secure Enterprise AWS Foundation and IaC Delivery](docs/solutions/aws-foundation-iac/README.md)
-- [Serverless Application Modernization](docs/solutions/serverless-application-modernization/README.md)
-- [Database Migration and Modernization](docs/solutions/database-migration-modernization/README.md)
+```mermaid
+flowchart TB
+    LEGACY["Legacy monolith<br/>VMs · NGINX Ingress · manual releases · fixed capacity"]
+
+    subgraph CORE["Main solution · Monolith migration and modernization to Amazon EKS"]
+        direction LR
+        DISCOVER["1 · Discover<br/>Baseline and migration waves"]
+        FOUNDATION["2 · Establish<br/>AWS and EKS foundation"]
+        MIGRATE["3 · Modernize<br/>Containerize and migrate"]
+        CUTOVER["4 · Cut over<br/>Progressive traffic shift"]
+        OPERATE["5 · Operate<br/>Validate, govern, and improve"]
+        DISCOVER --> FOUNDATION --> MIGRATE --> CUTOVER --> OPERATE
+    end
+
+    LEGACY --> DISCOVER
+    OPERATE --> TARGET["Modernized EKS platform<br/>Elastic · declarative · observable · resilient"]
+
+    subgraph ENABLE["Optional migration and platform modernization"]
+        direction LR
+        IAC["Foundation and identity<br/>Terraform · EKS Pod Identity"]
+        APP["Application and data<br/>Strangler extraction · database modernization · serverless"]
+        GITOPS["Delivery<br/>CI/CD → Argo CD GitOps"]
+        TRAFFIC["Traffic<br/>NGINX Ingress → Gateway API and Envoy Gateway"]
+    end
+
+    subgraph OPTIMIZE["Optional production optimization"]
+        direction LR
+        COMPUTE["Compute and elasticity<br/>Fixed nodes or Cluster Autoscaler → Karpenter<br/>HPA/KEDA · VPA recommendations · Spot/On-Demand · Graviton"]
+        RELIABILITY["Reliability and recovery<br/>Multi-AZ · disruption controls · backup and restore · DR exercises"]
+        AIOPS["Operations intelligence<br/>Metrics, logs, traces · approved Bedrock AIOps workflows"]
+    end
+
+    IAC -.-> FOUNDATION
+    APP -.-> MIGRATE
+    GITOPS -.-> MIGRATE
+    TRAFFIC -.-> CUTOVER
+    COMPUTE -.-> OPERATE
+    RELIABILITY -.-> OPERATE
+    AIOPS -.-> OPERATE
+```
+
+### Main transformation solution
+
+- [Legacy Application Migration and Modernization to Amazon EKS](docs/solutions/migrate-modernize-to-eks/README.md) — the end-to-end journey from discovery and platform foundation through migration, cutover, validation, handoff, and 21 decision-gated migration and modernization extensions.
+
+### Optional modernization solutions
+
+- **Foundation and identity modernization:** [Secure Enterprise AWS Foundation and IaC Delivery](docs/solutions/aws-foundation-iac/README.md) — establish governed accounts, networking, Terraform delivery, and workload identity before migration waves scale.
+- **Application and data modernization:** [Database Migration and Modernization](docs/solutions/database-migration-modernization/README.md) and [Serverless Application Modernization](docs/solutions/serverless-application-modernization/README.md) — decouple only where business value, scaling, or release independence justifies it.
+- **Delivery and operating-model modernization:** [GitOps Platform Modernization with Argo CD](docs/solutions/gitops-platform-modernization/README.md) — move from imperative, pipeline-driven cluster changes to reviewed and continuously reconciled desired state.
+- **Traffic modernization:** [NGINX Ingress to Kubernetes Gateway API and Envoy Gateway](docs/practices/k8s/envoy-gateway.md) — migrate routes and policies with parity tests, progressive traffic shifting, and a rollback window.
+- **Compute and elasticity modernization:** [Amazon EKS Reliability and Cost Optimization](docs/solutions/eks-reliability-cost-optimization/README.md) — right-size requests first, then move eligible capacity from fixed node groups or Cluster Autoscaler to Karpenter; combine workload autoscaling, consolidation, diversified instances, and guarded Spot adoption.
+- **Resilience modernization:** [Resilient Amazon EKS Disaster Recovery](docs/solutions/eks-disaster-recovery/README.md) — turn backup completion into tested recovery through restore, mount, readback, application, and traffic validation.
+- **Operations intelligence modernization:** [Agentic AIOps on Amazon Bedrock and Amazon EKS](docs/solutions/agentic-aiops-bedrock/README.md) — correlate operational evidence and prepare remediation while preserving operator approval.
 
 ## Architecture & Engineering Practices
 

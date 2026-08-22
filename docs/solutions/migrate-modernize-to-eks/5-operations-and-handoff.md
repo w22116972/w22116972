@@ -199,3 +199,14 @@ Those claims remain excluded until a source artifact is available.
 - Normalize cost by business output and preserve the calculation.
 - Retain the evidence packet; a strong result that cannot be reconstructed is a
   weak case study.
+
+## Implemented extensions
+
+- [Karpenter compute and elasticity modernization](5-2-karpenter-compute-and-elasticity-modernization.md)
+- [Workload autoscaling modernization](5-3-workload-autoscaling-modernization.md)
+- [Amazon EKS FinOps and cost optimization](5-4-eks-finops-and-cost-optimization.md)
+- [Observability and SRE operating model](5-5-observability-and-sre-operating-model.md)
+- [Amazon EKS lifecycle and upgrade engineering](5-6-eks-lifecycle-and-upgrade-engineering.md)
+- [Platform engineering and golden paths](5-7-platform-engineering-and-golden-paths.md)
+- [Agentic AIOps with Amazon Bedrock](5-8-agentic-aiops-with-amazon-bedrock.md)
+- [Customer expansion and modernization roadmap](5-9-customer-expansion-and-modernization-roadmap.md)

@@ -223,3 +223,10 @@ node capacity, pod scheduling, workload identity, admission and network policy,
 observability, backup, and operator training. The target architecture is complete
 only when those responsibilities have owners and tested procedures; a healthy
 control plane alone is not the outcome.
+
+## Implemented extensions
+
+- [Workload identity and secrets modernization](2-5-workload-identity-and-secrets-modernization.md)
+- [Software supply chain and runtime security](2-6-software-supply-chain-and-runtime-security.md)
+- [Amazon EKS multi-tenancy and governance](2-7-eks-multi-tenancy-and-governance.md)
+- [VMware rehost or relocate bridge to Amazon EKS](2-8-vmware-rehost-relocate-bridge-to-eks.md)

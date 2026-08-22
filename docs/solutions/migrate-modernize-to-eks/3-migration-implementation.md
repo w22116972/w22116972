@@ -226,3 +226,11 @@ Each wave retains:
 
 Without this packet, a successful deployment is an event—not a defensible
 migration outcome.
+
+## Implemented extensions
+
+- [Automated testing, CI/CD, and GitOps modernization](3-4-automated-testing-cicd-and-gitops.md)
+- [Database modernization](3-5-database-modernization.md)
+- [Serverless and event-driven extraction](3-6-serverless-and-event-driven-extraction.md)
+- [Service mesh and east-west traffic modernization](3-7-service-mesh-and-east-west-traffic.md)
+- [Industry-specific workload architecture](3-8-industry-specific-workload-architecture.md)
