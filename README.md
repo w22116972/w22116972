@@ -15,12 +15,8 @@
 
 ### AWS Cloud
 
-- [IAM Roles for Service Accounts](docs/practices/aws/use-iam-roles-for-service-account.md)
-- [Terraform Architecture and Best Practices](docs/practices/aws/terraform-architecture-best-practices.md)
-- [Enterprise AWS Networking and Security](docs/practices/aws/enterprise-networking-security.md)
-- [Serverless and Event-Driven Architecture](docs/practices/aws/serverless-event-driven-architecture.md)
-- [AWS Observability and Operational Automation](docs/practices/aws/observability-operational-automation.md)
-- [Customer Delivery and Handoff](docs/practices/aws/customer-delivery-handoff.md)
+- Cloud foundations: [IAM Roles for Service Accounts](docs/practices/aws/use-iam-roles-for-service-account.md), [Terraform Architecture and Best Practices](docs/practices/aws/terraform-architecture-best-practices.md), and [Enterprise AWS Networking and Security](docs/practices/aws/enterprise-networking-security.md)
+- Application platforms and operations: [Serverless and Event-Driven Architecture](docs/practices/aws/serverless-event-driven-architecture.md), [AWS Observability and Operational Automation](docs/practices/aws/observability-operational-automation.md), and [Customer Delivery and Handoff](docs/practices/aws/customer-delivery-handoff.md)
 
 
 #### EKS Best Practices
@@ -32,44 +28,23 @@
 
 ### Kubernetes Platform Engineering
 
-- [Kubernetes Architecture](docs/practices/k8s/architecture.md)
-- [Kubernetes Networking](docs/practices/k8s/networking.md)
-- [Kubernetes Storage](docs/practices/k8s/storage.md)
-- [Kubernetes Security](docs/practices/k8s/security.md)
-- [Kubernetes Policy: Resource Governance and PID Protection](docs/practices/k8s/policy.md)
-- [Kubernetes Cluster Administration](docs/practices/k8s/admin.md)
-- [Kubernetes Observability: Metrics, Logs, and Traces](docs/practices/k8s/observability.md)
-- [Kubernetes Scheduling, Preemption, and Eviction](docs/practices/k8s/scheduling.md)
-- [Envoy Gateway](docs/practices/k8s/envoy-gateway.md)
-- [Helm Chart Best Practices](docs/practices/k8s/helm-bp.md)
-- [Kubernetes Secure Configuration and Secret Best Practices](docs/practices/k8s/k8s-secure-config-secret-bp.md)
-- [Kubernetes Cluster Scalability and High Availability Best Practices](docs/practices/k8s/k8s-cluster-scalability-ha-bp.md)
-- [Kubernetes Pod Security Standards Best Practices](docs/practices/k8s/k8s-pod-security-standards-bp.md)
-- [Kubernetes PKI and Certificate Best Practices](docs/practices/k8s/k8s-pki-certificate-bp.md)
-- [Dockerfile Best Practices](docs/practices/k8s/dockerfile-best-practices.md)
+- Core platform: [Kubernetes Architecture](docs/practices/k8s/architecture.md), [Networking](docs/practices/k8s/networking.md), [Storage](docs/practices/k8s/storage.md), and [Cluster Administration](docs/practices/k8s/admin.md)
+- Workload operations: [Observability](docs/practices/k8s/observability.md), [Scheduling, Preemption, and Eviction](docs/practices/k8s/scheduling.md), [Cluster Scalability and High Availability](docs/practices/k8s/k8s-cluster-scalability-ha-bp.md), and [Envoy Gateway](docs/practices/k8s/envoy-gateway.md)
+- Security and delivery: [Kubernetes Security](docs/practices/k8s/security.md), [Resource Governance and PID Protection](docs/practices/k8s/policy.md), [Secure Configuration and Secrets](docs/practices/k8s/k8s-secure-config-secret-bp.md), [Pod Security Standards](docs/practices/k8s/k8s-pod-security-standards-bp.md), [PKI and Certificates](docs/practices/k8s/k8s-pki-certificate-bp.md), [Helm Chart Best Practices](docs/practices/k8s/helm-bp.md), and [Dockerfile Best Practices](docs/practices/k8s/dockerfile-best-practices.md)
 
 
 ### DevSecOps
 
-- [Layered Trivy Security Scanning with GitLab CI/CD](docs/practices/devsecops/trivy-security-scanning-with-gitlab-ci.md)
-- [CI/CD Pipeline Best Practices](docs/practices/devsecops/cicd-pipeline-best-practices.md)
-- [Argo CD GitOps Best Practices](docs/practices/devsecops/gitops-argocd.md)
+- Security scanning: [Layered Trivy Security Scanning with GitLab CI/CD](docs/practices/devsecops/trivy-security-scanning-with-gitlab-ci.md)
+- Delivery and GitOps: [CI/CD Pipeline Best Practices](docs/practices/devsecops/cicd-pipeline-best-practices.md) and [Argo CD GitOps Best Practices](docs/practices/devsecops/gitops-argocd.md)
 
 
 ### Performance Engineering
 
-- [Percentile-Based Performance Optimization](docs/practices/performance/percentile-based-performance-optimization.md)
-- [Latency Lags Bandwidth](docs/practices/performance/latency-lags-bandwidth.md)
-- [Why Discord Is Switching from Go to Rust](docs/practices/performance/why-discord-is-switching-from-go-to-rust.md)
+- Performance analysis: [Percentile-Based Performance Optimization](docs/practices/performance/percentile-based-performance-optimization.md) and [Latency Lags Bandwidth](docs/practices/performance/latency-lags-bandwidth.md)
+- Engineering perspectives: [Why Discord Is Switching from Go to Rust](docs/practices/performance/why-discord-is-switching-from-go-to-rust.md)
 
 ### Style
 
-- [Google Technical Writing](docs/practices/style/google-technical-writing.md)
-- [SOLID Principle](docs/practices/style/SOLID-Java.md)
-- [Go Style Guide](docs/practices/style/go-style-guide.md)
-- [Java Style Guide](docs/practices/style/java-style-guide.md)
-- [Oracle Secure Coding Guidelines for Java](docs/practices/style/oracle-secure-coding-guidelines-for-java.md)
-- [Python Style Guide](docs/practices/style/python-style-guide.md)
-- [JSON Style Guide](docs/practices/style/json-style-guide.md)
-- [Markdown Style Guide](docs/practices/style/markdown-style-guide.md)
-- [Resume Guide](docs/practices/style/resume-guide.md)
+- Writing and documentation: [Google Technical Writing](docs/practices/style/google-technical-writing.md), [JSON Style Guide](docs/practices/style/json-style-guide.md), [Markdown Style Guide](docs/practices/style/markdown-style-guide.md), and [Resume Guide](docs/practices/style/resume-guide.md)
+- Programming languages and design: [SOLID Principle](docs/practices/style/SOLID-Java.md), [Go Style Guide](docs/practices/style/go-style-guide.md), [Java Style Guide](docs/practices/style/java-style-guide.md), [Oracle Secure Coding Guidelines for Java](docs/practices/style/oracle-secure-coding-guidelines-for-java.md), and [Python Style Guide](docs/practices/style/python-style-guide.md)
