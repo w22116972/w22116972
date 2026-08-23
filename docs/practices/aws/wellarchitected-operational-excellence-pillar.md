@@ -49,6 +49,15 @@ flowchart LR
 
 讓 business、development 與 operations 等關鍵利害關係人共同判斷應優先處理哪些 external customer needs。團隊應從 customer outcomes 反推工作，理解 operational practices 如何支援 business outcomes，納入所有相關角色，並建立持續收集外部客戶需求的機制。
 
+**常見反模式**
+
+- 未檢視歷史 support requests，就決定核心營業時間以外不提供 customer support，因此無法判斷對客戶的影響。
+- 未與客戶確認需求、期望形式或透過 experiment 驗證，就直接開發新功能。
+
+**建立此實務的效益**
+
+理解外部客戶真正需要的 outcomes 與 operational support，可讓團隊把有限資源優先投入最能交付 business value 的工作，也能提高客戶持續使用服務的可能性。
+
 **Implementation guidance**
 
 1. **Understand business needs：** 以共同目標及共同理解作為 business success 的基礎，讓 business、development 與 operations 對預期成果形成一致認知。
@@ -61,6 +70,16 @@ flowchart LR
 
 讓 business、development 與 operations 共同理解 internal customers 對 platform、process 與 service 的需求，並依已建立的 priorities，把改善投入最有影響力的項目，例如技能、workload performance、cost、runbook automation 或 monitoring。需求改變時，priorities 也要同步更新。
 
+**常見反模式**
+
+- 未諮詢 product teams 就更改 IP address allocation，只因為這樣較容易管理 network。
+- 未確認 internal customers 是否需要、是否符合既有 practices，就導入新的 development tool。
+- 未先收集 internal customers 的 monitoring 與 reporting needs，就建置新的 monitoring system。
+
+**建立此實務的效益**
+
+把內部客戶的實際工作方式與需求納入決策，可避免 provider team 自行猜測，並使改善工作更直接地支援 business value。
+
 **Implementation guidance**
 
 1. **Understand business needs：** 讓 business、development 與 operations 以共享目標及共同理解建立合作基礎。
@@ -72,6 +91,16 @@ flowchart LR
 **目的與預期成果**
 
 識別組織內部為達成 business goals 所制定的 policies、rules 與 frameworks，將適用的 governance requirements 納入 workload，並能以持續、可稽核的證據證明 conformance。
+
+**常見反模式**
+
+- 不清楚 organization-wide governance requirements，或只在 architecture review 前臨時確認。
+- 以手動檢查或文件聲明 conformance，卻未持續偵測不符合要求的 resources。
+- 未與 centralized governance teams 協作，使技術或營運選擇違反組織政策。
+
+**建立此實務的效益**
+
+提早納入治理需求可降低 rework、exception 與 audit failure，並讓 workload 設計和營運持續符合組織目標。
 
 **Implementation guidance**
 
@@ -86,6 +115,16 @@ flowchart LR
 
 在 architecture design process 中納入適用的 industry、regulatory 與 internal compliance frameworks。團隊成員必須理解這些要求，並依 framework 持續驗證 workload，而不是假設採用 AWS service 就自動 compliant。
 
+**常見反模式**
+
+- workload 完成後才檢查 compliance，造成 architecture 與 data handling 大幅返工。
+- 團隊不知道適用 framework，或未把要求納入 architecture 與 technology choices。
+- 稽核開始後才人工蒐集 evidence，沒有可重複的 validation 與 reporting process。
+
+**建立此實務的效益**
+
+將 compliance 內建於設計、交付和營運流程，可降低違規與 audit failure，並縮短持續驗證及產生 evidence 的時間。
+
 **Implementation guidance**
 
 1. 與 security 和 governance teams 確認 workload 必須遵循的 industry、regulatory 或 internal frameworks，並將要求納入 workload；可使用 AWS Security Hub CSPM 等服務持續檢查 AWS resources 的 compliance posture。
@@ -98,6 +137,16 @@ flowchart LR
 
 持續評估 competition、business liabilities、operational risks 與 information security threats 等威脅，理解已知 threats 的可能性、影響與修補狀態，採取適當 mitigations，並把決策與背景傳達給相關人員。
 
+**常見反模式**
+
+- 使用過時 software library，卻未追蹤可能影響 workload 的 security updates。
+- 只在年度 review 更新風險資料，沒有因 vulnerability、service 或 business change 調整 priorities。
+- 已知 threat 沒有 owner、mitigation 或 residual-risk decision。
+
+**建立此實務的效益**
+
+比較 threat probability、potential harm、recovery cost 與 prevention cost，可讓團隊在威脅成為 incident 前投入適當防護。
+
 **Implementation guidance**
 
 1. **Evaluate the threat landscape：** 定期評估競爭、business risk and liabilities、operational risks 與 information security threats，並將其 business impact 納入工作優先順序；持續檢視 AWS security bulletins、AWS Trusted Advisor 及相關情報。
@@ -108,6 +157,16 @@ flowchart LR
 **目的與預期成果**
 
 由適當的 governing body 定義 benefits 與 risks 的衡量方式，根據可靠資料及 cost-benefit analysis 排定決策優先順序。決策權要在 centralized control 與 decentralized authority 之間取得平衡，並清楚理解每個 trade-off 對 strategy 與 business outcomes 的影響。
+
+**常見反模式**
+
+- 所有決策都必須經過相同而繁重的中央流程，使可逆的小型決策也被延誤。
+- 只強調 time-to-market，卻未量化 reliability、security、performance 或 cost risk。
+- 接受 risk 時沒有共同 decision framework、unblock owner 或可追溯依據。
+
+**建立此實務的效益**
+
+一致且分級的 decision framework 能加速可逆決策、集中管理不可逆決策，並使 benefits、risks 與 organizational priorities 的關係透明。
 
 **Implementation guidance**
 
@@ -465,17 +524,49 @@ applications 要發出 structured metrics、logs 與 events，涵蓋 traffic、e
 
 在 change 前定義 code、configuration、schema、data、dependency 與 capacity failure scenarios、stop conditions、rollback/roll-forward 和 decision owner。避免失敗後才設計 rollback；以 pre-change review、backup、compatible versions 與 timed rehearsal 驗證。
 
+**Implementation guidance**
+
+1. 建立一致且文件化的 release policy，定義何時 rollback、何時允許 fix forward。
+2. production deployment 前完成 plan，包含 triggers、decision owner、steps、dependencies 與 communication。
+3. 確認 application、infrastructure、configuration 與 data changes 具 compatibility 或有效 recovery path。
+4. 在 production-like environment 測試 recovery procedure 並量測 recovery target。
+5. 將 deployment outcomes 與 lessons 回饋至 policy 和 procedure。
+
 #### OPS06-BP02 Test deployments
 
 在 production-like environment 以同一 pipeline 測試 permissions、quota、timeout、dependency、schema、retry、partial state 與 rollback。避免只測 application binary；以 idempotency、interrupted-deployment result 和 rollback evidence 驗證。
+
+**Implementation guidance**
+
+1. 執行 pre-install checks，使 pre-production 與 production 的關鍵條件一致。
+2. 使用 CloudFormation drift detection 找出 IaC 外變更，並以 change sets 確認實際 actions 符合 intent。
+3. 在 pipeline 中設定必要 approval，授權部署至 pre-production。
+4. 使用 CodeDeploy AppSpec 或等效 configuration 定義 deployment 與 validation steps。
+5. 執行 health、functional、security、regression、integration、load 與 recovery tests 後再 promotion。
 
 #### OPS06-BP03 Employ safe deployment strategies
 
 依 workload 選 rolling、canary、linear、blue/green 或 feature flags，定義 cohort、bake time、health metrics、alarm 和 traffic rollback。避免同時更新所有 failure domains；以 rollout timeline、gate decisions 和 customer metrics 驗證。
 
+**Implementation guidance**
+
+1. 依 architecture、change risk、state/data compatibility 與 recovery capability 選擇 strategy。
+2. 使用 one-box/canary、linear 或 waves 先暴露少量 traffic/capacity，經 bake time 後再擴大。
+3. 使用 blue/green、immutable deployment 或 traffic shifting 支援快速切換。
+4. 使用 feature flags 將 code deployment 與 customer release 分離。
+5. 為每個 stage 定義 health criteria、automatic stop、rollback 與 maximum blast radius。
+
 #### OPS06-BP04 Automate testing and rollback
 
 將 pre/post-deploy tests、synthetics、SLO/error-budget gates、alarms 與 rollback workflow 整合；data changes 必須有 safe roll-forward。避免只靠 operator 目測 dashboard；以 injected failures、rollback time 和 false-positive review 驗證。
+
+**Implementation guidance**
+
+1. 優先自動化每次 change 都需執行、且能降低最大風險的 test cases。
+2. 將 functional、integration、security、performance、synthetic 與 business-outcome checks 整合至 pipeline。
+3. 為 success、failure 與 inconclusive result 預先定義 thresholds 和 decision logic。
+4. 未達 predefined outcomes 時，自動停止 rollout 並回復 previous known-good state。
+5. 依 false positives、missed failures、rollback duration 與 manual intervention 改善 tests 和 triggers。
 
 ### OPS07 - Operational readiness and change management
 
@@ -483,25 +574,73 @@ applications 要發出 structured metrics、logs 與 events，涵蓋 traffic、e
 
 production support roles 必須有足夠 staffing、skills、access、on-call coverage 與 context，包含 vendors 和 time zones。避免 go-live 依賴 unavailable builder；以 roster、skill matrix、access test、shadowing 和 incident simulation 驗證。
 
+**Implementation guidance**
+
+1. 配置足夠人力支援 normal operations、on-call、security issues 與 certificate rotation/end-of-support 等 lifecycle events。
+2. 針對 workload 所用 software 和 platforms 提供 training，搭配 AWS Training and Certification、events 或 webinars。
+3. 定期重新評估 team size 和 skills，依 operating conditions/workload changes 調整，並確認能處理 planned lifecycle events 與 AWS Health 通知的 unplanned events。
+
 #### OPS07-BP02 Ensure a consistent review of operational readiness
 
 以一致且 risk-tiered 的 ORR 在 production 前 review ownership、telemetry、alarms、capacity、security、backup/restore、runbooks、support 與 rollback。避免 evidence-free checklist；以 sign-off、exceptions、accepted risk 和 re-review triggers 驗證。
+
+**Implementation guidance**
+
+1. 召集 security、operations、development 等 key stakeholders。
+2. 每個 stakeholder 至少提出一項 requirement；第一版 checklist 先限制在約 30 項以內。
+3. 將 requirements 集中管理；可用 AWS Well-Architected Tool custom lens 建立並跨 accounts/Organization 分享 ORR。
+4. 選一個 pre-launch 或 internal workload 試行 ORR。
+5. 執行 checklist，記錄 discoveries；已有 mitigation 者可接受，沒有 mitigation 者須加入 backlog 並在 launch 前處理。
+6. 持續加入新 best practices、governance、lessons learned 與 requirements，並逐步以 AWS Config、Security Hub CSPM 或 Control Tower controls 自動檢查。
 
 #### OPS07-BP03 Use runbooks to perform procedures
 
 runbook 要包含 prerequisites、permissions、steps、expected output、stop/rollback、validation、owner 與 last-tested date，並優先安全 automation。避免 stale screenshots 或 tacit knowledge；以 execution logs 和 drills 驗證。
 
+**Implementation guidance**
+
+1. 若沒有 repository，先建立 version-controlled documentation repository 或 wiki。
+2. 選擇一個半定期執行、步驟少且 failure impact 低的 process 作為第一份 runbook。
+3. 使用 template 記錄 ID、目的、desired outcome、tools、permissions、author、last updated 與 escalation contact。
+4. 寫出逐步 procedure、expected results、error handling 與 escalation。
+5. 讓另一位 team member 實際執行以驗證清楚度，修正缺漏。
+6. 發布並通知 stakeholders，依 change management 維護版本。
+7. 隨 library 和 maturity 成長，使用 Systems Manager Automation 等工具逐步自動化。
+
 #### OPS07-BP04 Use playbooks to investigate issues
 
 以 symptom/failure mode 組織 hypothesis-driven playbooks，連結 dashboards、queries、dependency checks、decision tree、escalation 和 evidence preservation。避免把不確定調查寫成僵硬命令；以 novel-scenario exercise 和 update history 驗證。
+
+**Implementation guidance**
+
+1. 建立 version-controlled playbook repository。
+2. 先選擇常見、root cause 範圍有限且 resolution risk 低的 investigation scenario。
+3. 使用 template 記錄 purpose、tools、permissions、author、escalation POC、stakeholders 與 communication plan。
+4. 撰寫清楚的 troubleshooting actions 和應調查範圍，保留 evidence 與 decision points。
+5. 由另一位 team member 依 playbook 驗證並修正。
+6. 發布並通知 teams/stakeholders。
+7. library 成長後以 scripts、notebooks 或 Systems Manager Automation 逐步半自動或自動化，並保持 playbook 與 automation 同步。
 
 #### OPS07-BP05 Make informed decisions to deploy systems and changes
 
 go/no-go 依 readiness、risk、customer impact、change window 與 recovery capability，而非 schedule pressure。定義 criteria、evidence、approver、risk acceptance、conflict check 和 abort path；避免在 unresolved alarms 或 staffing gaps 下上線。
 
+**Implementation guidance**
+
+1. 建立並定期 review successful deployment criteria、rollback triggers 與 benefit-versus-risk decision。
+2. 確認所有 changes 符合 governance policies。
+3. 使用 pre-mortem 模擬 unsuccessful change、文件化 mitigations，並透過 tabletop exercise 驗證 rollback procedures。
+
 #### OPS07-BP06 Create support plans for production workloads
 
 定義 support scope、hours、severity、response、service desk/on-call paths、AWS/vendor plans、contacts、access 與 major-incident process。避免不清楚誰能開 vendor case；以 contact tests、SLA reviews 和 support simulations 驗證。
+
+**Implementation guidance**
+
+1. 與 stakeholders 盤點 workload 依賴的 software 和 service vendors。
+2. 定義 workload service-level needs，選擇相符的 support plan。
+3. 為 commercial dependencies 建立 vendor support plan；production AWS accounts 應評估 AWS Business Support 或更高級別，若未採用則需替代 action plan。
+4. 在 knowledge system 文件化如何 request support、通知誰、incident 中如何 escalate，並建立機制持續更新 contacts 和 process。
 
 ### OPS08 - Utilizing workload observability
 
@@ -509,21 +648,66 @@ go/no-go 依 readiness、risk、customer impact、change window 與 recovery cap
 
 用 baselines、percentiles、dimensions、anomaly/trend analysis 和 metric math 找出 customer impact、capacity 與 failure progression，並關聯 deployments。避免 averages 或孤立 resource metrics；以 investigation examples 和 threshold tuning 驗證。
 
+**Implementation guidance**
+
+1. 定期 review 和解讀 metrics，優先分析 business outcomes，理解 spike、drop 與 pattern 的意義。
+2. 使用 CloudWatch dashboards、percentiles、anomaly detection、cross-account observability、Metric Insights 和 metric math 集中分析。
+3. 使用 Amazon DevOps Guru 的 anomaly detection 找出早期 operational issues。
+4. 將分析結果轉為 workload、capacity、threshold 或 process 的具體改善。
+
 #### OPS08-BP02 Analyze workload logs
 
 以 structured schema、timestamps、request IDs、severity、version 和 centralized queries 支援 cross-service investigation，並控制 secrets/PII、retention 與 access。避免 free text 或 clock drift；以 saved queries、incident reconstruction 和 access audit 驗證。
+
+**Implementation guidance**
+
+1. 將 application/service logs 集中送至 CloudWatch Logs。
+2. 使用 Logs anomaly detection 主動辨識異常 patterns。
+3. 使用 Logs Insights queries、pattern analysis 與 compare/diff 找出趨勢和 change impact。
+4. 使用 Live Tail 即時觀察 operations，並用 Contributor Insights 找出 high-cardinality top contributors。
+5. 使用 metric filters 將 log events 轉為 metrics 和 alarms。
+6. 以 cross-account observability 分析跨 accounts 的 application。
+7. 定期 review log strategy、schema、retention、access 和 sensitive-data controls。
 
 #### OPS08-BP03 Analyze workload traces
 
 利用 service maps、span attributes、sampling 與 exemplar links 分析 critical path、dependencies、latency 和 errors，並比較 versions/Regions/tenants。避免只保存成功 samples 或缺 root span；以 slow/error journeys 和 trace completeness 驗證。
 
+**Implementation guidance**
+
+1. 將 X-Ray 整合至 applications 並確認 trace capture。
+2. 分析 latency、request rate、fault rate、response-time distribution 和 service map。
+3. 使用 ServiceLens 關聯 traces、metrics、logs、alarms 和 health information。
+4. 啟用 X-Ray Insights 和 Analytics，使用 groups 過濾 high-latency 或 error traces。
+5. 結合 DevOps Guru、CloudWatch Synthetics 和 RUM 分析 anomaly 與 end-user path。
+6. 將 trace 與相關 logs 關聯，並使用 cross-account observability 支援跨 account workload。
+
 #### OPS08-BP04 Create actionable alerts
 
 alerts 必須代表需要人或 automation 處理的 customer/business risk，包含 severity、owner、impact、dashboard、runbook、dedup 與 escalation。避免每個 threshold 都 page；以 precision、action rate、acknowledgement 和 missed incidents 驗證。
 
+**Implementation guidance**
+
+1. 將 alerts 連結到 application KPIs 和 business impact。
+2. 使用 CloudWatch anomaly detection、X-Ray Insights 與 DevOps Guru 辨識真正 anomalies。
+3. 在 alert 中提供立即可行動的 context，並透過 EventBridge/AWS Health API 自動處理 AWS Health events。
+4. 減少 non-critical alerts，使用 CloudWatch composite alarms 做 consolidation。
+5. 與 PagerDuty、Opsgenie 或 Amazon Q Developer in chat applications 等 response tools 整合。
+6. 以 CloudWatch log metric filters 對特定 log events 告警。
+7. 定期 review、去除 noise 並調整 alerts。
+
 #### OPS08-BP05 Create dashboards
 
 為 executive、service、operations 與 incident roles 建立 views，呈現 SLO、traffic、errors、latency、saturation、deploy annotations 與 drill-down。避免大量無 owner widgets；以 user review、incident usage、freshness 和 stale-dashboard cleanup 驗證。
+
+**Implementation guidance**
+
+1. 建立具描述性名稱的 CloudWatch dashboard，平衡 business KPIs 和 technical metrics。
+2. 用 Markdown widgets 說明 scope、metric meaning 並連結其他 dashboards 和 troubleshooting tools。
+3. 使用 dashboard variables 提供 dynamic views。
+4. 加入 metric widgets、Logs Insights queries、alarms 和 Contributor Insights。
+5. 必要時建立 custom widgets，並納入 AWS Health authoritative status。
+6. 隨 application、audience 與 business needs 演進，持續 review 和精簡 dashboard。
 
 ### OPS09 - Understanding operational health
 
@@ -531,13 +715,36 @@ alerts 必須代表需要人或 automation 處理的 customer/business risk，�
 
 定義 operations targets、formula、data owner、cadence 與 segmentation，例如 change failure rate、MTTR、ticket age 和 automation rate。避免 activity-only counts 或 metric gaming；以 trend、customer outcome correlation 和 corrective action 驗證。
 
+**Implementation guidance**
+
+1. 與 business leaders 和 stakeholders 確認 service goals、operations team tasks 與可能面臨的 challenges。
+2. 共同定義能反映 goals 的 KPI，例如 customer satisfaction、concept-to-deploy time、issue resolution time 或 cost efficiency。
+3. 為每個 KPI 找出最能代表 outcome 的 metrics 和 data sources，必要時組合多個 signals。
+4. 明確定義公式、owner、target 和 review cadence，避免只量測 activity volume。
+
 #### OPS09-BP02 Communicate status and trends to ensure visibility into operation
 
 以 service reviews、scorecards 與 risk narrative 呈現 target、current state、trend、confidence、capacity 和 owner。避免只在 outage 溝通或隱藏 bad trend；以 stakeholder acknowledgement、decisions 和 follow-up 驗證。
 
+**Implementation guidance**
+
+1. 建立 operations dashboards，向 operations leaders 和 management 顯示 current key metrics。
+2. 建立可快速更新的 status page，顯示 incident、owner、response coordinator、user actions 和 workarounds。
+3. 產出 operational health trend reports，向 leaders/decision-makers 說明工作、challenges 和 needs。
+4. 跨 teams 分享能反映 goals、KPIs 和已促成改變的 metrics/reports，並安排固定 review 時間。
+5. 將 AWS Health 與自己的 dashboard/status data 關聯。
+
 #### OPS09-BP03 Review operations metrics and prioritize improvement
 
 由 business、development 與 operations 共同 review KPI、incidents、toil、cost、feedback 和 risks，依 impact/effort 排 improvement backlog。避免 review 後無 action；以 owner、due date、expected outcome 和 post-change measurement 驗證。
+
+**Implementation guidance**
+
+1. 安排 stakeholders 和 operations teams 定期 review metrics 與 reports。
+2. 將數據放回 organization goals/objectives 判斷是否達成，並找出 ambiguous 或 conflicting expectations。
+3. 識別需要投入的 time、people 和 tools，說明會改善哪些 KPI 及 success target。
+4. 排定有 owner、priority 和 expected outcome 的 improvements。
+5. 定期重新 review，確認 operations resources 仍足以支援 line of business。
 
 ### OPS10 - Responding to events
 
@@ -545,29 +752,91 @@ alerts 必須代表需要人或 automation 處理的 customer/business risk，�
 
 一致定義 event intake/classification、incident severity/command/timeline/handoff/closure，以及 problem analysis 和 improvement linkage。避免把所有 alerts 都當 incident 或恢復後不處理 recurrence；以 records、timelines 和 repeat-issue trend 驗證。
 
+**Implementation guidance**
+
+1. **Events：** 使用 observability、CloudTrail、EventBridge 和 AWS Config 監看 actions、state changes 與 configuration；定義 significant event、normal/abnormal threshold 和升級為 incident 的 criteria，並定期調整。
+2. **Incidents：** 建立 roles、severity、communication 與 resolution steps；使用 CloudWatch/X-Ray 分析，可用 OpsCenter 或 Incident Manager 集中管理，並針對不同 severity 建立 response plans。
+3. **Incident learning：** 每次事件後分析 contributing factors 和 response effectiveness，更新 plans 並分享 lessons。
+4. **Problems：** 從 recurring incidents 識別 systemic issues，由 cross-functional teams 執行 RCA，更新 policies、procedures 和 infrastructure，以 long-term solution 防止 recurrence。
+5. **Continuous improvement and support：** 定期 review event/incident/problem processes，跨組織分享 insights，並適當使用 AWS Support、Trusted Advisor 或 critical-event support。
+
 #### OPS10-BP02 Have a process per alert
 
 每個 production alert 都要有 symptom、customer impact、owner、urgency、diagnostic context、runbook/playbook、safe actions、success/stop criteria 和 escalation。避免無人知道如何處理的 page；以 alert catalog、response outcomes 和 retired noise 驗證。
+
+**Implementation guidance**
+
+1. 使用 CloudWatch composite alarms 聚合 related alarms、降低 noise。
+2. 透過 AWS Health、User Notifications、EventBridge 或 AWS Health API 接收和追蹤 current service events 與 planned lifecycle events；Organizations 可啟用 organization view。
+3. 將 CloudWatch alarms 與 Systems Manager Incident Manager 整合，自動建立 incidents。
+4. 使用 EventBridge rules 依 event 啟動已定義 response plan。
+5. 為每類 alert 建立 Incident Manager response plan、chat channel 和 Systems Manager Automation runbook。
 
 #### OPS10-BP03 Prioritize operational events based on business impact
 
 用 customer、revenue、safety、data、compliance 與 reputation impact 決定 severity，並在影響變化時 reassess。避免只依 affected server count；以 severity matrix、classification consistency、time-to-prioritize 和 business review 驗證。
 
+**Implementation guidance**
+
+1. 建立 impact classification，考量受影響 customers/staff、financial、reputation 和 safety。
+2. 建立 urgency levels，考量 damage growth、time-sensitive work、imminent escalation、VIP users 和 SLA。
+3. 以 impact × urgency matrix 產生 Critical/Urgent/High/Normal/Low 等 priority，並讓 responders 可取得和理解。
+4. 訓練 teams 並向 stakeholders 溝通 prioritization process。
+5. 將 matrix 整合到 incident plans/tools，能自動化時自動分類和排序。
+6. 定期依 feedback 與 business change review 和調整。
+
 #### OPS10-BP04 Define escalation paths
 
 維護 technical、management、security、legal、vendor 與 executive 的 role-based contacts、time-zone coverage、triggers、authority 和 secondary paths。避免依個人手機或 stale list；以 automated paging、drill、acknowledgement time 和 fallback success 驗證。
+
+**Implementation guidance**
+
+1. 使用 CloudWatch alarms 等 prompts 建立 Incident Manager incident。
+2. 建立符合 escalation path 的 on-call schedules，確保人員具 permissions 和 tools。
+3. 定義 escalation conditions、plans、contacts/schedules 及每層 roles 和 responsibilities。
+4. 預先核准 anticipated mitigation actions，並以 Systems Manager Automation 加速執行。
+5. 為 escalation 每一步指定 internal owner。
+6. 文件化 vendor SLA、communication protocol、contacts 和 third-party escalation，並納入 drills。
+7. 訓練和演練 escalation plan。
+8. 依 post-incident lessons 和 continuous feedback 持續改善。
 
 #### OPS10-BP05 Define a customer communication plan for service-impacting events
 
 預先定義 audiences、channels、approvals、templates、cadence、localization、status page 與 final summary。避免等完整 root cause 才更新或 technical/customer messages 不一致；以 exercises、timestamps、message consistency 和 feedback 驗證。
 
+**Implementation guidance**
+
+1. 指定 major incident manager、communications manager 和 support manager 的責任。
+2. 選擇在 service-impacting event 中仍可用的 chat、email、SMS、social、in-app 和 status-page channels。
+3. 快速、清楚、定期更新，使用包含 impairment、impact、next update 和 estimated resolution 的 templates；可用 Amazon Pinpoint、SNS 和 public CloudWatch dashboards。
+4. 使用 Amazon Q Developer in chat applications 和 CloudWatch dashboards 協調 internal communication。
+5. 用 Incident Manager、chat channels 和 runbooks orchestration 通知；必要時加入 external-message approval workflow。
+6. 透過 training、game days 和 feedback 評估 channel 與 message effectiveness 並持續改善。
+
 #### OPS10-BP06 Communicate status through dashboards
 
 以 live incident dashboard 共享 impact、SLO、affected scope、deployments、dependency status、actions、owners 和 next update。避免 conflicting spreadsheets 或 stale data；以 incident usage、freshness、access control 和 single-source adoption 驗證。
 
+**Implementation guidance**
+
+1. 分析 technical teams、leadership 與 customers 各自需要的資訊。
+2. 選擇 CloudWatch dashboards、Amazon QuickSight 與 AWS Health 等適當工具。
+3. 同時設計 high-level 和 detailed views，呈現 system/business KPI、alarms、thresholds 和 goals。
+4. 整合 CloudWatch metrics、Logs Insights 和 AWS Health events/API，形成 unified status。
+5. 提供易取得且即時的 self-service dashboard access。
+6. 依 business needs 和 stakeholder feedback 定期更新。
+
 #### OPS10-BP07 Automate responses to events
 
 對已知重複事件使用 idempotent、least-privilege automation，具 preconditions、rate limit、timeout、stop/rollback、audit 與 manual override。避免 autonomous destructive action；先小範圍 pilot，並以 success rate、false actions、rollback 和 toil reduction 驗證。
+
+**Implementation guidance**
+
+1. 找出 remediation、ticket enrichment、capacity、scaling、deployment 和 testing 等 repetitive opportunities。
+2. 定義 CloudWatch alarm actions、EventBridge events、log entries、metric thresholds 或 resource state changes 等 triggers。
+3. 使用 Systems Manager Automation、Incident Manager、Quota Monitor、Auto Scaling、delivery pipelines 和 synthetic monitoring 實作 event-driven automation。
+4. 以 automated security response、Systems Manager State Manager 和 AWS Config remediation 降低 security/configuration risk。
+5. 為 automation 保留 guardrails、audit、manual override 和 outcome monitoring。
 
 ### OPS11 - Learn, share, and improve
 
@@ -575,37 +844,99 @@ alerts 必須代表需要人或 automation 處理的 customer/business risk，�
 
 建立 recurring intake、triage、impact scoring、owner、capacity、due date、measurement 與 closure review，將 events/data/feedback 轉成 funded work。避免無限 backlog 或無 owner actions；以 throughput、age、outcome 和 recurrence reduction 驗證。
 
+**Implementation guidance**
+
+1. 以約定 cadence 對 production workload 執行 architecture review，使用 internal standard 或 AWS Well-Architected Framework。
+2. 可在 AWS Well-Architected Tool 建立 internal best-practice custom lens 並進行 review。
+3. 適當時與 AWS Solutions Architect 或 Technical Account Manager 進行 guided review。
+4. 將 review 發現的 improvement opportunities 排入 software-development cadence，而不是留在獨立清單。
+
 #### OPS11-BP02 Perform post-incident analysis
 
 以 blameless、evidence-based review 重建 impact、timeline、detection、decisions、recovery、what worked/failed 與 latent conditions。避免只找單一 root cause 或責怪 operator；指派 measurable actions 並驗證 timely closure 和 recurrence。
+
+**Implementation guidance**
+
+1. 收集 deployment/configuration changes、incident start、alarm、engagement、mitigation start 和 resolution timestamps。
+2. 建立關鍵事件 timeline。
+3. 檢查是否能改善 time to detect、metrics/alarms、time to diagnose、response/escalation engagement、time to mitigate、runbooks/playbooks 和 recurrence prevention。
+4. 建立具 owner 的 checklists/actions，追蹤並交付所有項目。
 
 #### OPS11-BP03 Implement feedback loops
 
 定義 customer、operations、security、support 與 delivery signals 的 owner、routing、cadence、acknowledgement 和 outcome tracking，讓它們回到 design、backlog、standards 與 training。避免 feedback 被困在 tickets；以 cycle time 和 closed-loop evidence 驗證。
 
+**Implementation guidance**
+
+1. **Immediate feedback：** 建立 customer/team feedback 和 automated operational feedback mechanism；定期 review、決定改善並排程，加入 development process，並回覆 submitter。可使用 OpsCenter OpsItems 追蹤。
+2. **Retrospective analysis：** 在 development cycle、固定 cadence 或 major release 後召集 stakeholders。
+3. 使用 Stop/Start/Keep 方式收集要停止、開始和保留的 practices。
+4. 排定 feedback、指定 actions 和 owners，加入 development process，並持續向 stakeholders 更新狀態。
+
 #### OPS11-BP04 Perform knowledge management
 
 建立 searchable taxonomy、service catalog、runbook/playbook links、decision records、owners、review dates 與 archival rules。避免多個衝突 truth 或知識只留在 chat；以 findability test、usage、staleness 和 onboarding time 驗證。
+
+**Implementation guidance**
+
+1. 與 stakeholders 選定 central content-management system；若沒有，可從 self-hosted wiki 或 version-control repository 開始。
+2. 建立新增、更新與封存資訊的 runbooks，並教育團隊。
+3. 定義應保存的 knowledge，先從 daily runbooks/playbooks 開始，再共同排定內容優先順序。
+4. 定期找出 stale information，更新或 archive。
 
 #### OPS11-BP05 Define drivers for improvement
 
 以 customer impact、risk、cost、toil、quality、capacity 與 strategic goals 定義 quantifiable priority drivers，納入 incidents、SLO、support、audit 和 team feedback。避免 loudest voice 排 backlog；以 scoring rationale、portfolio balance 和 outcome review 驗證。
 
+**Implementation guidance**
+
+1. 只有在 change 支援 desired outcome 時才列為 improvement。
+2. 以 desired features/capabilities 作為 driver，持續檢視 AWS service evolution。
+3. 將 unacceptable issues、bugs、vulnerabilities、rightsizing 和 optimization opportunities 納入 priority。
+4. 將 regulation、policy、third-party support 與其他 compliance changes 納入 improvement drivers。
+
 #### OPS11-BP06 Validate insights
 
 對 telemetry、incident 或 feedback insight 明確定義 hypothesis、data quality、confounders、expected outcome 與 test，再用 small reversible change 驗證。避免把 correlation 當 causation 或 cherry-pick data；保留 analysis、experiment 和 decision record。
+
+**Implementation guidance**
+
+1. 讓 business owners 和 subject-matter experts 一起檢查 collected data 的 meaning。
+2. 確認各方對 insight 有共同理解和同意。
+3. 識別 additional concerns、potential impacts 和 data limitations。
+4. 共同決定 course of action 與驗證方式。
 
 #### OPS11-BP07 Perform operations metrics reviews
 
 以 fixed cadence、pre-read、metric definitions、variance explanation、decision log 和 action tracking 進行 cross-functional review。避免 status-only meeting；邀請 business/dependency owners，並以 decisions、closed actions 和 changed outcomes 驗證。
 
+**Implementation guidance**
+
+1. 固定由不同 business areas 的 cross-team participants retrospective review operations metrics。
+2. 讓 business、development 和 operations stakeholders 驗證 immediate feedback 與 retrospective findings。
+3. 分享 lessons learned，並用 stakeholder insights 找出 improvement opportunities 和可行 actions。
+
 #### OPS11-BP08 Document and share lessons learned
 
 將 incidents、experiments、migrations 與 routine work 的 context、decision、result、applicability、anti-pattern 和 reusable assets 發布到 searchable forum 並更新 standards/templates。避免 email-only sharing；以 readership、reuse 和 downstream changes 驗證。
 
+**Implementation guidance**
+
+1. 建立 procedures，文件化 operations activities 和 retrospective analysis 的 lessons，讓其他 teams 可使用。
+2. 在 accessible wiki 分享更新的 procedures、guidance、governance 和 best practices。
+3. 透過 common repository 分享 scripts、code 和 libraries。
+4. 可使用 AWS re:Post Private 等 knowledge service 支援 organization-wide collaboration。
+
 #### OPS11-BP09 Allocate time to make improvements
 
 在 planning 中保留受保護的 improvement capacity 處理 debt、toil、risk 與 learning actions，並讓 leadership 看見 deferred risk。避免每個 sprint 都取消改善；以 allocated/used capacity、backlog age、toil 和 incident trend 驗證。
+
+**Implementation guidance**
+
+1. 在 delivery process 中正式保留 time 和 resources，進行 continuous incremental improvements。
+2. 實作 change 並量測結果是否達成目標。
+3. 若結果不符目標但 improvement 仍重要，採用其他 course of action，而不是直接放棄。
+4. 透過 game days 模擬 production workload，將學習轉成改善工作。
 
 ## 實作與驗證
 
@@ -677,6 +1008,15 @@ flowchart LR
 
 Involve key stakeholders from business, development, and operations to decide where to focus on external customer needs. Teams work backward from customer outcomes, understand how operational practices support business outcomes, engage all relevant parties, and maintain mechanisms for capturing external customer needs.
 
+**Common anti-patterns**
+
+- Ending support outside core business hours without reviewing historical requests or understanding customer impact.
+- Developing a feature without asking customers whether it is needed, what form it should take, or validating it through an experiment.
+
+**Benefits**
+
+Understanding customer outcomes and required operational support helps prioritize work that delivers business value and makes satisfied customers more likely to remain customers.
+
 **Implementation guidance**
 
 1. **Understand business needs:** Build shared goals and understanding across business, development, and operations stakeholders.
@@ -689,6 +1029,16 @@ Involve key stakeholders from business, development, and operations to decide wh
 
 Involve business, development, and operations stakeholders when deciding where to focus on internal customer needs. Use established priorities to direct improvements toward the greatest impact, such as skills, workload performance, cost, runbook automation, or monitoring, and update priorities when needs change.
 
+**Common anti-patterns**
+
+- Changing IP allocations without consulting product teams.
+- Introducing a development tool without confirming need or compatibility with existing practices.
+- Building a monitoring system without gathering internal monitoring and reporting needs.
+
+**Benefits**
+
+Evaluating internal customer needs prevents provider-only assumptions and directs improvements toward business value.
+
 **Implementation guidance**
 
 1. **Understand business needs:** Create shared goals and understanding across business, development, and operations stakeholders.
@@ -700,6 +1050,16 @@ Involve business, development, and operations stakeholders when deciding where t
 **Purpose and desired outcome**
 
 Identify the policies, rules, and frameworks the organization uses to achieve business goals. Incorporate applicable governance requirements into the workload and maintain evidence that demonstrates conformance.
+
+**Common anti-patterns**
+
+- Discovering governance requirements only during an architecture review.
+- Claiming conformance through manual checks without continuous detection.
+- Designing independently of centralized governance teams.
+
+**Benefits**
+
+Early governance integration reduces rework, exceptions, and audit failures and keeps workload operation aligned with organizational goals.
 
 **Implementation guidance**
 
@@ -714,6 +1074,16 @@ Identify the policies, rules, and frameworks the organization uses to achieve bu
 
 Incorporate applicable industry, regulatory, and internal compliance frameworks into the architecture design process. Team members understand the requirements and continuously validate the workload against them; using an AWS service does not automatically make the workload compliant.
 
+**Common anti-patterns**
+
+- Checking compliance only after the workload is complete.
+- Failing to teach the team which frameworks apply or include them in architecture decisions.
+- Collecting evidence manually only when an audit begins.
+
+**Benefits**
+
+Building compliance into design, delivery, and operations reduces regulatory and audit risk and shortens continuous validation and evidence generation.
+
 **Implementation guidance**
 
 1. Work with security and governance teams to identify the industry, regulatory, and internal frameworks the workload must follow and incorporate them into the workload. Services such as AWS Security Hub CSPM can help continuously assess the compliance posture of AWS resources.
@@ -726,6 +1096,16 @@ Incorporate applicable industry, regulatory, and internal compliance frameworks 
 
 Continuously evaluate competition, business liabilities, operational risks, information security threats, and other threats to the business. Understand known threats and patch status, apply appropriate mitigations, and communicate the actions and their context.
 
+**Common anti-patterns**
+
+- Using an outdated library without monitoring relevant security updates.
+- Updating risks only annually rather than when vulnerabilities, services, or business conditions change.
+- Leaving a known threat without an owner, mitigation, or residual-risk decision.
+
+**Benefits**
+
+Comparing threat probability, potential harm, recovery cost, and prevention cost improves prioritization before a threat becomes an incident.
+
 **Implementation guidance**
 
 1. **Evaluate the threat landscape:** Regularly assess competition, business risks and liabilities, operational risks, and information security threats, and include their impact in prioritization. Review sources such as AWS security bulletins and AWS Trusted Advisor.
@@ -736,6 +1116,16 @@ Continuously evaluate competition, business liabilities, operational risks, info
 **Purpose and desired outcome**
 
 Have an appropriate governing body define how benefits and risks are measured, then prioritize decisions using accurate information and cost-benefit analysis. Balance centralized control with decentralized authority and understand how each trade-off affects strategy and desired business outcomes.
+
+**Common anti-patterns**
+
+- Sending every decision, including reversible ones, through the same heavy central process.
+- Optimizing time-to-market without quantifying reliability, security, performance, or cost risk.
+- Accepting risk without a common framework, unblock owner, or traceable rationale.
+
+**Benefits**
+
+A consistent tiered framework accelerates reversible decisions, centralizes irreversible ones, and makes benefits, risks, and priorities transparent.
 
 **Implementation guidance**
 
@@ -1093,17 +1483,49 @@ Use pipeline-as-code for integration, tests, quality/security gates, immutable p
 
 Before change, define code, configuration, schema, data, dependency, and capacity failure scenarios, stop conditions, rollback/roll-forward, and decision owners. Avoid designing rollback after failure. Verify pre-change reviews, backups, compatible versions, and timed rehearsals.
 
+**Implementation guidance**
+
+1. Establish a documented release policy for rollback and permitted fix-forward cases.
+2. Complete the plan before production, including triggers, decision owner, steps, dependencies, and communication.
+3. Address application, infrastructure, configuration, and data compatibility or recovery.
+4. Test recovery in a production-like environment and measure the recovery target.
+5. Feed deployment outcomes and lessons back into policy and procedure.
+
 #### OPS06-BP02 Test deployments
 
 Use the same pipeline in production-like environments to test permissions, quotas, timeouts, dependencies, schemas, retries, partial state, and rollback. Avoid testing only the binary. Verify idempotency, interrupted deployments, and rollback evidence.
+
+**Implementation guidance**
+
+1. Perform pre-install checks for production parity.
+2. Use CloudFormation drift detection and change sets to verify actual actions match intent.
+3. Use required pipeline approval before pre-production deployment.
+4. Define deployment and validation steps in CodeDeploy AppSpec or equivalent configuration.
+5. Run health, functional, security, regression, integration, load, and recovery tests before promotion.
 
 #### OPS06-BP03 Employ safe deployment strategies
 
 Choose rolling, canary, linear, blue/green, or feature flags with cohorts, bake time, health metrics, alarms, and traffic rollback. Avoid updating all failure domains at once. Verify rollout timelines, gate decisions, and customer metrics.
 
+**Implementation guidance**
+
+1. Select a strategy from architecture, change risk, state/data compatibility, and recovery capability.
+2. Use one-box, canary, linear, or waves with limited exposure and sufficient bake time.
+3. Use blue/green, immutable deployment, or traffic shifting for rapid switching.
+4. Decouple deployment and customer release with feature flags.
+5. Define health criteria, automatic stop, rollback, and maximum blast radius for each stage.
+
 #### OPS06-BP04 Automate testing and rollback
 
 Integrate pre/post-deployment tests, synthetics, SLO/error-budget gates, alarms, and rollback workflows; provide safe roll-forward for data changes. Avoid operator-only dashboard watching. Verify injected failures, rollback time, and false-positive reviews.
+
+**Implementation guidance**
+
+1. Prioritize tests that run for every change and mitigate the greatest risks.
+2. Integrate functional, integration, security, performance, synthetic, and business-outcome checks.
+3. Predefine thresholds and logic for success, failure, and inconclusive results.
+4. Stop rollout and automatically restore the previous known-good state when outcomes fail.
+5. Improve tests and triggers using false positives, missed failures, rollback duration, and manual intervention.
 
 ### OPS07 - Operational readiness and change management
 
@@ -1111,25 +1533,73 @@ Integrate pre/post-deployment tests, synthetics, SLO/error-budget gates, alarms,
 
 Production support roles need sufficient staffing, skills, access, on-call coverage, and context across vendors and time zones. Avoid launches dependent on an unavailable builder. Verify rosters, skill matrices, access tests, shadowing, and incident simulations.
 
+**Implementation guidance**
+
+1. Staff normal operations, on-call, security issues, and lifecycle events such as certificate rotation and end of support.
+2. Train personnel on workload software and platforms using courses, events, and practice.
+3. Regularly reassess team size and skills, adjust to operating changes, and verify capacity for planned lifecycle and unplanned AWS Health events.
+
 #### OPS07-BP02 Ensure a consistent review of operational readiness
 
 Use a consistent risk-tiered ORR before production for ownership, telemetry, alarms, capacity, security, backup/restore, runbooks, support, and rollback. Avoid evidence-free checklists. Verify sign-off, exceptions, accepted risk, and re-review triggers.
+
+**Implementation guidance**
+
+1. Gather security, operations, development, and other key stakeholders.
+2. Have each stakeholder contribute a requirement, limiting the first checklist to roughly 30 items.
+3. Centralize requirements; an AWS Well-Architected Tool custom lens can share an ORR across accounts and the Organization.
+4. Pilot the ORR on a pre-launch or internal workload.
+5. Record discoveries; accept those with mitigation and put unmitigated items in the backlog for completion before launch.
+6. Add practices and requirements over time and automate checks with AWS Config, Security Hub CSPM, or Control Tower controls.
 
 #### OPS07-BP03 Use runbooks to perform procedures
 
 Runbooks include prerequisites, permissions, steps, expected output, stop/rollback, validation, owner, and last-tested date, with safe automation preferred. Avoid stale screenshots or tacit knowledge. Verify execution logs and drills.
 
+**Implementation guidance**
+
+1. Create a version-controlled documentation repository or wiki.
+2. Select a semi-regular, short, low-impact process for the first runbook.
+3. Record ID, purpose, outcome, tools, permissions, author, last update, and escalation contact.
+4. Document steps, expected results, error handling, and escalation.
+5. Have another team member execute it and correct omissions.
+6. Publish it, notify stakeholders, and maintain it through change management.
+7. Progressively automate the library with Systems Manager Automation or equivalent tools.
+
 #### OPS07-BP04 Use playbooks to investigate issues
 
 Organize hypothesis-driven playbooks by symptoms and failure modes, linking dashboards, queries, dependency checks, decision trees, escalation, and evidence preservation. Avoid rigid commands for uncertain investigations. Verify novel-scenario exercises and update history.
+
+**Implementation guidance**
+
+1. Create a version-controlled playbook repository.
+2. Start with a common issue whose possible causes are limited and whose resolution is low risk.
+3. Record purpose, tools, permissions, author, escalation contact, stakeholders, and communication plan.
+4. Document troubleshooting actions, investigation areas, evidence, and decisions.
+5. Have another team member validate and improve it.
+6. Publish it and notify teams and stakeholders.
+7. Progress toward scripts, notebooks, or Systems Manager Automation while keeping automation and playbooks aligned.
 
 #### OPS07-BP05 Make informed decisions to deploy systems and changes
 
 Base go/no-go on readiness, risk, customer impact, change windows, and recovery capability rather than schedule pressure. Define criteria, evidence, approver, risk acceptance, conflict checks, and abort paths. Avoid launching with unresolved alarms or staffing gaps.
 
+**Implementation guidance**
+
+1. Define and review successful-deployment criteria, rollback triggers, and the benefit-versus-risk decision.
+2. Verify every change complies with governance policy.
+3. Use pre-mortems and tabletop exercises to model failure, document mitigations, and validate rollback.
+
 #### OPS07-BP06 Create support plans for production workloads
 
 Define support scope, hours, severity, response, service desk/on-call paths, AWS/vendor plans, contacts, access, and major-incident processes. Avoid uncertainty over who can open vendor cases. Verify contact tests, SLA reviews, and support simulations.
+
+**Implementation guidance**
+
+1. Inventory software and service vendors on which the workload depends.
+2. Define service-level needs and select matching support plans.
+3. Establish commercial-vendor plans; evaluate AWS Business Support or above for production accounts, or document an alternative action plan.
+4. Document requesting, notification, and escalation procedures and keep contacts and processes current.
 
 ### OPS08 - Utilizing workload observability
 
@@ -1137,21 +1607,66 @@ Define support scope, hours, severity, response, service desk/on-call paths, AWS
 
 Use baselines, percentiles, dimensions, anomaly/trend analysis, and metric math to identify customer impact, capacity, and failure progression, correlated with deployments. Avoid averages or isolated resource metrics. Verify investigation examples and threshold tuning.
 
+**Implementation guidance**
+
+1. Review metrics regularly, prioritize business outcomes, and interpret spikes, drops, and patterns.
+2. Use CloudWatch dashboards, percentiles, anomaly detection, cross-account observability, Metric Insights, and metric math.
+3. Use DevOps Guru anomaly detection to identify early operational issues.
+4. Turn findings into workload, capacity, threshold, or process improvements.
+
 #### OPS08-BP02 Analyze workload logs
 
 Use structured schemas, timestamps, request IDs, severity, version, and centralized queries for cross-service investigation, controlling secrets/PII, retention, and access. Avoid free text or clock drift. Verify saved queries, incident reconstruction, and access audits.
+
+**Implementation guidance**
+
+1. Centralize application and service logs in CloudWatch Logs.
+2. Use Logs anomaly detection for unusual patterns.
+3. Use Logs Insights queries, pattern analysis, and compare/diff for trends and change impact.
+4. Use Live Tail for real-time operations and Contributor Insights for high-cardinality contributors.
+5. Convert events into metrics and alarms with metric filters.
+6. Use cross-account observability for distributed applications.
+7. Review strategy, schemas, retention, access, and sensitive-data controls regularly.
 
 #### OPS08-BP03 Analyze workload traces
 
 Use service maps, span attributes, sampling, and exemplar links to analyze critical paths, dependencies, latency, and errors across versions, Regions, and tenants. Avoid success-only samples or missing root spans. Verify slow/error journeys and trace completeness.
 
+**Implementation guidance**
+
+1. Integrate X-Ray and verify trace capture.
+2. Analyze latency, request rate, fault rate, response distributions, and service maps.
+3. Use ServiceLens to correlate traces, metrics, logs, alarms, and health.
+4. Enable X-Ray Insights and Analytics and use groups for targeted traces.
+5. Combine DevOps Guru, CloudWatch Synthetics, and RUM for anomalies and end-user paths.
+6. Correlate traces with logs and use cross-account observability where needed.
+
 #### OPS08-BP04 Create actionable alerts
 
 Alerts represent customer or business risk requiring action and include severity, owner, impact, dashboard, runbook, deduplication, and escalation. Avoid paging on every threshold. Verify precision, action rate, acknowledgement, and missed incidents.
 
+**Implementation guidance**
+
+1. Tie alerts to KPIs and business impact.
+2. Use CloudWatch anomaly detection, X-Ray Insights, and DevOps Guru for genuine anomalies.
+3. Include immediate-action context and automate AWS Health handling with EventBridge or the AWS Health API.
+4. Reduce non-critical alerts and consolidate with CloudWatch composite alarms.
+5. Integrate response tools such as PagerDuty, Opsgenie, or Amazon Q Developer in chat applications.
+6. Alert on log events through CloudWatch metric filters.
+7. Review, remove noise, and tune regularly.
+
 #### OPS08-BP05 Create dashboards
 
 Create executive, service, operations, and incident views with SLOs, traffic, errors, latency, saturation, deployment annotations, and drill-down. Avoid ownerless widget collections. Verify user reviews, incident usage, freshness, and stale-dashboard cleanup.
+
+**Implementation guidance**
+
+1. Create a descriptively named CloudWatch dashboard balancing business and technical metrics.
+2. Add Markdown context, metric meaning, and links to related tools.
+3. Use dashboard variables for dynamic views.
+4. Add metric widgets, Logs Insights queries, alarms, and Contributor Insights.
+5. Add custom widgets where needed and include authoritative AWS Health information.
+6. Review and refine as the application, audience, and business evolve.
 
 ### OPS09 - Understanding operational health
 
@@ -1159,13 +1674,36 @@ Create executive, service, operations, and incident views with SLOs, traffic, er
 
 Define operations targets, formulas, data owners, cadence, and segmentation for measures such as change failure rate, MTTR, ticket age, and automation. Avoid activity-only counts or gaming. Verify trends, customer-outcome correlation, and corrective actions.
 
+**Implementation guidance**
+
+1. Agree with business leaders on service goals, team tasks, and operational challenges.
+2. Define KPIs such as customer satisfaction, concept-to-deploy time, resolution time, or cost efficiency.
+3. Identify metrics and data sources that best represent each outcome, combining signals when necessary.
+4. Define formulas, owners, targets, and review cadence and avoid activity-only measurement.
+
 #### OPS09-BP02 Communicate status and trends to ensure visibility into operation
 
 Use service reviews, scorecards, and risk narratives to communicate targets, current state, trends, confidence, capacity, and owners. Avoid outage-only communication or hiding adverse trends. Verify stakeholder acknowledgement, decisions, and follow-up.
 
+**Implementation guidance**
+
+1. Make current operations metrics accessible to operations leaders and management through dashboards.
+2. Maintain a rapidly updateable status page showing incidents, owners, coordinators, user actions, and workarounds.
+3. Report operational health trends, work, challenges, and needs to leaders.
+4. Share influential metrics across teams and dedicate time to review them.
+5. Correlate workload status with AWS Health.
+
 #### OPS09-BP03 Review operations metrics and prioritize improvement
 
 Have business, development, and operations jointly review KPIs, incidents, toil, cost, feedback, and risk, prioritizing improvements by impact and effort. Avoid reviews without action. Verify owners, due dates, expected outcomes, and post-change measurement.
+
+**Implementation guidance**
+
+1. Schedule stakeholder and operations reviews of metrics and reports.
+2. Compare data with organizational goals and identify ambiguity or conflicting expectations.
+3. Identify time, people, and tools needed, affected KPIs, and success targets.
+4. Prioritize improvements with owners and expected outcomes.
+5. Revisit resourcing regularly to ensure operations can support the business.
 
 ### OPS10 - Responding to events
 
@@ -1173,29 +1711,91 @@ Have business, development, and operations jointly review KPIs, incidents, toil,
 
 Consistently define event intake/classification, incident severity/command/timelines/handoffs/closure, and problem analysis with improvement linkage. Avoid treating every alert as an incident or stopping after recovery. Verify records, timelines, and recurrence trends.
 
+**Implementation guidance**
+
+1. **Events:** Monitor actions and state/configuration changes through observability, CloudTrail, EventBridge, and AWS Config. Define significant events, normal and abnormal thresholds, and escalation criteria, and review them regularly.
+2. **Incidents:** Establish roles, severity, communication, and resolution steps. Analyze with CloudWatch and X-Ray and centralize work in OpsCenter or Incident Manager with severity-specific plans.
+3. **Incident learning:** Analyze contributing factors and response effectiveness, update plans, and share lessons.
+4. **Problems:** Find systemic issues from recurring incidents, use cross-functional root-cause analysis, and update policies, procedures, and infrastructure for long-term prevention.
+5. **Improvement and support:** Review all three processes, share insights, and use AWS Support, Trusted Advisor, or critical-event support where appropriate.
+
 #### OPS10-BP02 Have a process per alert
 
 Every production alert defines symptom, customer impact, owner, urgency, diagnostic context, runbook/playbook, safe actions, success/stop criteria, and escalation. Avoid pages with no known response. Verify the alert catalog, outcomes, and retired noise.
+
+**Implementation guidance**
+
+1. Group related signals with CloudWatch composite alarms.
+2. Use AWS Health, User Notifications, EventBridge, or the AWS Health API for current and planned events; enable organization view where applicable.
+3. Integrate CloudWatch alarms with Incident Manager to create incidents automatically.
+4. Use EventBridge rules to start defined response plans.
+5. Give each alert type an Incident Manager response plan, chat channel, and Systems Manager Automation runbook.
 
 #### OPS10-BP03 Prioritize operational events based on business impact
 
 Set severity from customer, revenue, safety, data, compliance, and reputation impact and reassess as impact changes. Avoid using affected server count alone. Verify the severity matrix, classification consistency, time-to-prioritize, and business review.
 
+**Implementation guidance**
+
+1. Classify impact from affected customers or staff, financial loss, reputation, and safety.
+2. Classify urgency from damage growth, time-sensitive work, imminent escalation, VIP impact, and SLAs.
+3. Cross-reference impact and urgency in an accessible priority matrix.
+4. Train responders and communicate expectations to stakeholders.
+5. Integrate the matrix into response plans and tools and automate classification where possible.
+6. Review and adapt it from feedback and business change.
+
 #### OPS10-BP04 Define escalation paths
 
 Maintain role-based technical, management, security, legal, vendor, and executive contacts with time-zone coverage, triggers, authority, and secondary paths. Avoid personal-phone dependence or stale lists. Verify automated paging, drills, acknowledgement time, and fallback success.
+
+**Implementation guidance**
+
+1. Use CloudWatch alarms or equivalent prompts to create Incident Manager incidents.
+2. Build on-call schedules aligned to escalation paths and equip responders with permissions and tools.
+3. Define escalation conditions, plans, contacts, schedules, roles, and responsibilities.
+4. Pre-approve anticipated mitigation actions and automate them where safe.
+5. Assign an internal owner to each escalation step.
+6. Document vendor SLAs, communication, contacts, and third-party escalation and include them in drills.
+7. Train and rehearse escalation plans.
+8. Improve them from post-incident learning and feedback.
 
 #### OPS10-BP05 Define a customer communication plan for service-impacting events
 
 Predefine audiences, channels, approvals, templates, cadence, localization, status pages, and final summaries. Avoid waiting for complete root cause or sending inconsistent technical and customer messages. Verify exercises, timestamps, consistency, and feedback.
 
+**Implementation guidance**
+
+1. Assign major-incident, communications, and support-manager responsibilities.
+2. Choose resilient chat, email, SMS, social, in-app, and status-page channels.
+3. Communicate quickly and regularly with templates covering impairment, impact, next update, and estimated resolution; use Pinpoint, SNS, or public CloudWatch dashboards where appropriate.
+4. Coordinate internally through Amazon Q Developer in chat applications and CloudWatch dashboards.
+5. Orchestrate channels and notifications with Incident Manager and runbooks, adding external-message approval where required.
+6. Train, run game days, collect feedback, and improve channels and messages.
+
 #### OPS10-BP06 Communicate status through dashboards
 
 Use a live incident dashboard for impact, SLOs, affected scope, deployments, dependency status, actions, owners, and next update. Avoid conflicting spreadsheets or stale data. Verify incident usage, freshness, access control, and single-source adoption.
 
+**Implementation guidance**
+
+1. Identify the different information needs of technical teams, leadership, and customers.
+2. Select CloudWatch dashboards, Amazon QuickSight, and AWS Health as appropriate.
+3. Provide high-level and detailed views with system and business KPIs, alarms, thresholds, and goals.
+4. Integrate CloudWatch metrics, Logs Insights, and AWS Health events or APIs.
+5. Provide accessible, current self-service views.
+6. Refine them with business needs and stakeholder feedback.
+
 #### OPS10-BP07 Automate responses to events
 
 Use idempotent, least-privileged automation for known recurring events with preconditions, rate limits, timeouts, stop/rollback, audit, and manual override. Avoid autonomous destructive actions. Pilot narrowly and verify success, false actions, rollback, and toil reduction.
+
+**Implementation guidance**
+
+1. Identify repetitive remediation, ticket, capacity, scaling, deployment, and testing work.
+2. Define triggers from CloudWatch actions, EventBridge events, logs, metric thresholds, or resource state.
+3. Implement event-driven workflows with Systems Manager Automation, Incident Manager, Quota Monitor, Auto Scaling, delivery pipelines, and synthetics.
+4. Reduce security and configuration risk through automated response, State Manager, and AWS Config remediation.
+5. Retain guardrails, audit, manual override, and outcome monitoring.
 
 ### OPS11 - Learn, share, and improve
 
@@ -1203,37 +1803,99 @@ Use idempotent, least-privileged automation for known recurring events with prec
 
 Use recurring intake, triage, impact scoring, owners, capacity, due dates, measurement, and closure reviews to turn events, data, and feedback into funded work. Avoid infinite backlogs or ownerless actions. Verify throughput, age, outcomes, and recurrence reduction.
 
+**Implementation guidance**
+
+1. Review production architecture on an agreed cadence using an internal standard or the AWS Well-Architected Framework.
+2. Use AWS Well-Architected Tool custom lenses for internal practices and reviews.
+3. Engage an AWS Solutions Architect or Technical Account Manager for a guided review where appropriate.
+4. Put identified opportunities into the software-development cadence rather than a detached list.
+
 #### OPS11-BP02 Perform post-incident analysis
 
 Use blameless, evidence-based reviews of impact, timeline, detection, decisions, recovery, successes, failures, and latent conditions. Avoid single-root-cause hunts or operator blame. Assign measurable actions and verify timely closure and recurrence.
+
+**Implementation guidance**
+
+1. Collect deployment and configuration changes plus incident, alarm, engagement, mitigation, and resolution times.
+2. Build a timeline of key events.
+3. Examine detection, metrics and alarms, diagnosis, responder engagement, mitigation, runbooks/playbooks, and prevention.
+4. Create owned checklists and actions and track every item to delivery.
 
 #### OPS11-BP03 Implement feedback loops
 
 Define owners, routing, cadence, acknowledgement, and outcome tracking for customer, operations, security, support, and delivery signals so they influence design, backlogs, standards, and training. Avoid feedback trapped in tickets. Verify cycle time and closed-loop evidence.
 
+**Implementation guidance**
+
+1. **Immediate feedback:** Collect customer, team, and automated operational feedback; review and schedule improvements, add them to development, and follow up with submitters. OpsCenter OpsItems can track work.
+2. **Retrospectives:** Meet at the end of a cycle, on a cadence, or after a major release with workload stakeholders.
+3. Gather practices under Stop, Start, and Keep.
+4. Prioritize feedback, assign actions and owners, add work to development, and communicate status.
+
 #### OPS11-BP04 Perform knowledge management
 
 Use searchable taxonomy, service catalogs, linked runbooks/playbooks, decision records, owners, review dates, and archival rules. Avoid conflicting sources of truth or knowledge trapped in chat. Verify findability, usage, staleness, and onboarding time.
+
+**Implementation guidance**
+
+1. Agree on a central content system; start with a wiki or version-control repository if none exists.
+2. Create and teach procedures for adding, updating, and archiving information.
+3. Define what knowledge to keep, starting with daily runbooks and playbooks, and prioritize with stakeholders.
+4. Periodically identify stale content and update or archive it.
 
 #### OPS11-BP05 Define drivers for improvement
 
 Use customer impact, risk, cost, toil, quality, capacity, and strategic goals as measurable priority drivers informed by incidents, SLOs, support, audits, and team feedback. Avoid loudest-voice prioritization. Verify scoring rationale, portfolio balance, and outcomes.
 
+**Implementation guidance**
+
+1. Make a system change only when it supports a desired outcome.
+2. Evaluate desired features and capabilities as improvement drivers.
+3. Include unacceptable issues, bugs, vulnerabilities, rightsizing, and optimization opportunities.
+4. Include regulatory, policy, third-party support, and other compliance changes.
+
 #### OPS11-BP06 Validate insights
 
 For insights from telemetry, incidents, or feedback, state hypotheses, data quality, confounders, expected outcomes, and tests, then validate with small reversible changes. Avoid treating correlation as causation or cherry-picking. Retain analyses, experiments, and decisions.
+
+**Implementation guidance**
+
+1. Review the meaning of collected data with business owners and subject-matter experts.
+2. Establish common understanding and agreement on the insight.
+3. Identify additional concerns, potential impacts, and data limitations.
+4. Agree on a course of action and how to validate it.
 
 #### OPS11-BP07 Perform operations metrics reviews
 
 Run cross-functional reviews with fixed cadence, pre-reads, metric definitions, variance explanations, decision logs, and action tracking. Avoid status-only meetings. Include business and dependency owners and verify decisions, closed actions, and changed outcomes.
 
+**Implementation guidance**
+
+1. Retrospectively review operations metrics on a cadence with participants across business areas.
+2. Have business, development, and operations validate immediate and retrospective findings.
+3. Share lessons and use stakeholder insight to identify improvements and actions.
+
 #### OPS11-BP08 Document and share lessons learned
 
 Publish context, decisions, results, applicability, anti-patterns, and reusable assets from incidents, experiments, migrations, and routine work in a searchable forum, updating standards and templates. Avoid email-only sharing. Verify readership, reuse, and downstream changes.
 
+**Implementation guidance**
+
+1. Define procedures for documenting lessons from operations and retrospective analysis for reuse.
+2. Share updated procedures, guidance, governance, and practices through an accessible wiki.
+3. Share scripts, code, and libraries through a common repository.
+4. Use a knowledge service such as AWS re:Post Private where appropriate.
+
 #### OPS11-BP09 Allocate time to make improvements
 
 Reserve protected improvement capacity for debt, toil, risk, and learning actions and expose deferred risk to leadership. Avoid canceling improvements every sprint. Verify allocated versus used capacity, backlog age, toil, and incident trends.
+
+**Implementation guidance**
+
+1. Allocate time and resources in delivery processes for continuous incremental improvement.
+2. Implement changes and evaluate results against goals.
+3. If results miss the goal but the improvement remains important, pursue another approach.
+4. Simulate production with game days and convert learning into improvements.
 
 ## Implementation and validation
 

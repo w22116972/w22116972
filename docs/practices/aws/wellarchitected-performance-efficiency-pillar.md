@@ -38,139 +38,331 @@ flowchart LR
 
 #### PERF01-BP01 Learn about and understand available cloud services and features
 
-**未建立風險：高。** 持續盤點 workload architecture，研究可改善 performance、cost 與 operational effort 的 AWS services/configurations。避免把 cloud 當 colocation、只沿用既有 instance/storage 或自建已有 managed service；以 service evaluation log、prototype 與 ADR 驗證。
+**目的與預期成果**
+
+持續盤點 workload architecture，研究可改善 performance、cost 與 operational effort 的 AWS services/configurations。
+
+**Implementation guidance**
+
+避免把 cloud 當 colocation、只沿用既有 instance/storage 或自建已有 managed service；以 service evaluation log、prototype 與 ADR 驗證。
 
 #### PERF01-BP02 Use guidance from your cloud provider or an appropriate partner to learn about architecture patterns and best practices
 
-**未建立風險：中。** 利用 AWS guidance、Well-Architected reviews、reference architectures、specialists 與 qualified partners 補足 knowledge gaps。避免只依單一 engineer 的歷史經驗或未驗證 blog；記錄 recommendations、applicability、trade-offs、採用決策與測得結果。
+**目的與預期成果**
+
+利用 AWS guidance、Well-Architected reviews、reference architectures、specialists 與 qualified partners 補足 knowledge gaps。
+
+**Implementation guidance**
+
+避免只依單一 engineer 的歷史經驗或未驗證 blog；記錄 recommendations、applicability、trade-offs、採用決策與測得結果。
 
 #### PERF01-BP03 Factor cost into architectural decisions
 
-**未建立風險：中。** 把 cost per business transaction、utilization、licensing、data transfer 與 operational labor 納入 performance choices。避免以最大規格解決問題或只看 hourly price；比較 alternatives 的 performance/cost curves，設定 budgets，並以 unit economics 與 load results 驗證。
+**目的與預期成果**
+
+把 cost per business transaction、utilization、licensing、data transfer 與 operational labor 納入 performance choices。
+
+**Implementation guidance**
+
+避免以最大規格解決問題或只看 hourly price；比較 alternatives 的 performance/cost curves，設定 budgets，並以 unit economics 與 load results 驗證。
 
 #### PERF01-BP04 Evaluate how trade-offs impact customers and architecture efficiency
 
-**未建立風險：高。** 明確評估 caching、compression、consistency、durability、latency、availability 與 cost trade-offs 對 customer journeys 的影響。避免為 benchmark 犧牲 correctness 或維護性；用 ADR、experiments、guardrails、reversibility 與 customer KPI 證明選擇。
+**目的與預期成果**
+
+明確評估 caching、compression、consistency、durability、latency、availability 與 cost trade-offs 對 customer journeys 的影響。
+
+**Implementation guidance**
+
+避免為 benchmark 犧牲 correctness 或維護性；用 ADR、experiments、guardrails、reversibility 與 customer KPI 證明選擇。
 
 #### PERF01-BP05 Use policies and reference architectures
 
-**未建立風險：中。** 將已驗證的 performance patterns、service constraints、sizing defaults、observability 與 testing 轉成 versioned policies、templates 和 golden paths。避免每個 team 從零設計或 reference architecture 永不更新；以 adoption、exception、drift 與 outcome metrics 驗證。
+**目的與預期成果**
+
+將已驗證的 performance patterns、service constraints、sizing defaults、observability 與 testing 轉成 versioned policies、templates 和 golden paths。
+
+**Implementation guidance**
+
+避免每個 team 從零設計或 reference architecture 永不更新；以 adoption、exception、drift 與 outcome metrics 驗證。
 
 #### PERF01-BP06 Use benchmarking to drive architectural decisions
 
-**未建立風險：中。** 用可重現且代表 production 的 workload 比較 services、instances、runtimes、storage 與 configurations。避免 vendor microbenchmark、不同 test conditions 或只跑一次；固定 data set、concurrency、warm-up、duration 與 cost，記錄 percentiles 和 confidence。
+**目的與預期成果**
+
+用可重現且代表 production 的 workload 比較 services、instances、runtimes、storage 與 configurations。
+
+**Implementation guidance**
+
+避免 vendor microbenchmark、不同 test conditions 或只跑一次；固定 data set、concurrency、warm-up、duration 與 cost，記錄 percentiles 和 confidence。
 
 #### PERF01-BP07 Use a data-driven approach for architectural choices
 
-**未建立風險：中。** 從 telemetry、profiles、traces、access patterns 與 growth forecasts 找出 bottleneck，再做 architecture change。避免憑直覺 optimize 或只看平均值；建立 baseline、hypothesis、experiment、success criteria 和 post-change comparison，保留 decision evidence。
+**目的與預期成果**
+
+從 telemetry、profiles、traces、access patterns 與 growth forecasts 找出 bottleneck，再做 architecture change。
+
+**Implementation guidance**
+
+避免憑直覺 optimize 或只看平均值；建立 baseline、hypothesis、experiment、success criteria 和 post-change comparison，保留 decision evidence。
 
 ### PERF02 - Compute and hardware
 
 #### PERF02-BP01 Select the best compute options for your workload
 
-**未建立風險：高。** 依 latency、throughput、execution duration、state、portability、licensing 與 operations 選 EC2、containers、Lambda、managed compute 或 hybrid options。避免所有 workloads 使用同一 platform；以 requirements matrix、prototype、failure model、cost 和 ownership 驗證。
+**目的與預期成果**
+
+依 latency、throughput、execution duration、state、portability、licensing 與 operations 選 EC2、containers、Lambda、managed compute 或 hybrid options。
+
+**Implementation guidance**
+
+避免所有 workloads 使用同一 platform；以 requirements matrix、prototype、failure model、cost 和 ownership 驗證。
 
 #### PERF02-BP02 Understand the available compute configuration and features
 
-**未建立風險：中。** 掌握 processor architecture、instance family、burstable behavior、network/EBS limits、placement、accelerators、runtime 和 service quotas。避免只比較 vCPU/memory 或忽略 credits/NUMA/IO；以 documented constraints、compatibility tests 與 measured saturation 驗證。
+**目的與預期成果**
+
+掌握 processor architecture、instance family、burstable behavior、network/EBS limits、placement、accelerators、runtime 和 service quotas。
+
+**Implementation guidance**
+
+避免只比較 vCPU/memory 或忽略 credits/NUMA/IO；以 documented constraints、compatibility tests 與 measured saturation 驗證。
 
 #### PERF02-BP03 Collect compute-related metrics
 
-**未建立風險：高。** 收集 utilization、load、run queue、memory working set/pressure、GC、disk/network IO、accelerator 與 application throughput/latency。避免只有 CPU average 或缺少 workload dimensions；設定 high-resolution periods、percentiles、correlation 和 retention，以 profiles 和 scaling decisions 驗證。
+**目的與預期成果**
+
+收集 utilization、load、run queue、memory working set/pressure、GC、disk/network IO、accelerator 與 application throughput/latency。
+
+**Implementation guidance**
+
+避免只有 CPU average 或缺少 workload dimensions；設定 high-resolution periods、percentiles、correlation 和 retention，以 profiles 和 scaling decisions 驗證。
 
 #### PERF02-BP04 Configure and right-size compute resources
 
-**未建立風險：中。** 以 observed demand 和 headroom 調整 instance/pod/function size、runtime、threads、heap 與 resource requests/limits。避免 lift-and-shift oversizing 或不看 throttling/OOM；在 representative load 下比較 alternatives，建立 change/rollback 並持續 review。
+**目的與預期成果**
+
+以 observed demand 和 headroom 調整 instance/pod/function size、runtime、threads、heap 與 resource requests/limits。
+
+**Implementation guidance**
+
+避免 lift-and-shift oversizing 或不看 throttling/OOM；在 representative load 下比較 alternatives，建立 change/rollback 並持續 review。
 
 #### PERF02-BP05 Scale your compute resources dynamically
 
-**未建立風險：高。** 依 demand signals 自動水平或垂直 scaling，考慮 warm-up、cooldown、queue depth、concurrency、quota 與 downstream capacity。避免只靠 CPU、reactive scale 太慢或 scale-down 中斷工作；以 load/spike/soak tests 和 scaling timeline 驗證。
+**目的與預期成果**
+
+依 demand signals 自動水平或垂直 scaling，考慮 warm-up、cooldown、queue depth、concurrency、quota 與 downstream capacity。
+
+**Implementation guidance**
+
+避免只靠 CPU、reactive scale 太慢或 scale-down 中斷工作；以 load/spike/soak tests 和 scaling timeline 驗證。
 
 #### PERF02-BP06 Use optimized hardware-based compute accelerators
 
-**未建立風險：中。** 對可 parallelize 的 ML、HPC、graphics、compression、crypto 或 packet workloads 評估 GPU、Trainium/Inferentia、FPGA 和 specialized processors。避免無 profiling 就使用昂貴 accelerator；驗證 software compatibility、batching、utilization、fallback、availability 和 cost per result。
+**目的與預期成果**
+
+對可 parallelize 的 ML、HPC、graphics、compression、crypto 或 packet workloads 評估 GPU、Trainium/Inferentia、FPGA 和 specialized processors。
+
+**Implementation guidance**
+
+避免無 profiling 就使用昂貴 accelerator；驗證 software compatibility、batching、utilization、fallback、availability 和 cost per result。
 
 ### PERF03 - Data management
 
 #### PERF03-BP01 Use a purpose-built data store that best supports your data access and storage requirements
 
-**未建立風險：高。** 依 access patterns、consistency、transactions、query、scale、durability 與 latency 選 relational、key-value、document、graph、time-series、search、object 或 cache。避免單一 database 承擔所有模式；以 data model、benchmark、migration/operations trade-offs 和 failure behavior 驗證。
+**目的與預期成果**
+
+依 access patterns、consistency、transactions、query、scale、durability 與 latency 選 relational、key-value、document、graph、time-series、search、object 或 cache。
+
+**Implementation guidance**
+
+避免單一 database 承擔所有模式；以 data model、benchmark、migration/operations trade-offs 和 failure behavior 驗證。
 
 #### PERF03-BP02 Evaluate available configuration options for data store
 
-**未建立風險：中。** 調整 instance/class、storage、IOPS、partitioning、indexes、replicas、consistency、connection limits、caching 和 maintenance settings。避免 default 永不 review 或只加硬體；以 workload-specific benchmark、query plans、saturation、failover 與 cost 驗證。
+**目的與預期成果**
+
+調整 instance/class、storage、IOPS、partitioning、indexes、replicas、consistency、connection limits、caching 和 maintenance settings。
+
+**Implementation guidance**
+
+避免 default 永不 review 或只加硬體；以 workload-specific benchmark、query plans、saturation、failover 與 cost 驗證。
 
 #### PERF03-BP03 Collect and record data store performance metrics
 
-**未建立風險：高。** 觀測 query latency/throughput、connections、locks、cache hit、buffer/IO、replication lag、partition skew、queue、storage 與 throttling，並連結 application transaction。避免只看 CPU 或 provider overview；保留 baselines、percentiles、slow-query evidence 與 capacity trends。
+**目的與預期成果**
+
+觀測 query latency/throughput、connections、locks、cache hit、buffer/IO、replication lag、partition skew、queue、storage 與 throttling，並連結 application transaction。
+
+**Implementation guidance**
+
+避免只看 CPU 或 provider overview；保留 baselines、percentiles、slow-query evidence 與 capacity trends。
 
 #### PERF03-BP04 Implement strategies to improve query performance in data store
 
-**未建立風險：中。** 先用 execution plans 和 access data 找 expensive queries，再改善 schema、indexes、partition keys、projections、batching、precomputation 或 denormalization。避免 blind indexing、N+1 queries 或 production-only tuning；用 realistic data、regression tests、write impact 與 rollback 驗證。
+**目的與預期成果**
+
+先用 execution plans 和 access data 找 expensive queries，再改善 schema、indexes、partition keys、projections、batching、precomputation 或 denormalization。
+
+**Implementation guidance**
+
+避免 blind indexing、N+1 queries 或 production-only tuning；用 realistic data、regression tests、write impact 與 rollback 驗證。
 
 #### PERF03-BP05 Implement data access patterns that utilize caching
 
-**未建立風險：中。** 在已理解 consistency、staleness 和 invalidation 的讀取路徑使用 client、edge、application、database 或 distributed cache。避免 cache-as-database、unbounded keys、stampede 或 sensitive-data leak；定義 TTL、eviction、warming、fallback，量測 hit rate、latency 和 correctness。
+**目的與預期成果**
+
+在已理解 consistency、staleness 和 invalidation 的讀取路徑使用 client、edge、application、database 或 distributed cache。
+
+**Implementation guidance**
+
+避免 cache-as-database、unbounded keys、stampede 或 sensitive-data leak；定義 TTL、eviction、warming、fallback，量測 hit rate、latency 和 correctness。
 
 ### PERF04 - Networking and content delivery
 
 #### PERF04-BP01 Understand how networking impacts performance
 
-**未建立風險：高。** 繪製 client-to-service 與 east-west paths，量測 DNS、TLS、connect、TTFB、packet loss、jitter、bandwidth、MTU 和 cross-AZ/Region hops。避免把 application latency 全歸因 compute；以 flow data、traces、path tests 和 dependency timing 驗證。
+**目的與預期成果**
+
+繪製 client-to-service 與 east-west paths，量測 DNS、TLS、connect、TTFB、packet loss、jitter、bandwidth、MTU 和 cross-AZ/Region hops。
+
+**Implementation guidance**
+
+避免把 application latency 全歸因 compute；以 flow data、traces、path tests 和 dependency timing 驗證。
 
 #### PERF04-BP02 Evaluate available networking features
 
-**未建立風險：高。** 評估 CDN、Global Accelerator、load balancers、PrivateLink、Transit Gateway、enhanced networking、placement groups、VPC endpoints 與 protocol offload。避免沿用 on-prem topology 或忽略 service limits；以 requirement matrix、benchmark、failure/cost trade-offs 和 security review 驗證。
+**目的與預期成果**
+
+評估 CDN、Global Accelerator、load balancers、PrivateLink、Transit Gateway、enhanced networking、placement groups、VPC endpoints 與 protocol offload。
+
+**Implementation guidance**
+
+避免沿用 on-prem topology 或忽略 service limits；以 requirement matrix、benchmark、failure/cost trade-offs 和 security review 驗證。
 
 #### PERF04-BP03 Choose appropriate dedicated connectivity or VPN for your workload
 
-**未建立風險：高。** 依 bandwidth、latency consistency、availability、encryption、sites 與 failover 選 Direct Connect、Site-to-Site VPN、Client VPN 或 internet paths。避免只用一條 circuit/tunnel 或未測 backup capacity；以 path diversity、BGP/failover test、throughput 和 SLA evidence 驗證。
+**目的與預期成果**
+
+依 bandwidth、latency consistency、availability、encryption、sites 與 failover 選 Direct Connect、Site-to-Site VPN、Client VPN 或 internet paths。
+
+**Implementation guidance**
+
+避免只用一條 circuit/tunnel 或未測 backup capacity；以 path diversity、BGP/failover test、throughput 和 SLA evidence 驗證。
 
 #### PERF04-BP04 Use load balancing to distribute traffic across multiple resources
 
-**未建立風險：高。** 選擇 L4/L7、algorithm、target type、health check、cross-zone、connection draining 與 session strategy，使 traffic 均衡且能排除 unhealthy targets。避免 sticky hotspots 或 shallow health checks；以 distribution、failover、scale 和 graceful-drain tests 驗證。
+**目的與預期成果**
+
+選擇 L4/L7、algorithm、target type、health check、cross-zone、connection draining 與 session strategy，使 traffic 均衡且能排除 unhealthy targets。
+
+**Implementation guidance**
+
+避免 sticky hotspots 或 shallow health checks；以 distribution、failover、scale 和 graceful-drain tests 驗證。
 
 #### PERF04-BP05 Choose network protocols to improve performance
 
-**未建立風險：中。** 依 traffic 選 HTTP/2、HTTP/3/QUIC、gRPC、TCP/UDP、compression、persistent connections 與 TLS settings。避免 chatty calls、過度 payload 或 protocol mismatch；量測 handshake、multiplexing、retransmission、CPU、latency 與 client compatibility。
+**目的與預期成果**
+
+依 traffic 選 HTTP/2、HTTP/3/QUIC、gRPC、TCP/UDP、compression、persistent connections 與 TLS settings。
+
+**Implementation guidance**
+
+避免 chatty calls、過度 payload 或 protocol mismatch；量測 handshake、multiplexing、retransmission、CPU、latency 與 client compatibility。
 
 #### PERF04-BP06 Choose your workload's location based on network requirements
 
-**未建立風險：中。** 依 user geography、data gravity/residency、dependency location、latency、service availability 與 disaster recovery 選 Regions、AZs、edge 或 Local Zones。避免只因 team location 選 Region；用 regional latency、data movement、failure scope、cost 和 compliance evidence 驗證。
+**目的與預期成果**
+
+依 user geography、data gravity/residency、dependency location、latency、service availability 與 disaster recovery 選 Regions、AZs、edge 或 Local Zones。
+
+**Implementation guidance**
+
+避免只因 team location 選 Region；用 regional latency、data movement、failure scope、cost 和 compliance evidence 驗證。
 
 #### PERF04-BP07 Optimize network configuration based on metrics
 
-**未建立風險：低。** 用 flow logs、load-balancer metrics、connection telemetry、retransmits、drops、NAT/endpoint utilization 和 traces 找瓶頸，再調整 routes、MTU、buffers、connections、DNS、timeouts 或 topology。避免無 baseline tuning；以 controlled change 和 before/after percentiles 驗證。
+**目的與預期成果**
+
+用 flow logs、load-balancer metrics、connection telemetry、retransmits、drops、NAT/endpoint utilization 和 traces 找瓶頸，再調整 routes、MTU、buffers、connections、DNS、timeouts 或 topology。
+
+**Implementation guidance**
+
+避免無 baseline tuning；以 controlled change 和 before/after percentiles 驗證。
 
 ### PERF05 - Process and culture
 
 #### PERF05-BP01 Establish key performance indicators (KPIs) to measure workload health and performance
 
-**未建立風險：高。** 從 customer journeys 定義 latency percentiles、throughput、error/correctness、saturation、availability 和 cost-per-transaction targets，包含 owner 與 action。避免只看 averages 或 infrastructure activity；以 SLO、performance budget、dashboard 和 decision usage 驗證。
+**目的與預期成果**
+
+從 customer journeys 定義 latency percentiles、throughput、error/correctness、saturation、availability 和 cost-per-transaction targets，包含 owner 與 action。
+
+**Implementation guidance**
+
+避免只看 averages 或 infrastructure activity；以 SLO、performance budget、dashboard 和 decision usage 驗證。
 
 #### PERF05-BP02 Use monitoring solutions to understand the areas where performance is most critical
 
-**未建立風險：高。** 整合 metrics、logs、traces、profiles、RUM、synthetics 和 dependency telemetry，找出 critical path 與 customer impact。避免工具各自孤立或只在 incident 才開 profiling；以 service map、correlation IDs、retention 和 bottleneck examples 驗證。
+**目的與預期成果**
+
+整合 metrics、logs、traces、profiles、RUM、synthetics 和 dependency telemetry，找出 critical path 與 customer impact。
+
+**Implementation guidance**
+
+避免工具各自孤立或只在 incident 才開 profiling；以 service map、correlation IDs、retention 和 bottleneck examples 驗證。
 
 #### PERF05-BP03 Define a process to improve workload performance
 
-**未建立風險：中。** 建立 recurring baseline、hypothesis、prioritization、experiment、review、rollback 與 knowledge-sharing process。避免 ad hoc tuning 或未評估其他 pillars；將 optimization 排入 backlog，記錄 owner、expected gain、cost、risk 和 measured result。
+**目的與預期成果**
+
+建立 recurring baseline、hypothesis、prioritization、experiment、review、rollback 與 knowledge-sharing process。
+
+**Implementation guidance**
+
+避免 ad hoc tuning 或未評估其他 pillars；將 optimization 排入 backlog，記錄 owner、expected gain、cost、risk 和 measured result。
 
 #### PERF05-BP04 Load test your workload
 
-**未建立風險：低。** 使用 representative traffic mix、data volume、concurrency、arrival pattern 與 dependency behavior 執行 load、stress、spike、soak 和 failure tests。避免只測 happy path、短時間或 unrealistic data；定義 success/stop criteria、quota、observability、cleanup 和 reproducible reports。
+**目的與預期成果**
+
+使用 representative traffic mix、data volume、concurrency、arrival pattern 與 dependency behavior 執行 load、stress、spike、soak 和 failure tests。
+
+**Implementation guidance**
+
+避免只測 happy path、短時間或 unrealistic data；定義 success/stop criteria、quota、observability、cleanup 和 reproducible reports。
 
 #### PERF05-BP05 Use automation to proactively remediate performance-related issues
 
-**未建立風險：低。** 對已知 saturation、hot partition、queue growth、cache failure 或 unhealthy target 使用 bounded scaling、traffic shift、restart 或 configuration automation。避免 destructive self-healing 或 feedback loops；設 preconditions、limits、audit、manual override，並以 injected failure 和 false-action rate 驗證。
+**目的與預期成果**
+
+對已知 saturation、hot partition、queue growth、cache failure 或 unhealthy target 使用 bounded scaling、traffic shift、restart 或 configuration automation。
+
+**Implementation guidance**
+
+避免 destructive self-healing 或 feedback loops；設 preconditions、limits、audit、manual override，並以 injected failure 和 false-action rate 驗證。
 
 #### PERF05-BP06 Keep your workload and services up-to-date
 
-**未建立風險：低。** 持續評估 runtime、instance generation、database engine、protocol、SDK 和 AWS service updates，使用 test rings 與 compatibility validation。避免 unsupported versions 或永遠延後 upgrade；維護 lifecycle inventory、owner、deadline、rollback 和 benchmark，量測實際 improvement。
+**目的與預期成果**
+
+持續評估 runtime、instance generation、database engine、protocol、SDK 和 AWS service updates，使用 test rings 與 compatibility validation。
+
+**Implementation guidance**
+
+避免 unsupported versions 或永遠延後 upgrade；維護 lifecycle inventory、owner、deadline、rollback 和 benchmark，量測實際 improvement。
 
 #### PERF05-BP07 Review metrics at regular intervals
 
-**未建立風險：中。** 以固定 cadence review customer KPI、capacity、cost、regressions、seasonality、new services 與 forecasts，更新 targets 和 backlog。避免只有 incident review 或 dashboard 無 owner；保留 trend、anomaly explanation、decision、action 和 post-change validation。
+**目的與預期成果**
+
+以固定 cadence review customer KPI、capacity、cost、regressions、seasonality、new services 與 forecasts，更新 targets 和 backlog。
+
+**Implementation guidance**
+
+避免只有 incident review 或 dashboard 無 owner；保留 trend、anomaly explanation、decision、action 和 post-change validation。
 
 ## Architecture 決策方法
 

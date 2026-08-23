@@ -43,15 +43,29 @@ flowchart TB
 
 #### SEC01-BP01 Separate workloads using accounts
 
-**未建立風險：高。** 依 business、environment、data sensitivity、regulatory scope 與 blast radius 使用 multi-account boundaries，透過 AWS Organizations/OUs 套用 guardrails。避免 production/non-production 或 unrelated workloads 共用 account；以 account vending、SCP、central logging、ownership 和 exception evidence 驗證。
+**目的與預期成果**
+
+依 business、environment、data sensitivity、regulatory scope 與 blast radius 使用 multi-account boundaries，透過 AWS Organizations/OUs 套用 guardrails。避免 production/non-production 或 unrelated workloads 共用 account
+
+**Implementation guidance**
+
+避免；以 account vending、SCP、central logging、ownership 和 exception evidence 驗證。
 
 #### SEC01-BP02 Secure account root user and properties
 
-**未建立風險：高。** root user 只用於 required root tasks，使用 unique strong credentials、MFA、無 access keys、protected email/phone 和 monitored usage。避免 shared mailbox、daily administration 或無 recovery plan；以 credential inventory、CloudTrail alerts、contact recertification 和 tested access procedure 驗證。
+**目的與預期成果**
+
+root user 只用於 required root tasks，使用 unique strong credentials、MFA、無 access keys、protected email/phone 和 monitored usage。避免 shared mailbox、daily administration 或無 recovery plan
+
+**Implementation guidance**
+
+避免；以 credential inventory、CloudTrail alerts、contact recertification 和 tested access procedure 驗證。
 
 #### SEC01-BP03 Identify and validate control objectives
 
-**未建立風險：高。** 從 business risk、threat model、contracts、laws 與 standards 定義 measurable security control objectives，而非直接堆疊 tools。每個 objective 要有 owner、scope、implementation、evidence 和 test；避免 controls 與 risk 無關或只看 compliance checkbox。
+**目的與預期成果**
+
+從 business risk、threat model、contracts、laws 與 standards 定義 measurable security control objectives，而非直接堆疊 tools。每個 objective 要有 owner、scope、implementation、evidence 和 test；避免 controls 與 risk 無關或只看 compliance checkbox。
 
 #### SEC01-BP04 Stay up to date with security threats and recommendations
 
@@ -67,21 +81,33 @@ flowchart TB
 
 #### SEC01-BP07 Identify threats and prioritize mitigations using a threat model
 
-**未建立風險：高。** 對 assets、actors、entry points、trust boundaries、data flows、abuse paths 與 assumptions 建立 threat model，依 likelihood/impact 排 mitigations。避免只在 launch 前畫圖或忽略 business logic/insider/supply chain；以 owner、mitigation status、accepted risk、test cases 和 change-triggered reviews 驗證。
+**未建立風險：高。** 對 assets、actors、entry points、trust boundaries、data flows、abuse paths 與 assumptions 建立 threat model，依 likelihood/impact 排 mitigations。避免只在 launch 前畫圖或忽略 business logic/insider/supply chain
+
+**Implementation guidance**
+
+避免；以 owner、mitigation status、accepted risk、test cases 和 change-triggered reviews 驗證。
 
 #### SEC01-BP08 Evaluate and implement new security services and features regularly
 
-**未建立風險：低。** 定期評估 AWS 新 security capabilities 和 existing-service features 對 coverage、automation、cost 與 complexity 的價值。避免 chase every feature 或永不更新 baseline；用 requirements、pilot、false positives、integration、operating owner、rollback 和 adoption decision 驗證。
+**目的與預期成果**
+
+定期評估 AWS 新 security capabilities 和 existing-service features 對 coverage、automation、cost 與 complexity 的價值。避免 chase every feature 或永不更新 baseline；用 requirements、pilot、false positives、integration、operating owner、rollback 和 adoption decision 驗證。
 
 ### SEC02 - Identity management
 
 #### SEC02-BP01 Use strong sign-in mechanisms
 
-**未建立風險：高。** human identities 使用 centralized federation、phishing-resistant MFA、conditional access、session controls 與 no shared accounts。避免 password-only、long-lived IAM users 或 recovery bypass；以 IdP policy、MFA coverage、sign-in risk alerts、break-glass controls 和 authentication logs 驗證。
+**未建立風險：高。** human identities 使用 centralized federation、phishing-resistant MFA、conditional access、session controls 與 no shared accounts。避免 password-only、long-lived IAM users 或 recovery bypass
+
+**Implementation guidance**
+
+避免；以 IdP policy、MFA coverage、sign-in risk alerts、break-glass controls 和 authentication logs 驗證。
 
 #### SEC02-BP02 Use temporary credentials
 
-**未建立風險：高。** human 與 workloads 透過 roles、federation、STS、EKS Pod Identity/IRSA 或 service identities 取得 short-lived credentials。避免 embedded/static access keys 或 broad instance roles；限制 session duration、audience/trust、source identity 和 permissions，並以 key inventory、CloudTrail sessions 和 rotation metrics 驗證。
+**目的與預期成果**
+
+human 與 workloads 透過 roles、federation、STS、EKS Pod Identity/IRSA 或 service identities 取得 short-lived credentials。避免 embedded/static access keys 或 broad instance roles；限制 session duration、audience/trust、source identity 和 permissions，並以 key inventory、CloudTrail sessions 和 rotation metrics 驗證。
 
 #### SEC02-BP03 Store and use secrets securely
 
@@ -89,33 +115,63 @@ flowchart TB
 
 #### SEC02-BP04 Rely on a centralized identity provider
 
-**未建立風險：高。** 以 enterprise IdP/IAM Identity Center 集中 joiner/mover/leaver、MFA、groups、attributes 與 session policy，federate 到 AWS accounts。避免各 account 建 users 或 orphan credentials；以 provisioning/deprovisioning SLA、group-to-role mapping、access reviews 和 sign-in logs 驗證。
+**未建立風險：高。** 以 enterprise IdP/IAM Identity Center 集中 joiner/mover/leaver、MFA、groups、attributes 與 session policy，federate 到 AWS accounts。避免各 account 建 users 或 orphan credentials
+
+**Implementation guidance**
+
+避免；以 provisioning/deprovisioning SLA、group-to-role mapping、access reviews 和 sign-in logs 驗證。
 
 #### SEC02-BP05 Audit and rotate credentials periodically
 
-**未建立風險：高。** 持續盤點 passwords、access keys、certificates、tokens、SSH keys 與 secrets，依 exposure/lifetime 自動 rotate 並移除 unused credentials。避免只看 creation date 或 rotation 未更新 consumers；以 credential reports、last-used data、rotation success、revocation 和 exception expiry 驗證。
+**目的與預期成果**
+
+持續盤點 passwords、access keys、certificates、tokens、SSH keys 與 secrets，依 exposure/lifetime 自動 rotate 並移除 unused credentials。避免只看 creation date 或 rotation 未更新 consumers
+
+**Implementation guidance**
+
+避免；以 credential reports、last-used data、rotation success、revocation 和 exception expiry 驗證。
 
 #### SEC02-BP06 Employ user groups and attributes
 
-**未建立風險：中。** 透過 groups、job functions、resource tags 與 session attributes 管理 scalable RBAC/ABAC，避免逐人 grants。建立 authoritative attributes、mapping、change approval 和 deny guardrails；防止 privilege through mutable tags。以 entitlement review、policy simulation、joiner/mover/leaver tests 和 exceptions 驗證。
+**目的與預期成果**
+
+透過 groups、job functions、resource tags 與 session attributes 管理 scalable RBAC/ABAC，避免逐人 grants。建立 authoritative attributes、mapping、change approval 和 deny guardrails；防止 privilege through mutable tags。以 entitlement review、policy simulation、joiner/mover/leaver tests 和 exceptions 驗證。
 
 ### SEC03 - Permissions management
 
 #### SEC03-BP01 Define access requirements
 
-**未建立風險：高。** 對每個 persona、workload 與 operational task 記錄 required actions、resources、conditions、duration 和 approval，並區分 human/machine 和 read/write/admin。避免先給 broad access 再慢慢收；以 use cases、data classification、RACI 和 owner sign-off 驗證。
+**未建立風險：高。** 對每個 persona、workload 與 operational task 記錄 required actions、resources、conditions、duration 和 approval，並區分 human/machine 和 read/write/admin。避免先給 broad access 再慢慢收
+
+**Implementation guidance**
+
+避免；以 use cases、data classification、RACI 和 owner sign-off 驗證。
 
 #### SEC03-BP02 Grant least privilege access
 
-**未建立風險：高。** 從 minimum permissions 開始，使用 roles、resource/condition constraints、permission boundaries 與 scoped sessions，依 actual activity 精煉。避免 `*` actions/resources、shared admin 或 workload credential 可被其他 pods/hosts 使用；以 Access Analyzer、CloudTrail、policy simulation 和 denied-action review 驗證。
+**目的與預期成果**
+
+從 minimum permissions 開始，使用 roles、resource/condition constraints、permission boundaries 與 scoped sessions，依 actual activity 精煉。避免 `*` actions/resources、shared admin 或 workload credential 可被其他 pods/hosts 使用
+
+**Implementation guidance**
+
+避免；以 Access Analyzer、CloudTrail、policy simulation 和 denied-action review 驗證。
 
 #### SEC03-BP03 Establish emergency access process
 
-**未建立風險：中。** 建立 isolated break-glass roles/credentials，在 IdP 或 normal control path failure 時可用，但需 strong authentication、dual control、time-bound elevation、logging 和 immediate review。避免日常使用或未測 access；以 sealed custody、alarm、exercise、session audit 和 post-use revocation 驗證。
+**目的與預期成果**
+
+建立 isolated break-glass roles/credentials，在 IdP 或 normal control path failure 時可用，但需 strong authentication、dual control、time-bound elevation、logging 和 immediate review。避免日常使用或未測 access
+
+**Implementation guidance**
+
+避免；以 sealed custody、alarm、exercise、session audit 和 post-use revocation 驗證。
 
 #### SEC03-BP04 Reduce permissions continuously
 
-**未建立風險：中。** 利用 last-accessed、CloudTrail、Access Analyzer、service control data 和 role usage 定期移除 unused actions/resources、stale roles 與 broad grants。避免 permission 只增不減或一次性 review；建立 automated recommendations、owner approval、safe rollback 和 reduction metrics。
+**目的與預期成果**
+
+利用 last-accessed、CloudTrail、Access Analyzer、service control data 和 role usage 定期移除 unused actions/resources、stale roles 與 broad grants。避免 permission 只增不減或一次性 review；建立 automated recommendations、owner approval、safe rollback 和 reduction metrics。
 
 #### SEC03-BP05 Define permission guardrails for your organization
 
@@ -123,55 +179,109 @@ flowchart TB
 
 #### SEC03-BP06 Manage access based on lifecycle
 
-**未建立風險：中。** 將 access provisioning、modification、recertification 和 removal 連結 HR/vendor/application lifecycle，確保 movers/leavers、temporary roles 和 service retirement 即時處理。避免 orphan accounts 或 expired project access；以 SLA、automated workflows、manager/resource-owner reviews 和 termination tests 驗證。
+**未建立風險：中。** 將 access provisioning、modification、recertification 和 removal 連結 HR/vendor/application lifecycle，確保 movers/leavers、temporary roles 和 service retirement 即時處理。避免 orphan accounts 或 expired project access
+
+**Implementation guidance**
+
+避免；以 SLA、automated workflows、manager/resource-owner reviews 和 termination tests 驗證。
 
 #### SEC03-BP07 Analyze public and cross-account access
 
-**未建立風險：低。** 持續辨識 S3、KMS、IAM roles、resource policies、network endpoints 等 public/external principals 與 unintended trust paths。避免只 review identity policies；用 IAM Access Analyzer、block-public controls、organization conditions、findings owner、SLA 和 exception expiry 驗證。
+**目的與預期成果**
+
+持續辨識 S3、KMS、IAM roles、resource policies、network endpoints 等 public/external principals 與 unintended trust paths。避免只 review identity policies；用 IAM Access Analyzer、block-public controls、organization conditions、findings owner、SLA 和 exception expiry 驗證。
 
 #### SEC03-BP08 Share resources securely within your organization
 
-**未建立風險：中。** 透過 AWS RAM、organization-scoped policies、PrivateLink 或 controlled roles 分享 approved resources，定義 producer/consumer、data classification、permissions 和 revocation。避免 broad account trust 或 copy uncontrolled data；以 allowlist、resource policy、consumer inventory、logs 和 offboarding tests 驗證。
+**未建立風險：中。** 透過 AWS RAM、organization-scoped policies、PrivateLink 或 controlled roles 分享 approved resources，定義 producer/consumer、data classification、permissions 和 revocation。避免 broad account trust 或 copy uncontrolled data
+
+**Implementation guidance**
+
+避免；以 allowlist、resource policy、consumer inventory、logs 和 offboarding tests 驗證。
 
 #### SEC03-BP09 Share resources securely with a third party
 
-**未建立風險：中。** 對 vendors/partners 使用 dedicated roles、external IDs、short sessions、least privilege、network/data constraints、contracts 和 expiry。避免 shared credentials、permanent trust 或第三方可再委派；以 due diligence、access logs、periodic review、incident contact 和 termination/revocation test 驗證。
+**目的與預期成果**
+
+對 vendors/partners 使用 dedicated roles、external IDs、short sessions、least privilege、network/data constraints、contracts 和 expiry。避免 shared credentials、permanent trust 或第三方可再委派
+
+**Implementation guidance**
+
+避免；以 due diligence、access logs、periodic review、incident contact 和 termination/revocation test 驗證。
 
 ### SEC04 - Detection
 
 #### SEC04-BP01 Configure service and application logging
 
-**未建立風險：高。** 為 account、identity、network、data、application 與 security services 啟用足以偵測和調查的 logs，包含 data events where justified。避免 default-only、關鍵 service 未記錄或 secrets/PII 進 logs；以 logging inventory、coverage tests、schema、retention 和 owner 驗證。
+**目的與預期成果**
+
+為 account、identity、network、data、application 與 security services 啟用足以偵測和調查的 logs，包含 data events where justified。避免 default-only、關鍵 service 未記錄或 secrets/PII 進 logs
+
+**Implementation guidance**
+
+避免；以 logging inventory、coverage tests、schema、retention 和 owner 驗證。
 
 #### SEC04-BP02 Capture logs, findings, and metrics in standardized locations
 
-**未建立風險：中。** 集中到 dedicated security/log archive accounts 與 standardized stores，使用 encryption、immutable retention、time synchronization、cross-account delivery 和 restricted investigation access。避免 attacker 可刪同 account logs 或 fragmented schemas；以 delivery health、integrity、retention 和 query tests 驗證。
+**目的與預期成果**
+
+集中到 dedicated security/log archive accounts 與 standardized stores，使用 encryption、immutable retention、time synchronization、cross-account delivery 和 restricted investigation access。避免 attacker 可刪同 account logs 或 fragmented schemas
+
+**Implementation guidance**
+
+避免；以 delivery health、integrity、retention 和 query tests 驗證。
 
 #### SEC04-BP03 Correlate and enrich security alerts
 
-**未建立風險：低。** 將 GuardDuty/Security Hub/CloudTrail/application findings 與 asset owner、identity、network、data sensitivity、threat intel 和 business context 關聯，產生可優先處理 cases。避免 duplicate raw alerts 或無 context severity；以 dedup rate、triage time、precision 和 case completeness 驗證。
+**目的與預期成果**
+
+將 GuardDuty/Security Hub/CloudTrail/application findings 與 asset owner、identity、network、data sensitivity、threat intel 和 business context 關聯，產生可優先處理 cases。避免 duplicate raw alerts 或無 context severity
+
+**Implementation guidance**
+
+避免；以 dedup rate、triage time、precision 和 case completeness 驗證。
 
 #### SEC04-BP04 Initiate remediation for non-compliant resources
 
-**未建立風險：中。** 對已知 violations 自動 ticket、quarantine、revoke、reconfigure 或 rollback，依 risk 設 human approval。automation 要 least privilege、idempotent、bounded、audited 並保留 forensic evidence；避免 destructive auto-fix。以 injected violation、false remediation、MTTR 和 exception handling 驗證。
+**目的與預期成果**
+
+對已知 violations 自動 ticket、quarantine、revoke、reconfigure 或 rollback，依 risk 設 human approval。automation 要 least privilege、idempotent、bounded、audited 並保留 forensic evidence；避免 destructive auto-fix。以 injected violation、false remediation、MTTR 和 exception handling 驗證。
 
 ### SEC05 - Protect networks
 
 #### SEC05-BP01 Create network layers
 
-**未建立風險：高。** 依 trust、exposure、data sensitivity 與 function 分隔 edge、public ingress、application、data、management 和 inspection layers，使用 accounts/VPCs/subnets。避免 flat network 或 public reachability by default；以 data-flow diagram、route/security policy、reachability analysis 和 segmentation tests 驗證。
+**未建立風險：高。** 依 trust、exposure、data sensitivity 與 function 分隔 edge、public ingress、application、data、management 和 inspection layers，使用 accounts/VPCs/subnets。避免 flat network 或 public reachability by default
+
+**Implementation guidance**
+
+避免；以 data-flow diagram、route/security policy、reachability analysis 和 segmentation tests 驗證。
 
 #### SEC05-BP02 Control traffic flow within network layers
 
-**未建立風險：高。** 以 security groups、NACLs、routing、endpoints、firewalls 和 service-to-service policy 實施 least-connectivity ingress/egress，明確 ports、protocols、sources 和 destinations。避免 `0.0.0.0/0`、broad east-west 或 unmanaged egress；以 flow logs、reachability tests、rule owners 和 stale-rule cleanup 驗證。
+**目的與預期成果**
+
+以 security groups、NACLs、routing、endpoints、firewalls 和 service-to-service policy 實施 least-connectivity ingress/egress，明確 ports、protocols、sources 和 destinations。避免 `0.0.0.0/0`、broad east-west 或 unmanaged egress
+
+**Implementation guidance**
+
+避免；以 flow logs、reachability tests、rule owners 和 stale-rule cleanup 驗證。
 
 #### SEC05-BP03 Implement inspection-based protection
 
-**未建立風險：中。** 在 internet、VPC、hybrid、east-west 或 application boundaries 依 threat/risk 使用 WAF、IDS/IPS、Network Firewall、malware/content inspection 和 TLS-aware controls。避免 inspection blind spots、single bottleneck 或未處理 encrypted traffic；以 architecture、signature/policy updates、fail-open/closed decision、capacity 和 tests 驗證。
+**目的與預期成果**
+
+在 internet、VPC、hybrid、east-west 或 application boundaries 依 threat/risk 使用 WAF、IDS/IPS、Network Firewall、malware/content inspection 和 TLS-aware controls。避免 inspection blind spots、single bottleneck 或未處理 encrypted traffic
+
+**Implementation guidance**
+
+避免；以 architecture、signature/policy updates、fail-open/closed decision、capacity 和 tests 驗證。
 
 #### SEC05-BP04 Automate network protection
 
-**未建立風險：中。** 以 IaC、policy-as-code、Firewall Manager、managed rules 和 automated response 一致部署、更新、validate network controls。避免 console drift、不同 accounts rules 不一致或 emergency rule 永久存在；使用 staged rollout、simulation、rollback、exception expiry 和 compliance dashboard 驗證。
+**目的與預期成果**
+
+以 IaC、policy-as-code、Firewall Manager、managed rules 和 automated response 一致部署、更新、validate network controls。避免 console drift、不同 accounts rules 不一致或 emergency rule 永久存在；使用 staged rollout、simulation、rollback、exception expiry 和 compliance dashboard 驗證。
 
 ### SEC06 - Protect compute
 
@@ -181,29 +291,53 @@ flowchart TB
 
 #### SEC06-BP02 Provision compute from hardened images
 
-**未建立風險：高。** 使用 approved、minimal、patched、configured 和 scanned images/templates，移除 unused software/accounts/services，設定 logging、EDR 和 secure defaults。避免 hand-built hosts、public base drift 或 latest tags；以 image pipeline、CIS/organization baseline、signature/SBOM、expiry 和 launch policy 驗證。
+**未建立風險：高。** 使用 approved、minimal、patched、configured 和 scanned images/templates，移除 unused software/accounts/services，設定 logging、EDR 和 secure defaults。避免 hand-built hosts、public base drift 或 latest tags
+
+**Implementation guidance**
+
+避免；以 image pipeline、CIS/organization baseline、signature/SBOM、expiry 和 launch policy 驗證。
 
 #### SEC06-BP03 Reduce manual management and interactive access
 
-**未建立風險：中。** 優先 immutable deployment、automation 與 Systems Manager/session brokering，關閉 direct SSH/RDP/public management，使用 just-in-time audited access。避免 shared bastion keys 或 operators 直接改 production；以 session logs、port exposure、manual-change count、break-glass 和 drift evidence 驗證。
+**目的與預期成果**
+
+優先 immutable deployment、automation 與 Systems Manager/session brokering，關閉 direct SSH/RDP/public management，使用 just-in-time audited access。避免 shared bastion keys 或 operators 直接改 production
+
+**Implementation guidance**
+
+避免；以 session logs、port exposure、manual-change count、break-glass 和 drift evidence 驗證。
 
 #### SEC06-BP04 Validate software integrity
 
-**未建立風險：中。** 驗證 OS packages、images、binaries、dependencies 和 deployment artifacts 的 provenance、signature、digest 與 SBOM，並保護 build pipeline。避免 unsigned artifacts、mutable tags 或 download without verification；以 admission/deployment policy、attestation、tamper tests 和 traceability 驗證。
+**目的與預期成果**
+
+驗證 OS packages、images、binaries、dependencies 和 deployment artifacts 的 provenance、signature、digest 與 SBOM，並保護 build pipeline。避免 unsigned artifacts、mutable tags 或 download without verification
+
+**Implementation guidance**
+
+避免；以 admission/deployment policy、attestation、tamper tests 和 traceability 驗證。
 
 #### SEC06-BP05 Automate compute protection
 
-**未建立風險：中。** 以 launch templates、IaC、configuration management、EDR/runtime monitoring、patch/replace 和 auto-quarantine 一致保護 compute fleet。避免 security agent missing 或 self-healing 抹除 evidence；設 health/compliance checks、guardrails、forensic capture、rollback 和 exception tracking。
+**目的與預期成果**
+
+以 launch templates、IaC、configuration management、EDR/runtime monitoring、patch/replace 和 auto-quarantine 一致保護 compute fleet。避免 security agent missing 或 self-healing 抹除 evidence；設 health/compliance checks、guardrails、forensic capture、rollback 和 exception tracking。
 
 ### SEC07 - Data classification
 
 #### SEC07-BP01 Understand your data classification scheme
 
-**未建立風險：高。** 建立 enterprise classification levels、definitions、examples、owners 與 handling requirements，涵蓋 confidentiality、integrity、availability、privacy 和 regulatory needs。避免 teams 各自命名或 unknown data；以 data catalog、training、decision criteria、owner review 和 sampled accuracy 驗證。
+**未建立風險：高。** 建立 enterprise classification levels、definitions、examples、owners 與 handling requirements，涵蓋 confidentiality、integrity、availability、privacy 和 regulatory needs。避免 teams 各自命名或 unknown data
+
+**Implementation guidance**
+
+避免；以 data catalog、training、decision criteria、owner review 和 sampled accuracy 驗證。
 
 #### SEC07-BP02 Apply data protection controls based on data sensitivity
 
-**未建立風險：高。** 讓 classification 驅動 encryption、access、network、masking/tokenization、logging、backup、retention、residency、sharing 和 deletion。避免所有 data 同一 controls 或 label 不影響實作；建立 control matrix、policy enforcement、exceptions、tests 和 access/handling evidence。
+**目的與預期成果**
+
+讓 classification 驅動 encryption、access、network、masking/tokenization、logging、backup、retention、residency、sharing 和 deletion。避免所有 data 同一 controls 或 label 不影響實作；建立 control matrix、policy enforcement、exceptions、tests 和 access/handling evidence。
 
 #### SEC07-BP03 Automate identification and classification
 
@@ -211,103 +345,215 @@ flowchart TB
 
 #### SEC07-BP04 Define scalable data lifecycle management
 
-**未建立風險：高。** 依 business/legal needs 自動建立、分類、retain、archive、legal hold 與 securely delete data，包含 replicas、backups、logs 和 derived copies。避免 indefinite retention 或刪 primary 卻留 copies；以 lifecycle policies、owner approval、deletion verification、exceptions 和 restore implications 驗證。
+**未建立風險：高。** 依 business/legal needs 自動建立、分類、retain、archive、legal hold 與 securely delete data，包含 replicas、backups、logs 和 derived copies。避免 indefinite retention 或刪 primary 卻留 copies
+
+**Implementation guidance**
+
+避免；以 lifecycle policies、owner approval、deletion verification、exceptions 和 restore implications 驗證。
 
 ### SEC08 - Protect data at rest
 
 #### SEC08-BP01 Implement secure key management
 
-**未建立風險：高。** 集中 KMS/HSM key ownership、policy、separation of duties、rotation、backup、deletion protection 和 usage monitoring。避免 application-owned raw keys、broad decrypt 或 key 與 encrypted data 同 failure domain；以 key inventory、grants、CloudTrail usage、rotation 和 recovery/deletion tests 驗證。
+**目的與預期成果**
+
+集中 KMS/HSM key ownership、policy、separation of duties、rotation、backup、deletion protection 和 usage monitoring。避免 application-owned raw keys、broad decrypt 或 key 與 encrypted data 同 failure domain
+
+**Implementation guidance**
+
+避免；以 key inventory、grants、CloudTrail usage、rotation 和 recovery/deletion tests 驗證。
 
 #### SEC08-BP02 Enforce encryption at rest
 
-**未建立風險：高。** 對 block/object/file/database/backup/log/queue 和 managed services 預設 encryption，依 classification 選 AWS-owned、AWS-managed 或 customer-managed keys。避免 optional/manual enablement 或 snapshot/copy 漏加密；以 preventive policy、Config checks、key policy、migration 和 restore tests 驗證。
+**目的與預期成果**
+
+對 block/object/file/database/backup/log/queue 和 managed services 預設 encryption，依 classification 選 AWS-owned、AWS-managed 或 customer-managed keys。避免 optional/manual enablement 或 snapshot/copy 漏加密
+
+**Implementation guidance**
+
+避免；以 preventive policy、Config checks、key policy、migration 和 restore tests 驗證。
 
 #### SEC08-BP03 Automate data at rest protection
 
-**未建立風險：中。** 以 IaC、organization policy、service defaults、Config/remediation 和 data-classification events 自動 enforce encryption、access、retention 與 backup。避免 resource creator 自行選擇或 remediation 破壞 workload；採 staged rollout、exception、audit、rollback 和 compliance trend。
+**目的與預期成果**
+
+以 IaC、organization policy、service defaults、Config/remediation 和 data-classification events 自動 enforce encryption、access、retention 與 backup。避免 resource creator 自行選擇或 remediation 破壞 workload；採 staged rollout、exception、audit、rollback 和 compliance trend。
 
 #### SEC08-BP04 Enforce access control
 
-**未建立風險：高。** 對 data APIs、storage、database、backups 和 keys 實施 least privilege、resource policies、network restrictions、row/column/object controls 和 audited privileged access。避免 public buckets、shared DB admin 或 bypass path；以 Access Analyzer、policy simulation、data-access logs 和 negative tests 驗證。
+**未建立風險：高。** 對 data APIs、storage、database、backups 和 keys 實施 least privilege、resource policies、network restrictions、row/column/object controls 和 audited privileged access。避免 public buckets、shared DB admin 或 bypass path
+
+**Implementation guidance**
+
+避免；以 Access Analyzer、policy simulation、data-access logs 和 negative tests 驗證。
 
 ### SEC09 - Protect data in transit
 
 #### SEC09-BP01 Implement secure key and certificate management
 
-**未建立風險：高。** 集中 certificate/key issuance、inventory、ownership、renewal、revocation、storage 與 monitoring，使用 ACM/Private CA/KMS/HSM 等 managed mechanisms。避免 private keys in images、expired certs 或 unknown endpoints；以 expiry alarms、rotation automation、revocation 和 failover tests 驗證。
+**目的與預期成果**
+
+集中 certificate/key issuance、inventory、ownership、renewal、revocation、storage 與 monitoring，使用 ACM/Private CA/KMS/HSM 等 managed mechanisms。避免 private keys in images、expired certs 或 unknown endpoints
+
+**Implementation guidance**
+
+避免；以 expiry alarms、rotation automation、revocation 和 failover tests 驗證。
 
 #### SEC09-BP02 Enforce encryption in transit
 
-**未建立風險：高。** 對 external/internal、service-to-service、management、replication 和 backup traffic 強制 current TLS 或 suitable encrypted protocols，禁用 weak versions/ciphers 和 plaintext downgrade。避免只保護 public edge；以 policy scans、packet/config tests、certificate validation 和 client compatibility 驗證。
+**目的與預期成果**
+
+對 external/internal、service-to-service、management、replication 和 backup traffic 強制 current TLS 或 suitable encrypted protocols，禁用 weak versions/ciphers 和 plaintext downgrade。避免只保護 public edge
+
+**Implementation guidance**
+
+避免；以 policy scans、packet/config tests、certificate validation 和 client compatibility 驗證。
 
 #### SEC09-BP03 Authenticate network communications
 
-**未建立風險：低。** 除了 encryption，使用 certificate identity、mTLS、signed requests、service identity 或 token audience 驗證 peers，防止 spoofing/MITM。避免只信 IP/network location 或跳過 hostname validation；以 trust-store governance、rotation、negative tests、revocation 和 authorization linkage 驗證。
+**目的與預期成果**
+
+除了 encryption，使用 certificate identity、mTLS、signed requests、service identity 或 token audience 驗證 peers，防止 spoofing/MITM。避免只信 IP/network location 或跳過 hostname validation
+
+**Implementation guidance**
+
+避免；以 trust-store governance、rotation、negative tests、revocation 和 authorization linkage 驗證。
 
 ### SEC10 - Incident response
 
 #### SEC10-BP01 Identify key personnel and external resources
 
-**未建立風險：高。** 建立 incident roles 與 contacts，包含 command、security、application、cloud、network、forensics、legal、privacy、HR、communications、executives、AWS Support 和 vendors。避免 incident 才找人；明確 authority、time zones、alternates 和 secure channels，並定期 call-tree test。
+**目的與預期成果**
+
+建立 incident roles 與 contacts，包含 command、security、application、cloud、network、forensics、legal、privacy、HR、communications、executives、AWS Support 和 vendors。避免 incident 才找人；明確 authority、time zones、alternates 和 secure channels，並定期 call-tree test。
 
 #### SEC10-BP02 Develop incident management plans
 
-**未建立風險：高。** 建立 approved incident plan，涵蓋 scope、severity、RACI、detection、triage、containment、eradication、recovery、evidence、communications、regulatory duties 和 lessons learned。避免 generic plan 未對 AWS/shared responsibility；以 annual/change-triggered review、simulation 和 stakeholder sign-off 驗證。
+**未建立風險：高。** 建立 approved incident plan，涵蓋 scope、severity、RACI、detection、triage、containment、eradication、recovery、evidence、communications、regulatory duties 和 lessons learned。避免 generic plan 未對 AWS/shared responsibility
+
+**Implementation guidance**
+
+避免；以 annual/change-triggered review、simulation 和 stakeholder sign-off 驗證。
 
 #### SEC10-BP03 Prepare forensic capabilities
 
-**未建立風險：中。** 預先建立 isolated forensic accounts/VPCs、immutable log/evidence stores、snapshots/images、time sync、chain of custody 和 analysis tools。避免在 compromise account 臨時安裝工具或修改 original evidence；以 access、retention、collection automation、hashing、legal requirements 和 exercise 驗證。
+**目的與預期成果**
+
+預先建立 isolated forensic accounts/VPCs、immutable log/evidence stores、snapshots/images、time sync、chain of custody 和 analysis tools。避免在 compromise account 臨時安裝工具或修改 original evidence
+
+**Implementation guidance**
+
+避免；以 access、retention、collection automation、hashing、legal requirements 和 exercise 驗證。
 
 #### SEC10-BP04 Develop and test security incident response playbooks
 
-**未建立風險：中。** 針對 credential compromise、public data、malware、ransomware、network intrusion、supply chain 和 insider scenarios 建 playbooks，包含 indicators、queries、containment、evidence、communications、recovery 和 stop conditions。避免 copy template 不測；以 tabletop/technical simulations 和 updates 驗證。
+**目的與預期成果**
+
+針對 credential compromise、public data、malware、ransomware、network intrusion、supply chain 和 insider scenarios 建 playbooks，包含 indicators、queries、containment、evidence、communications、recovery 和 stop conditions。避免 copy template 不測
+
+**Implementation guidance**
+
+避免；以 tabletop/technical simulations 和 updates 驗證。
 
 #### SEC10-BP05 Pre-provision access
 
-**未建立風險：中。** 預先建立 time-bound incident roles、break-glass credentials、cross-account trust、forensic access 和 approval，使 normal IdP/workload unavailable 時仍可 action。避免日常使用或 permissions 未測；以 dual control、MFA、alarm、session audit、exercise 和 post-use revocation 驗證。
+**目的與預期成果**
+
+預先建立 time-bound incident roles、break-glass credentials、cross-account trust、forensic access 和 approval，使 normal IdP/workload unavailable 時仍可 action。避免日常使用或 permissions 未測
+
+**Implementation guidance**
+
+避免；以 dual control、MFA、alarm、session audit、exercise 和 post-use revocation 驗證。
 
 #### SEC10-BP06 Pre-deploy tools
 
-**未建立風險：中。** 在 secure tooling/forensic environments 預置 trusted CLI、queries、automation、EDR、collection scripts、images 和 communication tools，保持 patched/versioned。避免 incident 時從 internet 下載 unknown binaries；以 integrity/signature、access, network path、compatibility 和 offline availability tests 驗證。
+**目的與預期成果**
+
+在 secure tooling/forensic environments 預置 trusted CLI、queries、automation、EDR、collection scripts、images 和 communication tools，保持 patched/versioned。避免 incident 時從 internet 下載 unknown binaries
+
+**Implementation guidance**
+
+避免；以 integrity/signature、access, network path、compatibility 和 offline availability tests 驗證。
 
 #### SEC10-BP07 Run simulations
 
-**未建立風險：中。** 定期執行 tabletop、purple-team、technical 和 cross-functional simulations，測 detection、roles、access、containment、forensics、communications 與 recovery。避免只通知 security team 或無 measurable criteria；限制 blast radius，記錄 timeline、gaps、owners、due dates 和 re-test。
+**目的與預期成果**
+
+定期執行 tabletop、purple-team、technical 和 cross-functional simulations，測 detection、roles、access、containment、forensics、communications 與 recovery。避免只通知 security team 或無 measurable criteria；限制 blast radius，記錄 timeline、gaps、owners、due dates 和 re-test。
 
 #### SEC10-BP08 Establish a framework for learning from incidents
 
-**未建立風險：中。** 以 blameless post-incident process 分析 timeline、attack path、control successes/failures、decision 和 organizational factors，將 lessons 回饋 threat models、controls、playbooks、training 和 metrics。避免只找 offender 或 action 無 owner；以 closure/effectiveness 和 recurrence 驗證。
+**未建立風險：中。** 以 blameless post-incident process 分析 timeline、attack path、control successes/failures、decision 和 organizational factors，將 lessons 回饋 threat models、controls、playbooks、training 和 metrics。避免只找 offender 或 action 無 owner
+
+**Implementation guidance**
+
+避免；以 closure/effectiveness 和 recurrence 驗證。
 
 ### SEC11 - Application security
 
 #### SEC11-BP01 Train for application security
 
-**未建立風險：中。** 依 developer、architect、tester、operator 與 product roles 提供 threat modeling、secure design/coding、cloud IAM/data、dependency、testing 和 incident training，包含 language/framework risks。避免 annual generic video；以 labs、role coverage、assessment、defect trends 和 champion network 驗證。
+**目的與預期成果**
+
+依 developer、architect、tester、operator 與 product roles 提供 threat modeling、secure design/coding、cloud IAM/data、dependency、testing 和 incident training，包含 language/framework risks。避免 annual generic video
+
+**Implementation guidance**
+
+避免；以 labs、role coverage、assessment、defect trends 和 champion network 驗證。
 
 #### SEC11-BP02 Automate testing throughout the development and release lifecycle
 
-**未建立風險：中。** 在 IDE/commit/CI/pre-deploy/runtime 依風險使用 SAST、SCA、secret、IaC、container、DAST、API 和 policy tests，設定 severity gates。避免 scanner overload、unpinned tools 或 findings 無 owner；以 coverage、false-positive process、SLA、exceptions 和 deployed-artifact trace 驗證。
+**目的與預期成果**
+
+在 IDE/commit/CI/pre-deploy/runtime 依風險使用 SAST、SCA、secret、IaC、container、DAST、API 和 policy tests，設定 severity gates。避免 scanner overload、unpinned tools 或 findings 無 owner
+
+**Implementation guidance**
+
+避免；以 coverage、false-positive process、SLA、exceptions 和 deployed-artifact trace 驗證。
 
 #### SEC11-BP03 Perform regular penetration testing
 
-**未建立風險：高。** 依 scope/risk 定期和重大 change 後進行 authorized penetration tests，涵蓋 business logic、identity、API、cloud configuration、tenant isolation 和 chained attack paths。避免未核准 production testing 或只跑 scanner；定義 rules of engagement、data handling、fix/validation 和 retest。
+**目的與預期成果**
+
+依 scope/risk 定期和重大 change 後進行 authorized penetration tests，涵蓋 business logic、identity、API、cloud configuration、tenant isolation 和 chained attack paths。避免未核准 production testing 或只跑 scanner；定義 rules of engagement、data handling、fix/validation 和 retest。
 
 #### SEC11-BP04 Conduct code reviews
 
-**未建立風險：中。** 對 security-sensitive changes 進行 peer review，使用 checklist/ownership 檢查 authn/authz、input/output、crypto、secrets、errors、logging、concurrency 和 data flow。避免 rubber-stamp approval 或 author self-approve；以 protected branches、review evidence、high-risk specialists 和 defect feedback 驗證。
+**未建立風險：中。** 對 security-sensitive changes 進行 peer review，使用 checklist/ownership 檢查 authn/authz、input/output、crypto、secrets、errors、logging、concurrency 和 data flow。避免 rubber-stamp approval 或 author self-approve
+
+**Implementation guidance**
+
+避免；以 protected branches、review evidence、high-risk specialists 和 defect feedback 驗證。
 
 #### SEC11-BP05 Centralize services for packages and dependencies
 
-**未建立風險：中。** 使用 controlled artifact/package repositories、allowlists、provenance、signatures、SBOM、malware/license/vulnerability scanning 和 retention。避免 direct public downloads、dependency confusion 或 mutable artifacts；以 repository policy、namespace ownership、digest pinning、quarantine 和 traceability 驗證。
+**目的與預期成果**
+
+使用 controlled artifact/package repositories、allowlists、provenance、signatures、SBOM、malware/license/vulnerability scanning 和 retention。避免 direct public downloads、dependency confusion 或 mutable artifacts
+
+**Implementation guidance**
+
+避免；以 repository policy、namespace ownership、digest pinning、quarantine 和 traceability 驗證。
 
 #### SEC11-BP06 Deploy software programmatically
 
-**未建立風險：高。** 以 version-controlled pipeline、least-privilege roles、immutable signed artifacts、approval、environment gates 和 rollback 部署，移除 manual production changes。避免 workstation credentials、copy/paste 或 rebuilt artifacts；以 commit-build-scan-deploy digest chain、audit、separation of duties 和 drift detection 驗證。
+**目的與預期成果**
+
+以 version-controlled pipeline、least-privilege roles、immutable signed artifacts、approval、environment gates 和 rollback 部署，移除 manual production changes。避免 workstation credentials、copy/paste 或 rebuilt artifacts
+
+**Implementation guidance**
+
+避免；以 commit-build-scan-deploy digest chain、audit、separation of duties 和 drift detection 驗證。
 
 #### SEC11-BP07 Regularly assess security properties of the pipelines
 
-**未建立風險：高。** 把 CI/CD 當 production system threat model，review source triggers、runner isolation、secrets、dependencies、artifact integrity、approvals、logs 和 admin access。避免 untrusted fork 取得 secrets、mutable third-party actions 或 long-lived tokens；以 attack simulation、patching、access review 和 recovery plan 驗證。
+**目的與預期成果**
+
+把 CI/CD 當 production system threat model，review source triggers、runner isolation、secrets、dependencies、artifact integrity、approvals、logs 和 admin access。避免 untrusted fork 取得 secrets、mutable third-party actions 或 long-lived tokens
+
+**Implementation guidance**
+
+避免；以 attack simulation、patching、access review 和 recovery plan 驗證。
 
 #### SEC11-BP08 Build a program that embeds security ownership in workload teams
 
