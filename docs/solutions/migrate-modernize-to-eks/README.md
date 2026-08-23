@@ -70,31 +70,47 @@ accounts, repositories, endpoints, IPs, and customer identifiers.
 
 ## Why EKS
 
-EC2 would have preserved host and bespoke release ownership. ECS was a credible
-simpler orchestrator, but it would have introduced another delivery model while
-the target estate required Kubernetes policy, Helm packaging, mixed-runtime
-workloads, independent scaling, and team investment in Kubernetes operations.
+- **Independent delivery and scaling:** The 20-plus-component target needed
+  separate release, resource, health, and scaling boundaries instead of the
+  monolith's shared lifecycle.
+- **One Kubernetes delivery model:** Existing Kubernetes skills, Helm packages,
+  and policy controls could serve mixed-runtime services without introducing a
+  second orchestration model.
+- **AWS integration with less control-plane ownership:** EKS provides a managed
+  Kubernetes control plane while integrating with IAM, VPC networking, load
+  balancing, and AWS observability services.
+- **Extensible platform standards:** Kubernetes APIs enabled reusable security,
+  deployment, autoscaling, and operational patterns across teams and services.
 
-EKS was selected for the aggregate 20-plus-component platform, not for a single
-service. The decision deliberately accepted responsibility for cluster and
-add-on upgrades, capacity, scheduling, identity, networking, observability,
-backup, and operator enablement.
+This choice was made for the aggregate platform, not because every individual
+service requires Kubernetes. It accepted more operational responsibility than
+ECS, including add-on upgrades, worker capacity, scheduling, networking,
+observability, backup, and operator enablement.
 
 ## Migration flow
 
-```text
-inventory and baseline
-    -> EKS and IAM foundation
-        -> container and Helm contract
-            -> one dependency-bounded extraction
-                -> contract, load and failure tests
-                    -> bounded traffic cutover
-                        -> observation and handoff
-                            -> legacy retirement
-```
+1. **Discover and baseline.** Inventory dependencies, traffic, data ownership,
+   service objectives, current resource use, and rollback constraints.
+2. **Establish the platform.** Provision the EKS, IAM, networking, registry,
+   observability, and delivery foundations before moving application traffic.
+3. **Define the deployable contract.** Give each selected component a versioned
+   image, Helm chart, configuration and secret interface, health checks,
+   resource policy, ownership, and rollback procedure.
+4. **Migrate one bounded capability.** Select a dependency seam, preserve
+   compatible data paths, and deploy the component without immediately removing
+   its legacy path.
+5. **Prove production behavior.** Run contract, integration, load, failure,
+   security, data-reconciliation, and end-to-end request-path tests.
+6. **Shift traffic in a bounded wave.** Move a route, tenant cohort, or traffic
+   percentage; observe agreed service and dependency thresholds; then advance
+   or roll back.
+7. **Stabilize, hand off, and retire.** Complete an observation window, prove
+   independent operation and rollback, and remove the legacy path only after
+   its exit criteria are met.
 
-Every arrow is a gate. A built image is not a deployed release; a deployed
-release is not a healthy workload; a Ready workload is not proof that traffic,
+Steps 3–6 repeat for each migration wave. The promotion gates are intentionally
+separate: a built image is not a deployed release; a deployed release is not a
+healthy workload; and a Ready workload does not prove that real traffic,
 dependencies, identity, and data behave correctly.
 
 ## Key decisions and tradeoffs
@@ -171,41 +187,6 @@ independent deployment/rollback, and independent incident response.
 The retained record does not contain a historical handoff scorecard, so this
 case study defines those acceptance gates without claiming a measured training
 or independence result.
-
-## My contribution
-
-The retained résumé and implementation estate support end-to-end leadership
-across:
-
-- application and dependency assessment;
-- service-boundary and migration-wave decisions;
-- multi-runtime containerization;
-- Terraform/EKS and Helm ownership boundaries;
-- reusable build, scan, release, and verification patterns;
-- resource and health contracts;
-- integration troubleshooting and rollback design; and
-- the operating and evidence model needed for customer handoff.
-
-No sole-delivery claim is made; product, application, data, security, platform,
-and operations owners remain part of the responsibility model.
-
-## Interview walkthroughs
-
-### 90 seconds
-
-Use the executive summary, why EKS, the incremental migration flow, and the
-evidence boundary around outcomes.
-
-### 5 minutes
-
-Walk through the architecture, EC2/ECS/EKS decision, one service extraction,
-the configuration failure, cutover gates, and customer handoff.
-
-### 15 minutes
-
-Use the detailed sequence below to discuss discovery evidence, target-state
-tradeoffs, Terraform/Helm/pipeline implementation, parity and rollback, outcome
-measurement, and independent operation.
 
 ## Modernization roadmap
 

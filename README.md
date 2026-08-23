@@ -53,6 +53,7 @@ flowchart TB
 
 ### AWS Cloud
 
+- Well-Architected Framework: [Operational Excellence](docs/practices/aws/wellarchitected-operational-excellence-pillar.md), [Performance Efficiency](docs/practices/aws/wellarchitected-performance-efficiency-pillar.md), [Reliability](docs/practices/aws/wellarchitected-reliability-pillar.md), and [Security](docs/practices/aws/wellarchitected-security-pillar.md)
 - Cloud foundations: [IAM Roles for Service Accounts](docs/practices/aws/use-iam-roles-for-service-account.md), [Terraform Architecture and Best Practices](docs/practices/aws/terraform-architecture-best-practices.md), and [Enterprise AWS Networking and Security](docs/practices/aws/enterprise-networking-security.md)
 - Application platforms and operations: [Serverless and Event-Driven Architecture](docs/practices/aws/serverless-event-driven-architecture.md), [AWS Observability and Operational Automation](docs/practices/aws/observability-operational-automation.md), and [Customer Delivery and Handoff](docs/practices/aws/customer-delivery-handoff.md)
 
