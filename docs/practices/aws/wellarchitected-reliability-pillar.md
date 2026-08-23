@@ -50,57 +50,35 @@ DR strategy 必須依每個 workload 的 RTO、RPO、dependency、data consisten
 
 #### REL01-BP01 Aware of service quotas and constraints
 
-**目的與預期成果**
-
 建立 workload 會使用之 service quotas、API limits、resource constraints 與不可調整限制 inventory，標示 account/Region、owner 和 dependency。避免等 deployment/failover 才發現限制
-
-**Implementation guidance**
 
 避免；以 architecture review、quota dashboard、forecast 與 launch checklist 驗證。
 
 #### REL01-BP02 Manage service quotas across accounts and regions
 
-**目的與預期成果**
-
 在所有 production、shared services 與 DR accounts/Regions 一致管理 quotas，考慮 deployment waves、growth 與 failover。避免只提高 primary Region 或使用未核准 account
-
-**Implementation guidance**
 
 避免；以 centralized inventory、request status、regional parity 和 DR tests 驗證。
 
 #### REL01-BP03 Accommodate fixed service quotas and constraints through architecture
 
-**目的與預期成果**
-
 對不可提高的 limits，以 sharding、multiple resources/accounts、request distribution、backpressure 或 alternative service 設計。避免把 fixed limit 當可申請提高
-
-**Implementation guidance**
 
 避免；以 capacity model、partition strategy、saturation test 和 controlled degradation 驗證。
 
 #### REL01-BP04 Monitor and manage quotas
 
-**目的與預期成果**
-
 持續量測 current usage、rate of growth、approved maximum 與 headroom，接近 threshold 時通知 owner 並提前申請。避免只看 static spreadsheet
-
-**Implementation guidance**
 
 避免；以 alarms、forecast accuracy、request lead time、denied-event review 和 capacity meetings 驗證。
 
 #### REL01-BP05 Automate quota management
 
-**目的與預期成果**
-
 用 APIs/IaC 自動 discover、compare、request、track 和 validate adjustable quotas，將 minimum headroom 納入 deployment gates。避免 automation 無 approval、重複 request 或忽略 regional differences
-
-**Implementation guidance**
 
 避免；以 audit log、idempotency 和 failed-request escalation 驗證。
 
 #### REL01-BP06 Ensure that a sufficient gap exists between the current quotas and the maximum usage to accommodate failover
-
-**目的與預期成果**
 
 預留足以承接 peak demand、AZ/Region failover、replacement surge 和 recovery operations 的 quota gap。避免用 normal steady-state utilization 算 headroom；建立 failure-scenario capacity model，並以 failover/load tests 與 remaining margin 驗證。
 
@@ -110,47 +88,29 @@ DR strategy 必須依每個 workload 的 RTO、RPO、dependency、data consisten
 
 **未建立風險：高。** public endpoints 使用 multi-AZ targets、health-based routing、DDoS protection、redundant DNS/edge/load-balancing paths 和 tested failover。避免 single-AZ origin、single appliance 或 health check 只測 port
 
-**Implementation guidance**
-
 避免；以 zonal failure、DNS behavior、TLS 和 end-user synthetics 驗證。
 
 #### REL02-BP02 Provision redundant connectivity between private networks in the cloud and on-premises environments
 
-**目的與預期成果**
-
 hybrid connectivity 至少有獨立 devices、locations、paths 與 ideally providers，使用 BGP 動態 reroute；Direct Connect 可搭配 independent VPN。避免 multiple links 共用單點或未測 backup bandwidth
-
-**Implementation guidance**
 
 避免；以 path diversity、failover time 和 route evidence 驗證。
 
 #### REL02-BP03 Ensure IP subnet allocation accounts for expansion and availability
 
-**目的與預期成果**
-
 CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load balancers、migration coexistence 和 failover。避免 subnet 太小或無 reserved growth
-
-**Implementation guidance**
 
 避免；以 IP forecast、high-water alarms、secondary CIDR plan 和 scale/failover test 驗證。
 
 #### REL02-BP04 Prefer hub-and-spoke topologies over many-to-many mesh
 
-**目的與預期成果**
-
 以 Transit Gateway 或 centralized routing 建立可治理、可觀測且易隔離的 hub-and-spoke network。避免大量 peering mesh 導致 route complexity、transitive gaps 與 inconsistent controls
-
-**Implementation guidance**
 
 避免；以 route ownership、segmentation、scale limits 和 failure analysis 驗證。
 
 #### REL02-BP05 Enforce non-overlapping private IP address ranges in all private address spaces where they are connected
 
-**目的與預期成果**
-
 建立 enterprise IPAM 與 allocation approval，確保 VPC、on-prem、partners、acquisitions 和 DR ranges 不重疊。避免用 NAT workaround 隱藏長期 conflict
-
-**Implementation guidance**
 
 避免；以 automated overlap checks、registry、route simulation 與 merger/onboarding process 驗證。
 
@@ -158,27 +118,17 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 #### REL03-BP01 Choose how to segment your workload
 
-**目的與預期成果**
-
 依 scaling、failure isolation、data boundary、team ownership 與 change rate 決定 monolith、modular monolith、services 或 cells。避免為 trend 過度拆分或保留不可隔離的巨型 failure domain
-
-**Implementation guidance**
 
 避免；以 dependency map、failure tests、team boundaries 和 operational cost 驗證。
 
 #### REL03-BP02 Build services focused on specific business domains and functionality
 
-**目的與預期成果**
-
 每個 service 有 cohesive business capability、清楚 data ownership、bounded dependencies 與 independent lifecycle。避免 distributed monolith、shared database tables 或 chatty synchronous calls
-
-**Implementation guidance**
 
 避免；以 domain model、API/event contracts、deployment independence 和 failure isolation 驗證。
 
 #### REL03-BP03 Provide service contracts per API
-
-**目的與預期成果**
 
 為 API/event 定義 versioned schema、semantics、timeouts、idempotency、errors、quotas、compatibility 和 deprecation policy。避免 undocumented behavior 或 breaking change；使用 contract tests、consumer inventory、change notice、SLO 和 backward-compatibility evidence 驗證。
 
@@ -196,13 +146,9 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 **未建立風險：低。** 讓 request cost 和 backend work 對 input shape/absence 盡量穩定，避免 recovery 或 low-traffic path 產生 sudden load。預先計算/配置、均勻 background work 並限制 fan-out
 
-**Implementation guidance**
-
 避免；以 worst-case profile、cache-miss/recovery test 和 resource envelope 驗證。
 
 #### REL04-BP04 Make mutating operations idempotent
-
-**目的與預期成果**
 
 重試 create/update/delete/payment 等 operations 不應造成 duplicate state 或 side effects。使用 idempotency keys、conditional writes、deduplication、transaction/outbox 和 explicit result semantics；避免 client timeout 後盲目重送。以 duplicate/reorder/replay tests 和 audit records 驗證。
 
@@ -220,43 +166,27 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 **未建立風險：高。** 為 retry 設 attempt/time budget、exponential backoff、jitter、retryable errors 與 circuit breaker，避免 amplification。不要在每層獨立 retry 或對 non-idempotent call 重試
 
-**Implementation guidance**
-
 避免；以 retry metrics、storm test、downstream load 和 end-to-end deadline 驗證。
 
 #### REL05-BP04 Fail fast and limit queues
 
-**目的與預期成果**
-
 當 request 無法在 useful deadline 完成時快速拒絕，並為 thread/connection/queue 設 bounded limits。避免 unbounded queue 隱藏 overload、增加 latency 或耗盡 memory
-
-**Implementation guidance**
 
 避免；以 Little's Law/capacity model、queue-age alarms、overload test 和 recovery time 驗證。
 
 #### REL05-BP05 Set client timeouts
 
-**目的與預期成果**
-
 所有 network calls 要有 connect、read、write、request 和 total deadline，且由 end-to-end latency budget 向下分配。避免 default infinite timeout 或 timeout 長於 caller deadline
-
-**Implementation guidance**
 
 避免；以 timeout inventory、dependency latency percentiles、injected delay 和 resource release 驗證。
 
 #### REL05-BP06 Make systems stateless where possible
 
-**目的與預期成果**
-
 將 durable state 移到 resilient data services，讓 compute 可 replace、scale 和 relocate；session state 以 external store 或 signed token 管理。避免 local disk/memory 成為 hidden dependency
-
-**Implementation guidance**
 
 避免；以 instance termination、rescheduling、multi-AZ 和 cache-loss tests 驗證。
 
 #### REL05-BP07 Implement emergency levers
-
-**目的與預期成果**
 
 預先設計 feature disable、traffic block/shift、rate reduction、read-only、dependency bypass 與 kill switch，以快速限制 impact。每個 lever 要有 owner、authorization、scope、audit、expiry、recovery 和 exercise；避免 incident 時臨時改 code 或長期忘記復原。
 
@@ -266,13 +196,9 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 **未建立風險：高。** 為 clients、edge、network、compute、storage、database、queues、dependencies 與 business transactions 產生 metrics、logs、traces 和 events。避免 observability blind spots 或只監控 AWS resources
 
-**Implementation guidance**
-
 避免；以 component inventory、telemetry coverage、failure-mode mapping 和 synthetic tests 驗證。
 
 #### REL06-BP02 Define and calculate metrics (Aggregation)
-
-**目的與預期成果**
 
 把 raw telemetry 聚合成可決策的 SLIs，例如 availability、correctness、latency percentiles、durability、queue age 與 dependency health。避免 averages 掩蓋 tail/tenant/Region impact；明確 formula、window、missing-data behavior、dimensions 和 data quality，並用 known events 驗證。
 
@@ -284,13 +210,9 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 **未建立風險：中。** 對已知 failure mode 自動 isolate、replace、scale、reroute 或 rollback，並以 guardrails 限制 blast radius。automation 要 idempotent、observable、least privilege、具 stop condition 和 manual override
 
-**Implementation guidance**
-
 避免；以 injected failure、false actions 和 recovery time 驗證。
 
 #### REL06-BP05 Analyze logs
-
-**目的與預期成果**
 
 集中 structured application、platform、network、audit 和 dependency logs，用 correlation ID 與 accurate timestamps 重建 failures。避免 sensitive data、short retention、free text 或 clock skew；建立 saved queries、access controls、integrity 和 incident reconstruction tests。
 
@@ -298,17 +220,11 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 **未建立風險：中。** 隨 architecture、customer journeys、incidents、services 與 failure modes 改變，定期更新 telemetry、SLI、alarm 和 dashboard。避免 retired components 仍告警或新 dependency 無監控
 
-**Implementation guidance**
-
 避免；以 coverage review、orphan/stale detection、incident gaps 和 action closure 驗證。
 
 #### REL06-BP07 Monitor end-to-end tracing of requests through your system
 
-**目的與預期成果**
-
 跨 synchronous/asynchronous boundaries 傳遞 trace context，量測 each-hop latency、errors、retries、queues 與 critical path。避免 sampling 排除 failures 或 trace 中斷
-
-**Implementation guidance**
 
 避免；以 representative user journeys、service map、span completeness 和 incident diagnosis time 驗證。
 
@@ -316,37 +232,23 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 #### REL07-BP01 Use automation when obtaining or scaling resources
 
-**目的與預期成果**
-
 以 IaC、autoscaling 與 automated provisioning 取得 compute、storage、network、licenses 和 dependencies，避免 manual delay/inconsistency。設定 safe limits、quotas、warm-up、health gates 和 rollback
-
-**Implementation guidance**
 
 避免；以 repeatable environment、scale timeline、audit 和 failure test 驗證。
 
 #### REL07-BP02 Obtain resources upon detection of impairment to a workload
 
-**目的與預期成果**
-
 偵測 unhealthy instance、node、AZ path 或 dependency 後，自動 replace、reroute 或 provision alternate capacity。避免只 restart 同一 broken host 或 recovery 依 control-plane action that is unavailable
-
-**Implementation guidance**
 
 避免；以 health semantics、replacement test、capacity headroom 和 recovery time 驗證。
 
 #### REL07-BP03 Obtain resources upon detection that more resources are needed for a workload
 
-**目的與預期成果**
-
 以 demand-leading metrics 如 queue depth、concurrency、latency、scheduled events 和 forecast，在 saturation 前 scale。避免只用 lagging CPU、沒有 cooldown 或 downstream 不可承載
-
-**Implementation guidance**
 
 避免；以 spike/soak tests、scale lag、quota/IP headroom 和 customer SLO 驗證。
 
 #### REL07-BP04 Load test your workload
-
-**目的與預期成果**
 
 用 representative traffic、data、concurrency、seasonality 與 failure states 找 scaling boundary、bottleneck、quota 和 recovery behavior。避免 short happy-path test 或 production collateral damage；定義 hypothesis、success/stop criteria、observability、isolated environment 和 reproducible report。
 
@@ -368,17 +270,11 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 **未建立風險：中。** 以 versioned image/artifact replace resources，而非在 place patch，讓 state 可重建、rollback 和 audit。避免 snowflake hosts、mutable SSH changes 或 latest tags
 
-**Implementation guidance**
-
 避免；以 digest、image provenance、rebuild test、drift detection 和 previous-version rollback 驗證。
 
 #### REL08-BP05 Deploy changes with automation
 
-**目的與預期成果**
-
 以 version-controlled pipeline 一致部署 application、infrastructure、configuration 和 database changes，包含 approvals、progressive exposure、health gates 和 rollback。避免 direct production edits 或 manual ordering
-
-**Implementation guidance**
 
 避免；以 audit trail、idempotency、partial-failure test 和 recovery time 驗證。
 
@@ -386,37 +282,23 @@ CIDR/subnet plan 必須支援 multi-AZ、autoscaling、pods/endpoints、load bal
 
 #### REL09-BP01 Identify and back up all data that needs to be backed up, or reproduce the data from sources
 
-**目的與預期成果**
-
 建立 data inventory，區分 authoritative、derived、ephemeral 與 configuration state，為每項定義 backup/rebuild method、RPO、retention 和 owner。避免只備份 database 而漏 object、keys、manifests 或 external dependencies
-
-**Implementation guidance**
 
 避免；以 restore dependency map 驗證。
 
 #### REL09-BP02 Secure and encrypt backups
 
-**目的與預期成果**
-
 backup 使用 least privilege、encryption、separate keys/accounts、immutability、retention lock 和 protected delete，並限制 recovery access。避免 backup 與 production 同 credentials/failure domain
-
-**Implementation guidance**
 
 避免；以 access review、key recovery, tamper test、cross-account copy 和 audit logs 驗證。
 
 #### REL09-BP03 Perform data backup automatically
 
-**目的與預期成果**
-
 依 RPO 自動 schedule/continuous backup，監控 success、freshness、coverage、copy 和 retention，failure 會 alert owner。避免 cron job 成功卻沒資料或 manual export
-
-**Implementation guidance**
 
 避免；以 backup catalog、completion SLA、sample integrity 和 failed-job remediation 驗證。
 
 #### REL09-BP04 Perform periodic recovery of the data to verify backup integrity and processes
-
-**目的與預期成果**
 
 定期在 isolated environment restore，驗證 decrypt、schema、dependencies、application readback、data consistency 與 measured RTO/RPO。避免把 backup job success 當 recoverability；記錄 procedure gaps、traffic validation、cleanup 和 remediation closure。
 
@@ -426,27 +308,17 @@ backup 使用 least privilege、encryption、separate keys/accounts、immutabili
 
 **未建立風險：高。** 依 availability target 跨 multiple AZs，必要時跨 Regions，分散 compute、data、DNS 和 dependencies。避免 replicas 仍共用 single subnet、NAT、storage 或 control dependency
 
-**Implementation guidance**
-
 避免；以 topology evidence、zonal/Regional failure tests 和 remaining capacity 驗證。
 
 #### REL10-BP02 Automate recovery for components constrained to a single location
 
-**目的與預期成果**
-
 對 zonal storage、singleton leader、appliance 或 location-bound components，預先自動 snapshot/replicate、recreate、reattach、promote 或 reroute。避免 incident 時手動找 artifacts
-
-**Implementation guidance**
 
 避免；以 dependency ordering、idempotent automation、data integrity 和 timed recovery test 驗證。
 
 #### REL10-BP03 Use bulkhead architectures to limit scope of impact
 
-**目的與預期成果**
-
 以 accounts、Regions/AZs、cells、tenants、queues、pools 和 quotas 隔離 failures 與 noisy neighbors，並限制 shared blast radius。避免所有 traffic 共用 thread/connection pool 或 global mutable control
-
-**Implementation guidance**
 
 避免；以 overload/failure injection、tenant isolation 和 capacity partition 驗證。
 
@@ -454,41 +326,27 @@ backup 使用 least privilege、encryption、separate keys/accounts、immutabili
 
 #### REL11-BP01 Monitor all components of the workload to detect failures
 
-**目的與預期成果**
-
 對每個 component 定義 health semantics、customer-impact signal、dependency check 和 detection time target。避免只靠 process up/port open；結合 metrics、logs、traces、synthetics 和 business transactions，並用 injected failures 驗證 alarm routing 與 detection gap。
 
 #### REL11-BP02 Fail over to healthy resources
 
 **未建立風險：高。** health-based routing/load balancing 只把 traffic 送到已通過 deep checks 的 targets/locations，failback 需 gradual。避免 flapping、DNS TTL 不符或 unhealthy target 仍接流量
 
-**Implementation guidance**
-
 避免；以 failure detection、drain、state consistency、capacity 和 failback test 驗證。
 
 #### REL11-BP03 Automate healing on all layers
 
-**目的與預期成果**
-
 在 application、container/instance、storage、network 和 service layers 自動 restart、replace、reconcile 或 reroute，並避免相互衝突 control loops。設定 attempt limits、backoff、escalation 和 stop conditions
-
-**Implementation guidance**
 
 避免；以 repeated-failure test、audit 和 recovery time 驗證。
 
 #### REL11-BP04 Rely on the data plane and not the control plane during recovery
 
-**目的與預期成果**
-
 預先建立 traffic paths、capacity、configuration 和 credentials，使 recovery 能由 existing data-plane mechanisms 完成，不依賴可能 unavailable 的 create/update APIs。避免 outage 時才 provision
-
-**Implementation guidance**
 
 避免；以 control-plane denial simulation、static routes/config 和 autonomous failover 驗證。
 
 #### REL11-BP05 Use static stability to prevent bimodal behavior
-
-**目的與預期成果**
 
 system 在正常與 failure mode 使用相同 pre-provisioned mechanisms，避免只有 disaster 時才執行未常用 code/path。保留 sufficient capacity 與 ready replicas；避免 dormant recovery stack 漂移。以 regular production use、configuration parity 和 failover without provisioning 驗證。
 
@@ -506,23 +364,15 @@ system 在正常與 failure mode 使用相同 pre-provisioned mechanisms，避�
 
 **未建立風險：高。** 建立 symptom/failure-mode playbooks，包含 hypothesis、queries、dashboards、dependency checks、evidence preservation、decision tree 和 escalation。避免只列固定 commands 或缺 stop conditions
 
-**Implementation guidance**
-
 避免；以 unfamiliar responder 和 novel scenario drills 驗證可用性及更新。
 
 #### REL12-BP02 Perform post-incident analysis
 
-**目的與預期成果**
-
 對 outages 與 near misses 進行 blameless timeline、impact、detection、recovery 和 contributing-factor analysis，找 systemic improvements。避免只責怪 human error 或修單一 symptom
-
-**Implementation guidance**
 
 避免；以 measurable action owners、due dates、closure、effectiveness 和 recurrence 驗證。
 
 #### REL12-BP03 Test scalability and performance requirements
-
-**目的與預期成果**
 
 用 peak/growth forecasts 執行 load、stress、spike、soak 和 failover tests，驗證 SLO、quota、autoscaling、dependency 和 degradation behavior。避免只測 average load；保留 representative data、success/stop criteria、bottleneck、headroom 和 remediation evidence。
 
@@ -552,17 +402,11 @@ system 在正常與 failure mode 使用相同 pre-provisioned mechanisms，避�
 
 **未建立風險：高。** 以同一 IaC、artifacts、policies、secrets lifecycle 與 configuration promotion 保持 DR parity，持續偵測 drift。避免 dormant Region 長期未 patch、quota 不足或 certificates 過期
 
-**Implementation guidance**
-
 避免；以 automated comparison、rebuild、security scan 和 failover readiness 驗證。
 
 #### REL13-BP05 Automate recovery
 
-**目的與預期成果**
-
 將 dependency-ordered data restore/promotion、infrastructure activation、configuration、traffic shift、validation 和 communication 編排成 idempotent workflows。避免 fragile manual checklist 或 automation 無 stop/rollback
-
-**Implementation guidance**
 
 避免；以 access controls、audit、partial-failure injection、timed exercises 和 human override 驗證。
 
