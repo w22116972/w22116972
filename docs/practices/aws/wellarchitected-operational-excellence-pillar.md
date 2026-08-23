@@ -49,15 +49,6 @@ flowchart LR
 
 讓 business、development 與 operations 等關鍵利害關係人共同判斷應優先處理哪些 external customer needs。團隊應從 customer outcomes 反推工作，理解 operational practices 如何支援 business outcomes，納入所有相關角色，並建立持續收集外部客戶需求的機制。
 
-**常見反模式**
-
-- 未檢視歷史 support requests，就決定核心營業時間以外不提供 customer support，因此無法判斷對客戶的影響。
-- 未與客戶確認需求、期望形式或透過 experiment 驗證，就直接開發新功能。
-
-**建立此實務的效益**
-
-理解外部客戶真正需要的 outcomes 與 operational support，可讓團隊把有限資源優先投入最能交付 business value 的工作，也能提高客戶持續使用服務的可能性。
-
 **Implementation guidance**
 
 1. **Understand business needs：** 以共同目標及共同理解作為 business success 的基礎，讓 business、development 與 operations 對預期成果形成一致認知。
@@ -70,16 +61,6 @@ flowchart LR
 
 讓 business、development 與 operations 共同理解 internal customers 對 platform、process 與 service 的需求，並依已建立的 priorities，把改善投入最有影響力的項目，例如技能、workload performance、cost、runbook automation 或 monitoring。需求改變時，priorities 也要同步更新。
 
-**常見反模式**
-
-- 未諮詢 product teams 就更改 IP address allocation，只因為這樣較容易管理 network。
-- 未確認 internal customers 是否需要、是否符合既有 practices，就導入新的 development tool。
-- 未先收集 internal customers 的 monitoring 與 reporting needs，就建置新的 monitoring system。
-
-**建立此實務的效益**
-
-把內部客戶的實際工作方式與需求納入決策，可避免 provider team 自行猜測，並使改善工作更直接地支援 business value。
-
 **Implementation guidance**
 
 1. **Understand business needs：** 讓 business、development 與 operations 以共享目標及共同理解建立合作基礎。
@@ -91,16 +72,6 @@ flowchart LR
 **目的與預期成果**
 
 識別組織內部為達成 business goals 所制定的 policies、rules 與 frameworks，將適用的 governance requirements 納入 workload，並能以持續、可稽核的證據證明 conformance。
-
-**常見反模式**
-
-- 不清楚 organization-wide governance requirements，或只在 architecture review 前臨時確認。
-- 以手動檢查或文件聲明 conformance，卻未持續偵測不符合要求的 resources。
-- 未與 centralized governance teams 協作，使技術或營運選擇違反組織政策。
-
-**建立此實務的效益**
-
-提早納入治理需求可降低 rework、exception 與 audit failure，並讓 workload 設計和營運持續符合組織目標。
 
 **Implementation guidance**
 
@@ -115,16 +86,6 @@ flowchart LR
 
 在 architecture design process 中納入適用的 industry、regulatory 與 internal compliance frameworks。團隊成員必須理解這些要求，並依 framework 持續驗證 workload，而不是假設採用 AWS service 就自動 compliant。
 
-**常見反模式**
-
-- workload 完成後才檢查 compliance，造成 architecture 與 data handling 大幅返工。
-- 團隊不知道適用 framework，或未把要求納入 architecture 與 technology choices。
-- 稽核開始後才人工蒐集 evidence，沒有可重複的 validation 與 reporting process。
-
-**建立此實務的效益**
-
-將 compliance 內建於設計、交付和營運流程，可降低違規與 audit failure，並縮短持續驗證及產生 evidence 的時間。
-
 **Implementation guidance**
 
 1. 與 security 和 governance teams 確認 workload 必須遵循的 industry、regulatory 或 internal frameworks，並將要求納入 workload；可使用 AWS Security Hub CSPM 等服務持續檢查 AWS resources 的 compliance posture。
@@ -137,16 +98,6 @@ flowchart LR
 
 持續評估 competition、business liabilities、operational risks 與 information security threats 等威脅，理解已知 threats 的可能性、影響與修補狀態，採取適當 mitigations，並把決策與背景傳達給相關人員。
 
-**常見反模式**
-
-- 使用過時 software library，卻未追蹤可能影響 workload 的 security updates。
-- 只在年度 review 更新風險資料，沒有因 vulnerability、service 或 business change 調整 priorities。
-- 已知 threat 沒有 owner、mitigation 或 residual-risk decision。
-
-**建立此實務的效益**
-
-比較 threat probability、potential harm、recovery cost 與 prevention cost，可讓團隊在威脅成為 incident 前投入適當防護。
-
 **Implementation guidance**
 
 1. **Evaluate the threat landscape：** 定期評估競爭、business risk and liabilities、operational risks 與 information security threats，並將其 business impact 納入工作優先順序；持續檢視 AWS security bulletins、AWS Trusted Advisor 及相關情報。
@@ -157,16 +108,6 @@ flowchart LR
 **目的與預期成果**
 
 由適當的 governing body 定義 benefits 與 risks 的衡量方式，根據可靠資料及 cost-benefit analysis 排定決策優先順序。決策權要在 centralized control 與 decentralized authority 之間取得平衡，並清楚理解每個 trade-off 對 strategy 與 business outcomes 的影響。
-
-**常見反模式**
-
-- 所有決策都必須經過相同而繁重的中央流程，使可逆的小型決策也被延誤。
-- 只強調 time-to-market，卻未量化 reliability、security、performance 或 cost risk。
-- 接受 risk 時沒有共同 decision framework、unblock owner 或可追溯依據。
-
-**建立此實務的效益**
-
-一致且分級的 decision framework 能加速可逆決策、集中管理不可逆決策，並使 benefits、risks 與 organizational priorities 的關係透明。
 
 **Implementation guidance**
 
@@ -1008,15 +949,6 @@ flowchart LR
 
 Involve key stakeholders from business, development, and operations to decide where to focus on external customer needs. Teams work backward from customer outcomes, understand how operational practices support business outcomes, engage all relevant parties, and maintain mechanisms for capturing external customer needs.
 
-**Common anti-patterns**
-
-- Ending support outside core business hours without reviewing historical requests or understanding customer impact.
-- Developing a feature without asking customers whether it is needed, what form it should take, or validating it through an experiment.
-
-**Benefits**
-
-Understanding customer outcomes and required operational support helps prioritize work that delivers business value and makes satisfied customers more likely to remain customers.
-
 **Implementation guidance**
 
 1. **Understand business needs:** Build shared goals and understanding across business, development, and operations stakeholders.
@@ -1029,16 +961,6 @@ Understanding customer outcomes and required operational support helps prioritiz
 
 Involve business, development, and operations stakeholders when deciding where to focus on internal customer needs. Use established priorities to direct improvements toward the greatest impact, such as skills, workload performance, cost, runbook automation, or monitoring, and update priorities when needs change.
 
-**Common anti-patterns**
-
-- Changing IP allocations without consulting product teams.
-- Introducing a development tool without confirming need or compatibility with existing practices.
-- Building a monitoring system without gathering internal monitoring and reporting needs.
-
-**Benefits**
-
-Evaluating internal customer needs prevents provider-only assumptions and directs improvements toward business value.
-
 **Implementation guidance**
 
 1. **Understand business needs:** Create shared goals and understanding across business, development, and operations stakeholders.
@@ -1050,16 +972,6 @@ Evaluating internal customer needs prevents provider-only assumptions and direct
 **Purpose and desired outcome**
 
 Identify the policies, rules, and frameworks the organization uses to achieve business goals. Incorporate applicable governance requirements into the workload and maintain evidence that demonstrates conformance.
-
-**Common anti-patterns**
-
-- Discovering governance requirements only during an architecture review.
-- Claiming conformance through manual checks without continuous detection.
-- Designing independently of centralized governance teams.
-
-**Benefits**
-
-Early governance integration reduces rework, exceptions, and audit failures and keeps workload operation aligned with organizational goals.
 
 **Implementation guidance**
 
@@ -1074,16 +986,6 @@ Early governance integration reduces rework, exceptions, and audit failures and 
 
 Incorporate applicable industry, regulatory, and internal compliance frameworks into the architecture design process. Team members understand the requirements and continuously validate the workload against them; using an AWS service does not automatically make the workload compliant.
 
-**Common anti-patterns**
-
-- Checking compliance only after the workload is complete.
-- Failing to teach the team which frameworks apply or include them in architecture decisions.
-- Collecting evidence manually only when an audit begins.
-
-**Benefits**
-
-Building compliance into design, delivery, and operations reduces regulatory and audit risk and shortens continuous validation and evidence generation.
-
 **Implementation guidance**
 
 1. Work with security and governance teams to identify the industry, regulatory, and internal frameworks the workload must follow and incorporate them into the workload. Services such as AWS Security Hub CSPM can help continuously assess the compliance posture of AWS resources.
@@ -1096,16 +998,6 @@ Building compliance into design, delivery, and operations reduces regulatory and
 
 Continuously evaluate competition, business liabilities, operational risks, information security threats, and other threats to the business. Understand known threats and patch status, apply appropriate mitigations, and communicate the actions and their context.
 
-**Common anti-patterns**
-
-- Using an outdated library without monitoring relevant security updates.
-- Updating risks only annually rather than when vulnerabilities, services, or business conditions change.
-- Leaving a known threat without an owner, mitigation, or residual-risk decision.
-
-**Benefits**
-
-Comparing threat probability, potential harm, recovery cost, and prevention cost improves prioritization before a threat becomes an incident.
-
 **Implementation guidance**
 
 1. **Evaluate the threat landscape:** Regularly assess competition, business risks and liabilities, operational risks, and information security threats, and include their impact in prioritization. Review sources such as AWS security bulletins and AWS Trusted Advisor.
@@ -1116,16 +1008,6 @@ Comparing threat probability, potential harm, recovery cost, and prevention cost
 **Purpose and desired outcome**
 
 Have an appropriate governing body define how benefits and risks are measured, then prioritize decisions using accurate information and cost-benefit analysis. Balance centralized control with decentralized authority and understand how each trade-off affects strategy and desired business outcomes.
-
-**Common anti-patterns**
-
-- Sending every decision, including reversible ones, through the same heavy central process.
-- Optimizing time-to-market without quantifying reliability, security, performance, or cost risk.
-- Accepting risk without a common framework, unblock owner, or traceable rationale.
-
-**Benefits**
-
-A consistent tiered framework accelerates reversible decisions, centralizes irreversible ones, and makes benefits, risks, and priorities transparent.
 
 **Implementation guidance**
 
