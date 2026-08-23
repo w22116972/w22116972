@@ -345,41 +345,119 @@ applications 要發出 structured metrics、logs 與 events，涵蓋 traffic、e
 
 將 application、infrastructure、configuration、policy 與 procedures 納入 protected repositories，透過 review 與 immutable history 追蹤。避免 console-only changes 或未版控 runbooks；以 commit-to-deployment trace、approval 與 drift detection 驗證。
 
+**Implementation guidance**
+
+1. 識別需要 version control 的 assets，包括 source、IaC、configuration、documents、runbooks 與 binary definitions。
+2. 使用 protected repositories、branch/review policy 與 traceable history 管理變更。
+3. 將 configuration-management systems 的 version-control capability 整合到 operational procedures。
+4. 確認 deployment 可追溯到版本，能偵測未授權變更，並可回復 known-good version。
+
 #### OPS05-BP02 Test and validate changes
 
 在 promotion 前以 unit、integration、contract、security、performance、resilience 與 policy tests 驗證功能和 operability。避免只測 happy path 或把 deployment success 當 business success；保留 results、approvals 和 runtime verification。
+
+**Implementation guidance**
+
+1. 建立適用於 application code、infrastructure 與 configuration 的 organization testing standard。
+2. 在 CI 中自動執行 unit、integration、security、regression、performance、policy、boundary 與 failure-condition tests。
+3. 發布 test results 以提供快速 feedback，並阻擋未達標的 change。
+4. 在 production-like environment 驗證 operability 與 recovery。
+5. 可使用 Amazon Q Developer 輔助產生 tests 和找出 vulnerabilities，但輸出仍須 review 與 pipeline validation。
 
 #### OPS05-BP03 Use configuration management systems
 
 以 declarative desired state、schema validation、policy、GitOps/IaC 與 audit 管理 configuration，並分離 secrets。避免 manual snowflakes 或多個 owners 寫同一設定；以 drift report、controlled promotion 與 reproducible rebuild 驗證。
 
+**Implementation guidance**
+
+1. 指定 configuration owners，並讓他們理解 compliance、governance 與 regulatory requirements。
+2. 盤點 deployment 影響的 application/environment configuration items 與 deliverables。
+3. 將 configuration 納入 version control、review、validation 與 promotion process，並分離 sensitive values。
+4. 使用 AWS Config 記錄 resource configuration history、relationships 與 conformance。
+5. 對 dynamic configuration 使用 AWS AppConfig 進行 validation、staged rollout、monitoring 與 rollback。
+
 #### OPS05-BP04 Use build and deployment management systems
 
 以 standardized pipelines、artifact repositories、provenance、gates、status 與 rollback 建立 repeatable delivery，並 promotion 同一 immutable artifact。避免 per-environment rebuild 或手動 copy；以 digest、pipeline record 和 deployment inventory 驗證。
+
+**Implementation guidance**
+
+1. 使用 version-control system 儲存 documents、source code 與 binary definitions。
+2. 使用 CodeBuild 或等效 builder 編譯、執行 unit tests 並產生 immutable artifacts。
+3. 使用 CodeDeploy 或等效 service 自動部署至 EC2、on-premises、Lambda、ECS 或其他 targets。
+4. 監控 deployment status、health、validation 與 rollback，保存 artifact-to-environment traceability。
 
 #### OPS05-BP05 Perform patch management
 
 維護 OS、runtime、container、library、appliance 與 managed-service version inventory，依 vulnerability/lifecycle 使用 test rings、windows 與 exception expiry。避免 emergency-only patching；以 patch SLA、coverage、rollback 和 unsupported assets 驗證。
 
+**Implementation guidance**
+
+1. 依 vulnerabilities、features、governance 與 vendor support 定義 patch policy、priority 和 schedule。
+2. 對 mutable systems 自動 patch；對 immutable systems 建立含正確 patch set 的新 image 後重新部署。
+3. 使用 EC2 Image Builder 建立 image pipeline，定義 schedule、dependencies、recipe、base image、components、registry 與 infrastructure settings。
+4. promotion 前測試 image，保留 previous known-good image 與 rollback path。
+5. 定期更新 recipes、components 和 base images，追蹤 coverage 與 exceptions。
+
 #### OPS05-BP06 Share design standards
 
 發布可版本化的 reference architectures、templates、golden paths、examples 與 exception process，涵蓋 architecture、security、observability 和 operations。避免 standards 只存在 slide；以 adoption、exceptions、design reviews 和 outcome metrics 驗證。
+
+**Implementation guidance**
+
+1. 指定 cross-functional team 負責建立和更新 design standards。
+2. 發布可搜尋的 standards、checklists、operating procedures、guidance、templates 與 examples。
+3. 將 standards 嵌入 reusable patterns 和 delivery workflows，並讓 teams 知道如何取得。
+4. 建立 additions、changes 與 exceptions 的 request mechanism。
+5. 依新 services、best practices、feedback 與 outcomes 定期 review 和更新。
 
 #### OPS05-BP07 Implement practices to improve code quality
 
 採用 coding standards、peer review、static analysis、tests、complexity/dependency controls 與 refactoring capacity。避免只追 coverage percentage；將 production findings 回饋開發，並以 defect escape、maintainability 和 incident trend 驗證。
 
+**Implementation guidance**
+
+1. 將 test-driven development、code review 與 pair programming 納入 CI/CD。
+2. 以 coding standards、automated tests、static analysis、security scanning 和 dependency checks 建立 merge gates。
+3. 可使用 Amazon Q Developer 輔助 tests、code generation、vulnerability/secret/IaC scanning 與 documentation，但須 human review。
+4. 可使用 CodeGuru Reviewer 等工具提供 code recommendations。
+5. 依 production defects、maintainability、review findings 與 incident trends 持續改善 practices。
+
 #### OPS05-BP08 Use multiple environments
 
 定義 dev/test/staging/production purposes、promotion rules、test data、isolation 與 parity，並以 IaC 建立 ephemeral environments。避免 shared mutable tests 或 secrets reuse；以 environment parity、cleanup 和 promotion trace 驗證。
+
+**Implementation guidance**
+
+1. 為 development、sandbox、test、staging 與 production 定義 purpose、owners、data 和 controls。
+2. 提供 controls 較少但仍具安全和成本 guardrails 的 sandbox，讓 developers 平行實驗。
+3. 越接近 production，逐步提高 approval、security、data 與 change controls。
+4. 使用 IaC 和 configuration management 重複建立 environments，維持 production 關鍵設定 parity。
+5. 自動管理 ephemeral environment lifecycle 和 cleanup。
 
 #### OPS05-BP09 Make frequent, small, reversible changes
 
 縮短 branches 與 batch size，使用 feature flags、backward-compatible schema、canary 和 automated rollback。避免 big-bang release、同時改太多 variables 或 irreversible migration；以 lead time、change failure rate、batch size 和 rollback time 驗證。
 
+**Implementation guidance**
+
+1. 將 change 分解為可獨立 test、deploy 與 observe 的小單位。
+2. 使用 backward-compatible API、schema 和 configuration transitions，避免 big-bang cutover。
+3. 使用 feature flags、branch by abstraction 或 incremental rollout，將 deployment 與 release 解耦。
+4. 每個 change 都具 clear rollback 或 safe fix-forward path。
+5. 以 change size、lead time、frequency、failure rate 和 recovery time 檢查成效。
+
 #### OPS05-BP10 Fully automate integration and deployment
 
 以 pipeline-as-code 自動 integration、tests、quality/security gates、immutable artifact promotion、progressive deployment、post-deploy checks 與 rollback。避免 copy/paste 和 bypassed gates；以 end-to-end audit、manual-step count 和 recovery drill 驗證。
+
+**Implementation guidance**
+
+1. 將 check-in、build、tests、artifact publication、deployment 與 post-deployment validation 串成一致 pipeline。
+2. 只 promotion 同一 immutable artifact，不在各 environment 重新 build。
+3. 以 automated policies 和 quality gates 阻擋不合格 change，僅在需要 business/risk decision 時保留 approval。
+4. 自動保存 provenance、test results、approvals、deployment status 與 environment inventory。
+5. pipeline failure 必須能安全 stop、retry 或 rollback，並向 owner 提供 actionable feedback。
 
 ### OPS06 - Mitigate deployment risks
 
@@ -599,15 +677,6 @@ flowchart LR
 
 Involve key stakeholders from business, development, and operations to decide where to focus on external customer needs. Teams work backward from customer outcomes, understand how operational practices support business outcomes, engage all relevant parties, and maintain mechanisms for capturing external customer needs.
 
-**Common anti-patterns**
-
-- Ending customer support outside core business hours without reviewing historical support requests or understanding customer impact.
-- Developing a feature without asking customers whether it is needed, what form it should take, or using an experiment to validate the need and delivery method.
-
-**Benefits**
-
-Understanding customer outcomes and required operational support helps prioritize work that delivers business value and makes satisfied customers more likely to remain customers.
-
 **Implementation guidance**
 
 1. **Understand business needs:** Build shared goals and understanding across business, development, and operations stakeholders.
@@ -620,16 +689,6 @@ Understanding customer outcomes and required operational support helps prioritiz
 
 Involve business, development, and operations stakeholders when deciding where to focus on internal customer needs. Use established priorities to direct improvements toward the greatest impact, such as skills, workload performance, cost, runbook automation, or monitoring, and update priorities when needs change.
 
-**Common anti-patterns**
-
-- Changing IP address allocations to simplify network management without consulting product teams or understanding the impact.
-- Introducing a development tool without confirming that internal customers need it or that it fits existing practices.
-- Implementing a monitoring system without asking internal customers about their monitoring and reporting needs.
-
-**Benefits**
-
-Evaluating internal customer needs prevents provider-only assumptions and informs how improvement work should be prioritized to deliver business value.
-
 **Implementation guidance**
 
 1. **Understand business needs:** Create shared goals and understanding across business, development, and operations stakeholders.
@@ -641,16 +700,6 @@ Evaluating internal customer needs prevents provider-only assumptions and inform
 **Purpose and desired outcome**
 
 Identify the policies, rules, and frameworks the organization uses to achieve business goals. Incorporate applicable governance requirements into the workload and maintain evidence that demonstrates conformance.
-
-**Common anti-patterns**
-
-- Discovering organization-wide governance requirements only during an architecture review.
-- Relying on manual checks or written claims without continuously detecting nonconforming resources.
-- Designing independently of centralized governance teams, causing technology or operating choices to conflict with policy.
-
-**Benefits**
-
-Including governance requirements early reduces rework, exceptions, and audit failures while keeping workload design and operations aligned with organizational goals.
 
 **Implementation guidance**
 
@@ -665,16 +714,6 @@ Including governance requirements early reduces rework, exceptions, and audit fa
 
 Incorporate applicable industry, regulatory, and internal compliance frameworks into the architecture design process. Team members understand the requirements and continuously validate the workload against them; using an AWS service does not automatically make the workload compliant.
 
-**Common anti-patterns**
-
-- Checking compliance only after the workload is complete, causing substantial architecture and data-handling rework.
-- Failing to teach the team which frameworks apply or to include their requirements in architecture and technology choices.
-- Collecting evidence manually only when an audit begins, without a repeatable validation and reporting process.
-
-**Benefits**
-
-Building compliance into design, delivery, and operations reduces regulatory and audit risk and shortens the time required for continuous validation and evidence generation.
-
 **Implementation guidance**
 
 1. Work with security and governance teams to identify the industry, regulatory, and internal frameworks the workload must follow and incorporate them into the workload. Services such as AWS Security Hub CSPM can help continuously assess the compliance posture of AWS resources.
@@ -687,16 +726,6 @@ Building compliance into design, delivery, and operations reduces regulatory and
 
 Continuously evaluate competition, business liabilities, operational risks, information security threats, and other threats to the business. Understand known threats and patch status, apply appropriate mitigations, and communicate the actions and their context.
 
-**Common anti-patterns**
-
-- Using an outdated software library without monitoring security updates that may affect the workload.
-- Updating risk information only during an annual review instead of responding to new vulnerabilities, service changes, or business changes.
-- Leaving known threats without an owner, mitigation, or residual-risk decision.
-
-**Benefits**
-
-Considering threat probability, potential harm, recovery cost, and prevention cost helps teams prioritize appropriate protection before threats become incidents.
-
 **Implementation guidance**
 
 1. **Evaluate the threat landscape:** Regularly assess competition, business risks and liabilities, operational risks, and information security threats, and include their impact in prioritization. Review sources such as AWS security bulletins and AWS Trusted Advisor.
@@ -707,16 +736,6 @@ Considering threat probability, potential harm, recovery cost, and prevention co
 **Purpose and desired outcome**
 
 Have an appropriate governing body define how benefits and risks are measured, then prioritize decisions using accurate information and cost-benefit analysis. Balance centralized control with decentralized authority and understand how each trade-off affects strategy and desired business outcomes.
-
-**Common anti-patterns**
-
-- Requiring every decision, including small reversible ones, to pass through the same burdensome central process.
-- Optimizing only for time-to-market without quantifying reliability, security, performance, or cost risk.
-- Accepting risk without a shared decision framework, an unblock owner, or a traceable rationale.
-
-**Benefits**
-
-A consistent, tiered decision framework accelerates reversible choices, centralizes irreversible ones, and makes the relationship between benefits, risks, and organizational priorities transparent.
 
 **Implementation guidance**
 
@@ -954,41 +973,119 @@ Propagate trace and correlation context across services, queues, and data stores
 
 Store applications, infrastructure, configuration, policy, and procedures in protected repositories with review and immutable history. Avoid console-only changes or unversioned runbooks. Verify commit-to-deployment traceability, approval, and drift detection.
 
+**Implementation guidance**
+
+1. Inventory source, IaC, configuration, documents, runbooks, and binary definitions that require version control.
+2. Use protected repositories, review policy, and traceable history.
+3. Integrate configuration-management versioning into operational procedures.
+4. Trace deployments to versions, detect unapproved change, and restore a known-good version.
+
 #### OPS05-BP02 Test and validate changes
 
 Before promotion, validate function and operability with unit, integration, contract, security, performance, resilience, and policy tests. Avoid happy-path-only testing or equating deployment with business success. Retain results, approvals, and runtime verification.
+
+**Implementation guidance**
+
+1. Establish an organization testing standard for code, infrastructure, and configuration.
+2. Automate unit, integration, security, regression, performance, policy, boundary, and failure tests in CI.
+3. Publish results for fast feedback and block changes that do not pass.
+4. Validate operability and recovery in a production-like environment.
+5. Amazon Q Developer can assist test generation and vulnerability detection, but outputs still require review and pipeline validation.
 
 #### OPS05-BP03 Use configuration management systems
 
 Manage configuration as declarative desired state with schema validation, policy, GitOps/IaC, audit, and separate secrets. Avoid manual snowflakes or multiple writers. Verify drift reports, controlled promotion, and reproducible rebuilds.
 
+**Implementation guidance**
+
+1. Assign configuration owners and make them aware of compliance, governance, and regulatory needs.
+2. Inventory application and environment configuration affected by deployment.
+3. Version, review, validate, and promote configuration while separating sensitive values.
+4. Use AWS Config for history, relationships, and conformance.
+5. Use AppConfig to validate, stage, monitor, and roll back dynamic configuration.
+
 #### OPS05-BP04 Use build and deployment management systems
 
 Use standardized pipelines, artifact repositories, provenance, gates, status, and rollback for repeatable delivery, promoting the same immutable artifact. Avoid per-environment rebuilds or manual copies. Verify digests, pipeline records, and deployment inventory.
+
+**Implementation guidance**
+
+1. Store documents, source code, and binary definitions in version control.
+2. Use CodeBuild or an equivalent builder to compile, test, and create immutable artifacts.
+3. Use CodeDeploy or an equivalent service for automated deployment to supported targets.
+4. Monitor status, health, validation, and rollback and retain artifact-to-environment traceability.
 
 #### OPS05-BP05 Perform patch management
 
 Inventory OS, runtime, container, library, appliance, and managed-service versions and use risk-based test rings, windows, and expiring exceptions. Avoid emergency-only patching. Verify patch SLAs, coverage, rollback, and unsupported assets.
 
+**Implementation guidance**
+
+1. Define patch policy, priority, and schedule from vulnerabilities, features, governance, and vendor support.
+2. Orchestrate mutable-system patching; rebuild immutable systems from a patched image.
+3. Use EC2 Image Builder pipelines with schedules, recipes, base images, components, registries, and infrastructure settings.
+4. Test before promotion and retain a known-good image and rollback path.
+5. Maintain recipe hygiene and track coverage and exceptions.
+
 #### OPS05-BP06 Share design standards
 
 Publish versioned reference architectures, templates, golden paths, examples, and exception processes covering architecture, security, observability, and operations. Avoid slide-only standards. Verify adoption, exceptions, design reviews, and outcome metrics.
+
+**Implementation guidance**
+
+1. Assign a cross-functional team to own design standards.
+2. Publish searchable standards, checklists, procedures, guidance, templates, and examples.
+3. Embed standards in reusable patterns and delivery workflows and make teams aware of them.
+4. Provide a request route for additions, changes, and exceptions.
+5. Review standards against new services, best practices, feedback, and outcomes.
 
 #### OPS05-BP07 Implement practices to improve code quality
 
 Use coding standards, peer review, static analysis, tests, complexity/dependency controls, and refactoring capacity. Avoid coverage-only goals. Feed production findings into development and verify defect escape, maintainability, and incident trends.
 
+**Implementation guidance**
+
+1. Incorporate test-driven development, code review, and pair programming into CI/CD.
+2. Use standards, automated tests, static analysis, security scanning, and dependency checks as merge gates.
+3. Amazon Q Developer can assist testing, code generation, scanning, and documentation, subject to human review.
+4. CodeGuru Reviewer or equivalent tools can provide recommendations.
+5. Improve practices using production defects, maintainability, review findings, and incident trends.
+
 #### OPS05-BP08 Use multiple environments
 
 Define purposes, promotion rules, test data, isolation, and parity for dev/test/staging/production, using IaC for ephemeral environments. Avoid shared mutable tests or secret reuse. Verify parity, cleanup, and promotion traceability.
+
+**Implementation guidance**
+
+1. Define purpose, owners, data, and controls for development, sandbox, test, staging, and production.
+2. Provide guarded sandboxes for parallel experimentation.
+3. Increase approval, security, data, and change controls closer to production.
+4. Use IaC and configuration management for repeatability and production parity.
+5. Automate ephemeral environment lifecycle and cleanup.
 
 #### OPS05-BP09 Make frequent, small, reversible changes
 
 Shorten branches and batch size and use feature flags, backward-compatible schemas, canaries, and automated rollback. Avoid big-bang releases, too many simultaneous variables, or irreversible migrations. Verify lead time, failure rate, batch size, and rollback time.
 
+**Implementation guidance**
+
+1. Decompose changes into independently testable, deployable, and observable units.
+2. Use backward-compatible API, schema, and configuration transitions.
+3. Decouple deployment from release with feature flags, branch by abstraction, or incremental rollout.
+4. Give every change a clear rollback or safe fix-forward path.
+5. Review change size, lead time, frequency, failure rate, and recovery time.
+
 #### OPS05-BP10 Fully automate integration and deployment
 
 Use pipeline-as-code for integration, tests, quality/security gates, immutable promotion, progressive deployment, post-deploy checks, and rollback. Avoid copy/paste and bypassed gates. Verify end-to-end audit, manual-step count, and recovery drills.
+
+**Implementation guidance**
+
+1. Automate check-in through build, tests, publication, deployment, and post-deployment validation.
+2. Promote the same immutable artifact across environments.
+3. Use automated policy and quality gates, retaining approval only for real business or risk decisions.
+4. Preserve provenance, results, approvals, status, and environment inventory.
+5. Make failures stop, retry, or roll back safely and provide actionable feedback.
 
 ### OPS06 - Mitigate deployment risks
 
