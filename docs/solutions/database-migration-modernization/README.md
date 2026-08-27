@@ -1,6 +1,6 @@
 # Database Migration and Modernization
 
-## Executive summary
+## Abstract
 
 This solution provides an evidence-gated path for migrating a relational
 database to Amazon Aurora PostgreSQL-Compatible Edition or Amazon RDS for
@@ -13,7 +13,7 @@ cutover, rollback, and operational handoff. Current portfolio artifacts are a
 consulting simulation and implementation blueprint. They do not contain a
 completed AWS DMS execution, production cutover, or measured migration result.
 
-## Evidence status
+## Evidence standard
 
 | Area | Status | Evidence or limit |
 |---|---|---|
@@ -69,7 +69,7 @@ and signed evidence.
 | Rehearse with stop criteria | Make duration and rollback credible | Requires production-like data and coordination |
 | Preserve source through rollback window | Keep recovery possible | Extends dual-operation cost and controls |
 
-## Detailed design
+## Phases
 
 1. [Problem and success criteria](1-problem-and-success-criteria.md)
 2. [Architecture and decisions](2-architecture-and-decisions.md)

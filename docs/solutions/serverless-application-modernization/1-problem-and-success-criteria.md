@@ -1,6 +1,13 @@
 # Problem and Success Criteria
 
-## Customer problem
+## Abstract
+
+This phase states the coupling problem in a synchronous report-processing
+path, where upload latency depends on processing capacity and downstream
+availability, and bursts produce timeouts or manual recovery. It bounds the
+scope and defines what an event-driven replacement must demonstrate.
+
+## Problem statement
 
 A synchronous report-processing path couples upload latency to processing
 capacity and downstream availability. Bursts create timeouts or manual recovery,
@@ -16,7 +23,7 @@ failure isolation, replay, telemetry, least-privilege access, and a reversible
 cutover. Changes to the report's business rules or downstream data model require
 separate approval.
 
-## Acceptance criteria
+## Success criteria
 
 | Criterion | Required test |
 |---|---|

@@ -1,5 +1,13 @@
 # Operations and Adoption
 
+## Abstract
+
+This phase puts the platform into service as an investigation assistant rather
+than an autonomous incident responder. It defines the operational signals,
+service objectives, failure modes, back-pressure and idempotency behavior,
+model and cost governance, and how incidents affecting the AIOps platform
+itself are handled.
+
 ## Operating model
 
 This platform should enter service as an investigation assistant, not an

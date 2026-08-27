@@ -1,5 +1,13 @@
 # Implementation
 
+## Abstract
+
+This phase sets out the delivery increments from assessment through
+conversion, migration, validation, and cutover, using isolated migration
+connectivity and reviewed Infrastructure as Code. It covers the security and
+connectivity controls and the change discipline that keeps the source
+authoritative until the go decision.
+
 ## Delivery phases
 
 1. **Assess:** inventory schema, data, dependencies, performance, operations,
@@ -9,8 +17,8 @@
    Code.
 3. **Convert:** run schema assessment, remediate action items, deploy converted
    schema, and test application compatibility.
-4. **Migrate:** execute full load, begin CDC, monitor errors and lag, and resolve
-   validation differences.
+4. **Migrate:** execute full load, begin CDC, monitor errors and lag, and
+   resolve validation differences.
 5. **Rehearse:** perform production-like migration timing, reconciliation,
    cutover, rollback, and communication exercises.
 6. **Cut over:** enforce go/no-go criteria, stop or control writes, drain CDC,

@@ -1,6 +1,14 @@
 # Recovery Requirements and Failure Model
 
-## Business problem
+## Abstract
+
+This phase separates the failure classes an Amazon EKS platform can suffer,
+because a deleted tenant, a corrupted schema, a failed volume, and a removed
+environment each need a different recovery unit and sequence. It records
+workload and data classes, recovery objectives, production and non-production
+policies, the failure model, and the criteria a recovery capability must meet.
+
+## Problem statement
 
 An Amazon EKS platform can lose service without losing the cluster. A user can
 delete one tenant, a migration can corrupt a schema, a persistent volume can
@@ -107,7 +115,7 @@ Recovery also depends on services that are easy to overlook:
 Each dependency must either be reconstructed from source or explicitly included
 in the recovery plan.
 
-## Acceptance criteria
+## Success criteria
 
 Recovery readiness requires all of the following:
 

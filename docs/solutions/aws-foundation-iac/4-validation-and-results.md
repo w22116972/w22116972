@@ -1,5 +1,11 @@
 # Validation and Results
 
+## Abstract
+
+This phase records what the reviewed implementation actually contains and what
+evidence any change must produce before it is applied. It states plainly which
+claims are withheld for lack of retained measurement.
+
 ## Implemented evidence
 
 The reviewed implementation contains reusable VPC, EKS, IAM, ACM, Route 53,

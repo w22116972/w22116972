@@ -1,5 +1,12 @@
 # Three-Tier Backup Implementation
 
+## Abstract
+
+This document is a sanitized implementation record for the three protection
+layers. It distinguishes the production reference design from the smaller non-
+production deployment used to exercise it, so that a mechanism which ran is
+never mistaken for a recovery that was proven.
+
 ## Implementation status
 
 This chapter is a sanitized implementation record. It distinguishes the
@@ -129,10 +136,10 @@ Incomplete multipart uploads expire after seven days.
 | Redis | No logical backup for reconstructible cache | Rebuild from source; do not promote cache to business data accidentally | Not applicable |
 
 Backup jobs first verified that each engine could produce an artifact. Examples
-included a multi-gigabyte PostgreSQL dump completed in minutes, a MongoDB archive,
-small LDAP and Oracle exports, and hundreds of Neo4j database artifacts during a
-measured topology-aware run. These are backup-generation results only; none is
-used as evidence of a successful logical restore.
+included a multi-gigabyte PostgreSQL dump completed in minutes, a MongoDB
+archive, small LDAP and Oracle exports, and hundreds of Neo4j database artifacts
+during a measured topology-aware run. These are backup-generation results only;
+none is used as evidence of a successful logical restore.
 
 ### Pod and scheduling controls
 

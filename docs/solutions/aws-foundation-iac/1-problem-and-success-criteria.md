@@ -1,6 +1,14 @@
 # Problem and Success Criteria
 
-## Customer problem
+## Abstract
+
+This phase states why an existing, business-serving AWS environment was
+brought under Infrastructure as Code by import rather than rebuild, and what
+that adoption had to achieve. It bounds the work to network, EKS, identity,
+DNS, certificate, and edge resources, and defines the criteria that mark the
+adoption complete.
+
+## Problem statement
 
 An existing AWS environment contained business-serving network, Amazon EKS,
 identity, DNS, certificate, and edge resources. Rebuilding them to introduce

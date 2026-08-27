@@ -1,5 +1,12 @@
 # Rollout Validation and Results
 
+## Abstract
+
+This phase validates the modernization from source to effective state,
+combining repository inspection with a read-only live check on a stated date.
+It records the rollout sequence, the failures that changed the approach, the
+measured outcomes, and the measurement contract behind them.
+
 ## Evidence standard
 
 The modernization was validated from source to effective state. Repository
@@ -11,7 +18,7 @@ Private infrastructure identifiers, URLs, revisions, logs, and credentials are
 not reproduced here. Counts are aggregate evidence, and the snapshot is dated
 because platform state can change after publication.
 
-## Verification performed
+## Acceptance evidence
 
 | Layer | Check | Result | Limitation |
 |---|---|---|---|
@@ -122,8 +129,8 @@ ownership had to be redesigned.
 Future claims use consistent timestamps:
 
 - **lead time:** approved merge to Argo `Healthy` at the intended revision;
-- **rollback time:** incident decision to restored effective behavior, not merely
-  completion of a Git revert;
+- **rollback time:** incident decision to restored effective behavior, not
+  merely completion of a Git revert;
 - **deployment failure:** a promoted change that fails sync, rollout, or its
   effective-state checks and requires intervention; and
 - **operator effort:** active human minutes spent from alert to verified

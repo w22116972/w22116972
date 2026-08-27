@@ -1,5 +1,13 @@
 # Evaluation and Results
 
+## Abstract
+
+This phase defines the four evidence levels the solution uses and applies them
+to what was actually measured: a deterministic incident suite, historical load
+evidence, and a root-cause quality rubric. It is explicit about which failure,
+soak, and regression evidence is still missing, so that no capability claim
+outruns its proof.
+
 ## Evidence standard
 
 This solution uses four evidence levels:
@@ -15,7 +23,7 @@ The current snapshot reaches source and test verification. It includes limited
 historical environment evidence for webhook latency, but it does not establish a
 production outcome or live Bedrock RCA quality.
 
-## Verification performed
+## Acceptance evidence
 
 The following checks were run against the reference implementation on
 2026-08-19:

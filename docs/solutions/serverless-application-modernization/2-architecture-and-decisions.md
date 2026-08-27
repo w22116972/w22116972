@@ -1,5 +1,13 @@
 # Architecture and Decisions
 
+## Abstract
+
+This phase defines the event contract carrying bucket, immutable object
+version, business document type, schema version, creation time, and
+correlation identifier, and derives the idempotency key from object version
+plus business identity. It records processing behavior, capacity and failure
+decisions, and the alternatives considered.
+
 ## Event contract
 
 The event identifies the bucket, immutable object version, business document

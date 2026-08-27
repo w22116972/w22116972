@@ -1,6 +1,6 @@
 # Optimization Implementation
 
-## Delivery principle
+## Abstract
 
 Every optimization moves through the same path:
 

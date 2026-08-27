@@ -1,5 +1,13 @@
 # Operating Model and Architecture
 
+## Abstract
+
+This phase applies one rule, a single authoritative reconciler per resource,
+and derives the target architecture from it. It covers the root, project,
+Application, and ApplicationSet structure, repository and naming design, the
+pull-request-to-runtime flow, secret and privilege boundaries, break-glass
+changes, and the alternatives considered.
+
 ## Ownership model
 
 The central design rule is one authoritative reconciler per resource. Ownership
@@ -179,7 +187,7 @@ reverts it. Automation is re-enabled only after Argo diff is empty or fully
 explained. A raw cluster edit without pausing self-heal is not a repair—Argo may
 reverse it during the incident.
 
-## Architecture decisions
+## Key decisions
 
 | Decision | Reason | Tradeoff |
 |---|---|---|

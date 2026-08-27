@@ -1,5 +1,11 @@
 # Operations and Handoff
 
+## Abstract
+
+This phase defines who approves module, security, and workload-affecting
+changes once the foundation is under code, the routine controls that keep the
+pipeline the normal writer, and the package handed to the customer at the end.
+
 ## Operating model
 
 - Platform owners approve module and root changes.

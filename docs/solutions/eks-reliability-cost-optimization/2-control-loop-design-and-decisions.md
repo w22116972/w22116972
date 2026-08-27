@@ -1,5 +1,13 @@
 # Control-Loop Design and Decisions
 
+## Abstract
+
+This phase explains why Pod requests, horizontal autoscaling, scheduling, and
+node provisioning form one coupled control system that cannot be tuned a
+setting at a time. It records the request-coupling effect on autoscaling, the
+Goldilocks and VPA decision, quality-of-service consequences, node
+consolidation behavior, and the matrix used to choose between them.
+
 ## Why the loops must be designed together
 
 EKS cost is not controlled by one setting. Pod requests influence both HPA

@@ -1,5 +1,13 @@
 # Platform Implementation
 
+## Abstract
+
+This phase records the reference implementation as inspected and tested on a
+stated date, covering the alert and issue lifecycle, context assembly, API
+surface, Kubernetes resource model, remediation, and storage. It separates
+executable behavior from configuration, examples, and roadmap material,
+because those had diverged in the original project documentation.
+
 ## Source-verified snapshot
 
 This document describes the reference implementation as inspected and tested on
@@ -51,8 +59,8 @@ or abstract rather than executed from this path.
 
 ## Operator-started RCA
 
-`POST /issues/{id}/reanalyze` changes the Issue to `analysis_running`, broadcasts
-the change, and starts the analysis asynchronously.
+`POST /issues/{id}/reanalyze` changes the Issue to `analysis_running`,
+broadcasts the change, and starts the analysis asynchronously.
 
 The worker then:
 

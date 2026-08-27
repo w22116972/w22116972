@@ -1,5 +1,13 @@
 # Adoption Implementation
 
+## Abstract
+
+This phase covers adoption of existing Kubernetes objects, which Argo CD
+performs by matching identity rather than through an import command. The first
+objective is ownership transfer with no unintended runtime change, so the
+evidence ladder, immutable-field behavior, and stateful examples are treated
+as adoption risks rather than opportunities to upgrade or redesign.
+
 ## Adoption principle
 
 Argo CD has no Terraform-style import command. It adopts an existing Kubernetes

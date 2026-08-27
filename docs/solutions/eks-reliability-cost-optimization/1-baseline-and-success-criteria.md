@@ -1,12 +1,22 @@
 # Baseline and Success Criteria
 
-## Scope and evidence standard
+## Abstract
+
+This phase establishes the sanitized historical baseline for a shared Amazon
+EKS cluster across a stated evidence window, classifies that evidence before
+any claim is made, and states the reliability and cost problem it revealed. It
+is a bounded engineering snapshot, not a statement about the cluster's current
+state.
+
+## Scope
 
 This case study uses a sanitized historical assessment of `cluster-a`, a shared
 Amazon EKS cluster that hosted development, staging, and demonstration
 workloads. The retained evidence spans 2026-08-08 through 2026-08-19. It is a
 bounded engineering snapshot, not a statement about the cluster's current
 state.
+
+## Evidence standard
 
 Evidence is classified before a claim is made:
 
@@ -24,7 +34,7 @@ six-replica workload also reached rollout-verified evidence for its CPU-request
 change. Its normal deployment chain was not completed in the retained evidence.
 Fleet-wide cost savings and Karpenter outcomes remain unverified.
 
-## Customer context
+## Problem statement
 
 `cluster-a` consolidated three lifecycle environments and several team-owned
 namespaces on one managed node group. The workload mix included stateless APIs,

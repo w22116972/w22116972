@@ -1,6 +1,6 @@
 # Amazon EKS Reliability and Cost Optimization
 
-## Executive summary
+## Abstract
 
 This case study shows how to reduce Amazon EKS scheduler demand without turning
 cost optimization into a reliability gamble. A shared cluster assessment joined
@@ -24,20 +24,6 @@ was rejected because it would have moved the approximate scale threshold from
 No fleet-wide infrastructure-cost percentage is claimed. Karpenter, Spot
 capacity, broader instance choice, and node-disk reduction were assessed but
 not implemented, so their modeled savings are excluded.
-
-## Outcome at a glance
-
-| Area | Defensible result |
-|---|---|
-| Scale assessed | 317 running pods across three lifecycle environments in one shared EKS cluster |
-| Baseline | 86.66 vCPU / 297.84 GiB requested versus a 4.53 vCPU / 143.64 GiB point-in-time usage snapshot |
-| Right-sizing control | Goldilocks/VPA recommendation-only with `updateMode: Off`; no automatic eviction or request mutation |
-| Selected pilot | CPU request reduced 90% for one six-replica workload, from `3.0` to `0.3` aggregate vCPU |
-| Reliability boundary | Memory request and limits retained; ordered rollout finished 6/6 Ready |
-| Unsafe change avoided | Direct adoption of a `15m` VPA target rejected because of HPA threshold and burst risk |
-| Delivery lesson | A merged Helm value was not called deployed until deploy job, release, rollout, and runtime state were separated |
-| Node optimization | Karpenter and Spot design completed as an assessment; no realized result claimed |
-| Financial outcome | Fleet-wide cost and unit-cost comparison not retained; no percentage claimed |
 
 ## Architecture
 
@@ -193,7 +179,7 @@ The platform-engineering contribution covered:
 The strongest consulting decision was not the smallest resource value. It was
 establishing which changes had enough evidence to ship and which should wait.
 
-## Detailed implementation
+## Phases
 
 1. [Baseline and success criteria](1-baseline-and-success-criteria.md)
 2. [Control-loop design and decisions](2-control-loop-design-and-decisions.md)

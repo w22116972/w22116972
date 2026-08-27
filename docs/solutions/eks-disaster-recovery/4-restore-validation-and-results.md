@@ -1,5 +1,12 @@
 # Restore Validation and Results
 
+## Abstract
+
+This phase applies six recovery evidence gates and states exactly which one
+each result reached. A timed EBS restore is reported as that and nothing more,
+while data readback, logical restore, and full platform reconstruction remain
+recorded as outstanding drills rather than capabilities.
+
 ## Evidence standard
 
 Recovery evidence progresses through six gates. A result at one gate must not

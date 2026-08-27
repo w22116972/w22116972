@@ -1,5 +1,14 @@
 # Recovery Architecture and Decisions
 
+## Abstract
+
+This phase presents the three-layer recovery design and the decisions that
+produced it, each recorded against the alternative it displaced: EBS selection
+rather than EKS selection, tag conditions rather than tag lists, deny-list
+rather than opt-in protection, logical backups alongside snapshots, AWS-
+managed retention, and separated writer and retention permissions. It also
+records the security decisions and the risks deliberately left open.
+
 ## Three-layer design
 
 ```mermaid

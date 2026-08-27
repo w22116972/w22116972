@@ -1,6 +1,14 @@
 # Problem and Success Criteria
 
-## Customer problem
+## Abstract
+
+This phase states how a legacy relational database constrains application
+modernization, and why moving data alone does not resolve it. It records the
+discovery questions that must be answered about schema objects, SQL behavior,
+integrations, recovery, security, and operating ownership, then defines what a
+completed migration must demonstrate.
+
+## Problem statement
 
 A legacy relational database can constrain application modernization through
 specialized operations, aging infrastructure, licensing, scaling limits, or

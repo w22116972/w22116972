@@ -1,5 +1,12 @@
 # Architecture and Decisions
 
+## Abstract
+
+This phase defines the ownership layers between customer governance,
+Terraform, and AWS-managed services, and derives the state and module
+structure from them. It records the network decisions and the extension path
+for resources not yet represented in code.
+
 ## Layered ownership
 
 | Layer | Owner | Boundary |

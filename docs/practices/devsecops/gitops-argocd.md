@@ -29,7 +29,12 @@ Git webhook / polling -> Argo CD -> render -> diff -> sync -> Kubernetes
 
 ## 為什麼偏好 GitOps-driven CD
 
-| 面向 | Pipeline-driven deployment | GitOps-driven deployment |
+Deploy-trigger-based CD 在 commit 或 pipeline event 後執行一次部署，完成後就結束；
+Argo CD GitOps 則持續確認叢集是否仍符合經 review 的 Git desired state。這個
+「一次 apply」與「持續 reconcile」的差異，是 GitOps 對長期執行 Kubernetes
+workload 的主要價值。
+
+| 面向 | Deploy-trigger-based deployment | GitOps-driven deployment |
 | --- | --- | --- |
 | 執行模型 | CI job 執行一次 `helm upgrade` 或 `kubectl apply` 後結束 | Controller 持續比較 Git 與 live state |
 | Drift | 除非另做稽核，手動變更可能長期存在 | 顯示 `OutOfSync`，可選擇自動 self-heal |
@@ -37,6 +42,10 @@ Git webhook / polling -> Argo CD -> render -> diff -> sync -> Kubernetes
 | 權限 | CI runner 通常需要叢集寫入權限 | CI 只需更新 Git；叢集憑證留在 CD control plane |
 | 回復 | 重跑歷史 job 與參數，容易重建出不同 artifact | Revert Git commit，再由 controller 收斂 |
 | 狀態可見性 | Job 成功不代表後續狀態仍正確 | 持續呈現 sync status、operation status 與 health |
+
+因此 GitOps 將「發布成功」從單一 job 的 point-in-time 結果，提升為可持續驗證的
+source → desired state → live state → health 證據鏈；`Synced` 仍需搭配 rollout、
+traffic 與 application health 驗證。
 
 GitOps 並非在所有情況都比較好。一次性維運動作、資料庫內部 migration、外部
 SaaS API 呼叫或 incident break-glass 操作仍可能需要 imperative workflow。
@@ -297,7 +306,13 @@ Git webhook / polling -> Argo CD -> render -> diff -> sync -> Kubernetes
 
 ## Why prefer GitOps-driven CD
 
-| Concern | Pipeline-driven deployment | GitOps-driven deployment |
+Deploy-trigger-based CD applies once after a commit or pipeline event and then
+exits. Argo CD GitOps continuously verifies that the cluster still matches the
+reviewed desired state in Git. This difference between a one-time apply and
+continuous reconciliation is GitOps' main value for long-running Kubernetes
+workloads.
+
+| Concern | Deploy-trigger-based deployment | GitOps-driven deployment |
 | --- | --- | --- |
 | Execution model | A CI job runs `helm upgrade` or `kubectl apply` once and exits | A controller continuously compares Git with live state |
 | Drift | Manual changes can persist unless a separate audit detects them | Drift is reported as `OutOfSync` and can optionally be self-healed |
@@ -305,6 +320,10 @@ Git webhook / polling -> Argo CD -> render -> diff -> sync -> Kubernetes
 | Credentials | The CI runner usually needs cluster write access | CI only updates Git; cluster credentials remain in the CD control plane |
 | Recovery | A historical job and its parameters must be reconstructed | Revert a Git commit and let the controller converge |
 | Visibility | Job success says little about later state | Sync, operation, and health status remain visible continuously |
+
+GitOps therefore turns a point-in-time deployment result into a continuously
+verifiable evidence chain: source → desired state → live state → health.
+`Synced` still requires rollout, traffic, and application-health validation.
 
 GitOps is not better for every operation. One-time administrative actions,
 in-database migrations, calls to external SaaS APIs, and incident break-glass

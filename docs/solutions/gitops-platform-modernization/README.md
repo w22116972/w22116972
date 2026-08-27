@@ -1,6 +1,6 @@
 # GitOps Platform Modernization with Argo CD
 
-## Executive summary
+## Abstract
 
 This case study modernizes an existing Amazon EKS platform from overlapping
 Terraform, Helm, CI, `kubectl`, and manual ownership into a controlled Argo CD
@@ -20,21 +20,6 @@ auxiliary workload could not pull its pinned upstream image. Twenty-five
 Applications reconcile automatically. Argo self-management and five
 graph-database objects remain manual because their failure and sequencing risks
 justify an explicit operator gate.
-
-## Outcome at a glance
-
-| Area | Verified result |
-|---|---|
-| Ownership | Explicit Terraform, Argo, controller, secret, and application-team boundaries |
-| Control plane | Root app-of-apps, 12 AppProjects, 31 Applications, and one environment ApplicationSet |
-| Convergence | 31/31 Applications `Synced` at the checked snapshot |
-| Health | 30/31 `Healthy`; one documented image-pull exception |
-| Automation | 25/31 automated; six high-risk Applications deliberately manual |
-| Environment scale | Five environment Applications generated from one overlay convention |
-| Stateless adoption | Existing controller adopted without replacing pods, identity, webhooks, or cloud load balancers |
-| Stateful adoption | Four database servers plus a shared Service adopted; servers remain one-at-a-time manual sync |
-| Writer retirement | Argo became the sole writer for gateway manifests; CI retained read-only validation and verification |
-| Claims withheld | No unsupported lead-time, rollback-time, incident-reduction, zero-drift, or full-adoption claim |
 
 ## Architecture
 
@@ -125,7 +110,7 @@ were not comparable, so the case study defines future measurement contracts
 instead of claiming a reduction. Full product deployment migration and an
 end-to-end cluster-plus-data recovery exercise remain separate gates.
 
-## Detailed design
+## Phases
 
 1. [Current state and success criteria](1-current-state-and-success-criteria.md)
 2. [Operating model and architecture](2-operating-model-and-architecture.md)

@@ -1,5 +1,13 @@
 # Continuous Optimization
 
+## Abstract
+
+This phase treats cost optimization as a recurring platform capability rather
+than a one-time right-sizing campaign. It defines the dashboards, alerts,
+budgets, exception workflow, and drift prevention that keep every
+recommendation attached to an owner, an evidence window, a reliability gate,
+and an expiry date.
+
 ## Operating model
 
 Cost optimization is a recurring platform capability, not a one-time

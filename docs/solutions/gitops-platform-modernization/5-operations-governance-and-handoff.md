@@ -1,5 +1,13 @@
 # Operations, Governance, and Handoff
 
+## Abstract
+
+This phase defines the operating model once the normal change interface
+becomes a reviewed desired-state change rather than a cluster command. It
+covers drift response, break-glass, promotion and rollback governance,
+monitoring, reconstruction, onboarding, and the acceptance test for
+independent operation.
+
 ## Operating model
 
 GitOps changes the normal operational interface from a cluster command to a

@@ -1,18 +1,27 @@
 # Architecture and Decisions
 
+## Abstract
+
+This phase separates the schema path from the data path: assessment identifies
+what converts automatically and what needs redesign, while AWS DMS performs a
+full load followed by change data capture with the source authoritative
+throughout. It records target selection, the validation layers, and the
+rollback boundary.
+
 ## Migration architecture
 
 The migration uses separate paths for schema and data. Schema assessment finds
 objects that convert automatically and action items that need redesign. AWS DMS
-then performs a full load followed by CDC while the source remains authoritative.
-The application moves only after validation and an explicit go/no-go decision.
+then performs a full load followed by CDC while the source remains
+authoritative. The application moves only after validation and an explicit
+go/no-go decision.
 
 ## Target selection
 
 Evaluate Aurora PostgreSQL and RDS for PostgreSQL against compatibility,
 availability, scaling, performance, operational complexity, recovery,
-extensions, and cost. A heterogeneous Oracle-to-PostgreSQL example can guide
-the process, but it is not evidence that every source should use the same target.
+extensions, and cost. A heterogeneous Oracle-to-PostgreSQL example can guide the
+process, but it is not evidence that every source should use the same target.
 
 ## Validation layers
 
@@ -25,7 +34,7 @@ the process, but it is not evidence that every source should use the same target
 AWS DMS validation consumes resources and has limitations; it supplements rather
 than replaces business reconciliation.
 
-## Rollback boundary
+## Rollback
 
 Before cutover, the source remains authoritative. During cutover, writes are
 paused or tightly controlled, final CDC lag reaches the approved threshold, and

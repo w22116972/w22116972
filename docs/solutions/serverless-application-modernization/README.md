@@ -1,6 +1,6 @@
 # Serverless Application Modernization
 
-## Executive summary
+## Abstract
 
 This solution replaces a synchronous report-processing dependency with an
 event-driven AWS design: objects arrive in Amazon S3, events are buffered by
@@ -14,7 +14,7 @@ Lambda-based reconciliation component elsewhere in the platform estate and by
 an implementation-ready migration lab. It is not presented as a completed
 end-to-end customer modernization.
 
-## Evidence status
+## Evidence standard
 
 | Area | Status | Evidence or limit |
 |---|---|---|
@@ -68,7 +68,7 @@ These are acceptance targets, not claimed measured outcomes.
 | Immutable source object/version | Make replay and audit deterministic | Requires lifecycle and storage controls |
 | Separate deployment and release gates | Make cutover reversible | Temporary parallel operation adds complexity |
 
-## Detailed design
+## Phases
 
 1. [Problem and success criteria](1-problem-and-success-criteria.md)
 2. [Architecture and decisions](2-architecture-and-decisions.md)

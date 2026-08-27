@@ -1,6 +1,14 @@
 # Problem and Success Criteria
 
-## Customer problem
+## Abstract
+
+This phase states the incident-diagnosis problem the platform addresses, the
+operator workflow it must fit inside, and the criteria by which it is judged.
+It fixes the responsibility boundary between the agent and the human before
+any architecture is chosen, then defines the measurement contract and
+acceptance gates that every later phase must satisfy.
+
+## Problem statement
 
 During an incident, an operator often has to correlate an alert with Kubernetes
 state, rollout history, metrics, logs, traces, and a runbook. The information

@@ -1,5 +1,10 @@
 # Operations and Handoff
 
+## Abstract
+
+This phase defines the operational signals an operator watches, the runbooks
+that respond to them, and what must be true before handoff is accepted.
+
 ## Operational signals
 
 Operators monitor accepted object count, successful business outcomes, Lambda
@@ -17,7 +22,7 @@ owner, impact, dashboard, runbook, and escalation path.
 - roll back the Lambda alias or producer release;
 - reconcile source objects and business outcomes after a partial outage.
 
-## Handoff gate
+## Exit criteria
 
 The customer receives architecture decisions, IaC and application ownership,
 event contracts, dashboards, alerts, runbooks, access paths, cost controls,

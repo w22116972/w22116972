@@ -1,5 +1,12 @@
 # Validation and Results
 
+## Abstract
+
+This phase records what the retained evidence supports, workload by workload
+and at cluster level, and the gates each change had to pass. It specifies the
+cost calculation and the confounders a future percentage claim would have to
+control, and documents the recommendation that was rejected.
+
 ## What was validated
 
 The retained evidence supports three conclusions:
@@ -124,8 +131,8 @@ persistent-volume attachment, and consolidation.
 
 ## Rejected recommendation
 
-The strongest safety finding was `service-b`. A quiet snapshot showed about
-`6m` CPU usage and a VPA target of `15m`, but the service used an 80% HPA target.
+The strongest safety finding was `service-b`. A quiet snapshot showed about `6m`
+CPU usage and a VPA target of `15m`, but the service used an 80% HPA target.
 Reducing its request from `100m` to `15m` would lower the approximate scale
 threshold from `80m` to `12m` per pod. The team rejected the direct change until
 burst concurrency, latency, readiness delay, and HPA stabilization could be

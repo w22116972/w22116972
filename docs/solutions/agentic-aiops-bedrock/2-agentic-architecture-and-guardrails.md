@@ -1,5 +1,13 @@
 # Agentic Architecture and Guardrails
 
+## Abstract
+
+This phase explains why incident diagnosis is modelled as a tool-calling
+reasoning loop rather than a single retrieval, and where the trust boundaries
+fall. It separates analysis from action, catalogues the diagnostic tools
+available to the agent, and records the threats, data-minimization decisions,
+and architecture alternatives that were rejected.
+
 ## Architecture decision
 
 The platform uses a tool-calling model because incident diagnosis is not a

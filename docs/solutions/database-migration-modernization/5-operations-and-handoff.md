@@ -1,5 +1,11 @@
 # Operations and Handoff
 
+## Abstract
+
+This phase divides steady-state ownership between database, application, and
+security owners, defines the operational controls that keep the target
+healthy, and states what must be true before handoff is accepted.
+
 ## Steady-state ownership
 
 The database owner manages engine lifecycle, parameter changes, capacity,
@@ -20,7 +26,7 @@ communications.
 - Keep migration-specific DMS resources only as long as rollback, audit, or
   follow-up replication requires them.
 
-## Handoff gate
+## Exit criteria
 
 Provide architecture decisions, inventories, schema action items, IaC ownership,
 database and migration settings, validation evidence, dashboards, alerts,

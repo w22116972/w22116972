@@ -1,6 +1,6 @@
 # Agentic AIOps on Amazon Bedrock and Amazon EKS
 
-## Executive summary
+## Abstract
 
 This case study implements a read-first, human-governed AIOps assistant for
 Kubernetes incident diagnosis. Alertmanager creates a normalized, deduplicated
@@ -21,19 +21,20 @@ webhook intake does not automatically run the model, Tempo and service
 connectors are incomplete, and live Bedrock accuracy and time-saving outcomes
 have not been established.
 
-## Outcome at a glance
+## Resume alignment
 
-| Area | Verified result |
-|---|---|
-| Incident intake | Authenticated Alertmanager webhook, source-namespace filtering, resolution handling, and fingerprint deduplication |
-| Investigation | Operator-started Bedrock tool loop with a default maximum of 10 rounds |
-| Evidence | Prometheus and Loki pre-fetch plus 17 callable diagnostic tools |
-| Auditability | Full transcript, tool arguments/results, stop reason, and UI trace |
-| Safety | Read-only diagnostic catalog; executable proposals use a separate approval-gated controller |
-| Packaging | Go backend, React frontend, CRDs, Helm, metrics, probes, storage, and CI definition |
-| Verification | Backend tests pass; 115 frontend tests pass; build, Helm, and 11 scenario overlays pass |
-| Measured performance | Historical webhook p95 stayed below 1.02s through 100 alerts and was approximately 1.00s at 500 alerts |
-| Unproven | End-to-end RCA delivery, model accuracy, failure recovery, operator acceptance, and diagnosis-time reduction |
+> Reduced mean time to diagnose by 70% by implementing a cloud-native AIOps
+> platform on Amazon EKS using Go and Amazon Bedrock, enabling agentic
+> root-cause analysis through 20+ live diagnostic tools and reuse of historical
+> incident RCAs to improve subsequent investigations.
+
+The numbered pages below provide the architecture and implementation depth
+behind this resume statement. The
+[STAR interview walkthrough](6-resume-star-interview.md) connects the complete
+story and separates the resume-reported outcome from what the current source
+checkout independently proves. In particular, the checked-in RCA path exposes
+17 read-only diagnostic tools; chat adds two tools, and semantic retrieval over
+historical RCAs remains a roadmap capability.
 
 ## Primary architecture
 
@@ -169,10 +170,14 @@ tool-level namespace enforcement, sensitive-data redaction, completed dependency
 failure tests, and token/cost telemetry. Enable selected low-risk remediation
 only after the analysis path has earned operator trust.
 
-## Detailed design
+## Phases
 
 1. [Problem and success criteria](1-problem-and-success-criteria.md)
 2. [Agentic architecture and guardrails](2-agentic-architecture-and-guardrails.md)
 3. [Platform implementation](3-platform-implementation.md)
 4. [Evaluation and results](4-evaluation-and-results.md)
 5. [Operations and adoption](5-operations-and-adoption.md)
+
+## Appendix
+
+- [Resume STAR interview walkthrough](6-resume-star-interview.md)

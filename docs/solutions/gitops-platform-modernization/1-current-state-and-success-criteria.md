@@ -1,10 +1,20 @@
 # Current State and Success Criteria
 
-## Scope and evidence standard
+## Abstract
+
+This phase bounds the work to adopting an existing Amazon EKS platform into an
+Argo CD operating model, and separates six delivery states that are commonly
+collapsed into the single word deployed. It records current-state risks, the
+ownership inventory, constraints, success criteria, and what is deliberately
+not claimed.
+
+## Scope
 
 This case study covers the adoption of an existing Amazon EKS platform into an
 Argo CD operating model. It is not an installation tutorial and it does not
 claim that every application release moved to Argo CD.
+
+## Evidence standard
 
 The evidence model separates six states that are often incorrectly collapsed
 into “deployed”:
@@ -20,7 +30,7 @@ The public facts below were rechecked on 2026-08-19 against the platform
 repository and a read-only inventory of `cluster-a`. Names, locations, account
 details, repository addresses, and workload identifiers are sanitized.
 
-## Customer context
+## Problem statement
 
 The platform hosted multiple environments, shared controllers, observability
 components, gateways, and stateful data services. Delivery had accumulated

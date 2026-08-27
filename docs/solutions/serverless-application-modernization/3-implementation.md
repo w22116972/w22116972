@@ -1,5 +1,12 @@
 # Implementation
 
+## Abstract
+
+This phase sets out the delivery increments from baseline capture through
+contract versioning, Infrastructure as Code provisioning, and implementation.
+It covers the security controls and the deployment-safety rules applied to
+each increment.
+
 ## Delivery increments
 
 1. Capture current volumes, latency, error modes, downstream capacity, and

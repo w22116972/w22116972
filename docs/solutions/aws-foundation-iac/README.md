@@ -1,6 +1,6 @@
 # Secure Enterprise AWS Foundation and IaC Delivery
 
-## Executive summary
+## Abstract
 
 This case study establishes a governed AWS foundation for an existing
 non-production estate and moves its infrastructure lifecycle into Terraform and
@@ -19,7 +19,7 @@ landing zone. Multi-account guardrails, centralized security services, and
 organization-wide network governance are documented as extensions requiring a
 separate customer scope.
 
-## Evidence status
+## Evidence standard
 
 | Area | Status | Defensible evidence |
 |---|---|---|
@@ -82,7 +82,7 @@ owns selected Kubernetes declarations after the cluster boundary.
 | One non-production NAT gateway | Control recurring cost | An Availability Zone failure can disrupt private egress |
 | Leave selected defaults unmanaged | Avoid accidental adoption of shared/default behavior | Exceptions must remain documented and monitored |
 
-## Detailed design
+## Phases
 
 1. [Problem and success criteria](1-problem-and-success-criteria.md)
 2. [Architecture and decisions](2-architecture-and-decisions.md)

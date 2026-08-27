@@ -1,5 +1,12 @@
 # Validation and Results
 
+## Abstract
+
+This phase states the current evidence boundary: a complete migration
+blueprint exists, but its result fields were not filled by an executed
+customer migration. It defines the evidence a real migration must produce and
+the rule for reporting outcomes.
+
 ## Current evidence boundary
 
 The available migration blueprint defines discovery records, architecture,

@@ -1,5 +1,12 @@
 # Validation and Results
 
+## Abstract
+
+This phase states what evidence currently exists, a reconciliation function
+demonstrating serverless operational patterns and a migration lab supplying
+the architecture and acceptance gates, and what a complete evidence pack would
+still require. It defines how outcomes may be reported.
+
 ## Evidence currently available
 
 A Lambda-based platform reconciliation function provides partial evidence for

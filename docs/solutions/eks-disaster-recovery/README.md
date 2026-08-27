@@ -1,6 +1,6 @@
 # Resilient Amazon EKS Disaster Recovery
 
-## Executive summary
+## Abstract
 
 This case study turns an Amazon EKS backup implementation into a layered
 recovery capability. It separates three questions that are often collapsed into
@@ -23,20 +23,7 @@ restore and complete platform reconstruction still require drills. A backup job
 that says `COMPLETED` is evidence of a mechanism, not proof that the service can
 recover.
 
-## Outcome at a glance
-
-| Area | Verified result |
-|---|---|
-| Volume protection | Daily, tag-scoped EBS recovery points in an encrypted AWS Backup vault |
-| Effective scope | On 2026-08-19, the scheduled run created 45 EBS recovery points; all 45 completed and no EC2 resources were selected |
-| Logical backups | PostgreSQL, MongoDB, OpenLDAP, Oracle, and Neo4j backup mechanisms produced artifacts in S3 before being disabled in the non-production environment |
-| Platform state | Infrastructure and Kubernetes desired state are represented in Terraform and Argo CD sources |
-| Retention | Non-production runs one daily rule with seven-day retention; longer tiers remain configurable for production |
-| Guardrails | Failure, freshness, recovery-point count, orphan, partial-job, and budget signals are defined |
-| Restore evidence | EBS recovery point to new volume completed in 76 seconds |
-| Not yet proven | Data readback, application validation, logical restore, full cluster reconstruction, and measured service RPO/RTO |
-
-## Recovery architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -125,10 +112,15 @@ the configuration expresses its comments.
 | Credential recovery | Gap | Make Secrets reconstructible from a managed source |
 | Account compromise | Gap | Add cross-account copies and test the independent restore path |
 
-## Detailed design
+## Phases
 
 1. [Recovery requirements and failure model](1-recovery-requirements-and-failure-model.md)
 2. [Recovery architecture and decisions](2-recovery-architecture-and-decisions.md)
-3. [Three-tier backup implementation](3-1-three-tier-backup-implementation.md)
+3. [Recovery implementation](3-recovery-implementation.md)
 4. [Restore validation and results](4-restore-validation-and-results.md)
-5. [Recovery runbook and handoff](5-recovery-runbook-and-handoff.md)
+5. [Operations and handoff](5-operations-and-handoff.md)
+
+## Procedures and domain detail
+
+- [Three-tier backup implementation](3-1-three-tier-backup-implementation.md)
+- [Recovery runbook](5-1-recovery-runbook.md)
