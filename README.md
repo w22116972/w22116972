@@ -2,17 +2,11 @@
 
 ## Solutions
 
-These six solution themes map directly to the first six highlights in my resume.
-Each solution can be drilled down through numbered files covering the problem,
-decisions, implementation, validation, and operating model; resume-specific
-walkthroughs use STAR and state the evidence boundary for quantitative claims.
-
-- [Amazon EKS Reliability and Cost Optimization](docs/solutions/eks-reliability-cost-optimization/README.md) — right-size workload requests using observed demand and recommendation-only Goldilocks/VPA, account for HPA coupling, and introduce Karpenter through evidence-gated rollout and rollback decisions.
-- [Resilient Amazon EKS Disaster Recovery](docs/solutions/eks-disaster-recovery/README.md) — combine AWS Backup for EBS, database-native logical backups with GFS retention, and Terraform/Argo CD reconstruction into a three-layer recovery model with explicit restore-validation boundaries.
-- [Agentic AIOps on Amazon Bedrock and Amazon EKS](docs/solutions/agentic-aiops-bedrock/README.md) — implement a Go-based, human-governed incident investigation platform with live Kubernetes and observability evidence, a bounded Amazon Bedrock tool loop, auditable RCA output, and approval-gated remediation. Start with the [STAR interview walkthrough](docs/solutions/agentic-aiops-bedrock/6-resume-star-interview.md).
-- [On-Premises Monolith Migration and Modernization to Amazon EKS](docs/solutions/migrate-on-premises-monolith-to-eks/README.md) — migrate and modernize a legacy monolith into cloud-native services through discovery, containerization, platform foundation, progressive extraction, cutover, validation, and handoff.
-- **Neo4j Graph API Performance Optimization** *(solution drill in preparation)* — redesign Cypher queries and introduce tenant-safe multi-tier caching, with separate validation of latency, cache hit rate, database load, correctness, and failure behavior.
-- **Layered DevSecOps Vulnerability Reduction** *(solution drill in preparation)* — apply risk-based controls across source, dependencies, Dockerfiles, images, Helm, Kubernetes manifests, and live clusters; the current [Trivy implementation practice](docs/practices/devsecops/trivy-security-scanning-with-gitlab-ci.md) is the supporting technical guide.
+- [Amazon EKS Reliability and Cost Optimization](docs/solutions/eks-reliability-cost-optimization/README.md): right-size workload requests using observed demand and recommendation-only Goldilocks/VPA, account for HPA coupling, and introduce Karpenter through evidence-gated rollout and rollback decisions.
+- [Resilient Amazon EKS Disaster Recovery](docs/solutions/eks-disaster-recovery/README.md): combine AWS Backup for EBS, database-native logical backups with GFS retention, and Terraform/Argo CD reconstruction into a three-layer recovery model with explicit restore-validation boundaries.
+- [Agentic AIOps on Amazon Bedrock and Amazon EKS](docs/solutions/agentic-aiops-bedrock/README.md): implement a Go-based, human-governed incident investigation platform with live Kubernetes and observability evidence, a bounded Amazon Bedrock tool loop, auditable RCA output, and approval-gated remediation. Start with the [STAR interview walkthrough](docs/solutions/agentic-aiops-bedrock/6-resume-star-interview.md).
+- [On-Premises Monolith Migration and Modernization to Amazon EKS](docs/solutions/migrate-on-premises-monolith-to-eks/README.md): migrate and modernize a legacy monolith into cloud-native services through discovery, containerization, platform foundation, progressive extraction, cutover, validation, and handoff.
+- Layered DevSecOps Vulnerability Reduction: lead DevSecOps adoption by defining risk-based security policies and embedding practical controls into GitLab CI/CD—from source, dependency, secret, and Helm checks to rootless image builds, immutable-digest promotion, SBOM generation, and live-cluster rescanning—with owned, time-bound remediation guided by [layered Trivy security scanning](docs/practices/devsecops/trivy-security-scanning-with-gitlab-ci.md).
 
 ## Practices
 
