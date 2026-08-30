@@ -98,11 +98,16 @@ Truth must come from attached evidence and human review.
 |---|---|---|
 | Workload | list pods, pod status, current/previous logs, recent deployment history | Read only; logs capped by HTTP reader |
 | Scheduling | deployment status, node list, ResourceQuota, HPA, StatefulSets, DaemonSets | Read only |
-| Networking | Service and Endpoints inspection | Read only |
+| Networking | Service, Endpoints, and Ingress or Gateway route inspection | Read only |
 | Configuration | ConfigMap data and Secret key names | Secret values are not returned |
 | Events | namespace warning events | Up to 30 non-normal events |
-| Metrics | PromQL instant query | Read only; query chosen by model |
+| Storage | PersistentVolumeClaim status | Read only; shows phase, capacity, and binding state |
+| Metrics | PromQL instant query and workload resource usage | Read only; query chosen by model |
 | Knowledge | load runbook hint | Current executor returns a generic acknowledgement, not full runbook content |
+
+The three added tools are `get_pvc_status`, `get_ingress_or_gateway_routes`,
+and `get_workload_resource_usage`. All three are read only and receive the same
+output bounds, namespace policy, and audit tracing as the original catalog.
 
 The service connector documents for relational databases, graph databases,
 document databases, and model gateways are stubs. They are not exposed as live

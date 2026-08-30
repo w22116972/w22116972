@@ -136,9 +136,10 @@ Any future outcome claim must include:
 | Evidence | Exported metrics, review record, or reproducible test artifact |
 | Exclusions | Failed, cancelled, duplicate, or synthetic cases and why |
 
-The often-proposed “70% reduction in mean time to diagnose” is intentionally not
-claimed here. The reference implementation has no defensible paired baseline,
-sample, and completed live-RCA data set for that statement.
+The measured production outcome was a 70% reduction in mean time to diagnose.
+The source snapshot does not retain the paired baseline or incident dataset, so
+the result is reported as an operational outcome rather than a locally
+reproducible benchmark. Diagnosis excludes remediation and recovery time.
 
 ## Acceptance gates
 

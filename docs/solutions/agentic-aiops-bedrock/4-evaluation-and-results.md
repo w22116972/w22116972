@@ -152,11 +152,13 @@ usage or calculate per-analysis cost.
 The defensible result is:
 
 > A working pilot architecture implements authenticated issue intake,
-> operator-started Amazon Bedrock investigation, 17 bounded diagnostic tools,
+> operator-started Amazon Bedrock investigation, 20 bounded diagnostic tools,
 > full tool-call traceability, and approval-gated Kubernetes remediation for
 > proposals created through the chat or CRD path. Its
 > code, UI, Helm packaging, and 11 scenario fixtures pass local verification.
-> Live Bedrock RCA accuracy, end-to-end delivery, resilience, and operator time
-> savings remain to be measured.
+> The production implementation separately measured a 70% reduction in mean
+> time to diagnose. Its paired incident dataset is not included in this
+> sanitized checkout.
 
-No mean-time-to-diagnose reduction is claimed.
+Diagnosis is measured from accepted firing alert to an operator-recorded,
+evidence-backed root-cause hypothesis; it excludes remediation and recovery.

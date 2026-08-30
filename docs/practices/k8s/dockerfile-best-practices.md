@@ -221,8 +221,7 @@ content out of the runtime image. Name each stage and copy only the required
 artifacts into the final stage.
 
 ```Dockerfile
-# syntax=docker/dockerfile:1
-FROM golang:1.26 AS build
+# syntax=docker/dockerfile:1FROM golang:1.26 AS build
 WORKDIR /src
 
 COPY go.mod go.sum ./

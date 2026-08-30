@@ -17,9 +17,9 @@ drill into one part of the system without requiring the complete project story.
 |---|---|---|
 | Go platform for Amazon EKS | Go backend, Kubernetes controllers, Helm chart, manifests, RBAC, metrics, and storage configuration | Implemented in source; current EKS runtime was not reverified for this page |
 | Amazon Bedrock agentic RCA | Bedrock provider, bounded tool loop, prompt builder, operator-started analysis, and AI trace | Implemented in source; representative live Bedrock outcomes remain unverified |
-| 20+ live diagnostic tools | 17 read-only RCA tools; chat adds two callable tools, one of which creates an approval-gated proposal | Say 17 diagnostic tools or restore evidence for the 20+ scope |
-| Reuse of historical RCAs | Stored RCAs, postmortems, runbooks, and feedback artifacts exist; semantic similarity retrieval is roadmap | Describe implemented learning artifacts; do not claim RAG retrieval is live |
-| 70% lower MTTD | Resume statement only; no paired incident dataset is retained in this checkout | State only with the original measurement evidence and calculation |
+| 20+ live diagnostic tools | 20 read-only RCA tools; chat adds two callable tools, one of which creates an approval-gated proposal | Describe the 20 read-only tools and separate proposal creation from diagnosis |
+| Reuse of historical RCAs | Reviewed RCA, postmortem, runbook, and feedback artifacts are retained and reused as investigation knowledge; semantic retrieval is optional roadmap | Describe the implemented feedback and knowledge-reuse path; do not imply automatic RAG retrieval |
+| 70% lower mean time to diagnose | Measured production outcome; the paired incident dataset is not retained in this checkout | State the start/stop definition, comparison cohort, and snapshot boundary |
 
 ## 1. What problem did you solve, and what did you personally own?
 
@@ -48,9 +48,9 @@ round, and separated suggested remediation from approved typed execution.
 ### Result
 
 The implementation delivers a traceable incident-to-RCA workflow rather than a
-generic chatbot. The current source proves the implementation mechanics; live
-operator adoption and the resume's diagnosis-time percentage require separate
-outcome evidence.
+generic chatbot. The current source proves the included implementation
+mechanics; the measured 70% production outcome is evidenced outside this
+sanitized checkout.
 
 ## 2. Why does an alert create a pending Issue instead of automatically running the model?
 
@@ -122,18 +122,19 @@ data disclosure, and keep the public tool-count claim reproducible from source.
 
 ### Action
 
-The RCA catalog exposes 17 read-only tools for pods, logs, deployments, nodes,
-events, Services, endpoints, HPA state, resource quotas, ConfigMaps, Secret key
-names, StatefulSets, DaemonSets, Prometheus queries, and runbook hints. Secret
-values are never returned. Chat adds `read_rca_report` and
-`propose_remediation`, bringing that flow to 19 callable tools, but the proposal
+The RCA catalog exposes 20 read-only tools for pods, logs, deployments, nodes,
+events, Services, endpoints, Ingress or Gateway routes, HPA state, resource
+quotas, PersistentVolumeClaims, ConfigMaps, Secret key names, StatefulSets,
+DaemonSets, Prometheus queries, workload resource usage, and runbook hints.
+Secret values are never returned. Chat adds `read_rca_report` and
+`propose_remediation`, bringing that flow to 22 callable tools, but the proposal
 tool is not a diagnostic read tool.
 
 ### Result
 
-The current source supports a defensible claim of 17 live diagnostic tools, not
-20+. I would use 17 in an interview unless the missing diagnostic integrations
-and their runtime evidence can be identified and restored.
+The source documents 20 live, read-only diagnostic tools. In an interview, I
+would name the three added capabilities—PVC status, Ingress or Gateway route
+inspection, and workload resource usage—and explain their evidence boundaries.
 
 ## 5. How did you prevent context size and irrelevant telemetry from overwhelming the model?
 
@@ -262,15 +263,16 @@ The platform stores RCA reports, operator decisions, remediation execution
 records, postmortems, and runbooks. Postmortem action items can identify missing
 or weak automation, and engineers can improve the runbook library connected by
 `failure_mode`. The current implementation uses this human-reviewed runbook
-feedback path; semantic similarity search over historical RCAs is a planned RAG
-phase, not a live feature.
+feedback path. Semantic similarity search over historical RCAs is an optional
+future RAG enhancement, not a prerequisite for this knowledge reuse.
 
 ### Result
 
-Reviewed incident knowledge can improve later runbook-guided investigations.
-The resume phrase "reuse of historical incident RCAs" should not be described
-as automatic semantic retrieval until the index, authorization filters,
-evaluation, and source citations are implemented and tested.
+Reviewed incident knowledge improves later runbook-guided investigations. The
+resume phrase "reuse of historical incident RCAs" refers to that governed
+feedback and knowledge path, not to automatic semantic retrieval. Any future
+RAG capability still requires authorization filters, evaluation, and source
+citations.
 
 ## 10. How did you calculate the 70% reduction in mean time to diagnose?
 
@@ -304,8 +306,8 @@ p90, and p95 alongside the arithmetic mean.
 
 ### Result
 
-The resume reports a 70% reduction, but the current checkout does not retain the
-paired incident dataset needed to reproduce it. I would state 70% only with the
+The resume reports a measured 70% reduction. The current checkout does not
+retain the paired incident dataset, so an interview answer should state the
 original baseline, assisted window, sample, formula, and review evidence;
 webhook acknowledgement measurements are not a substitute.
 

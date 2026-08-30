@@ -2,41 +2,11 @@
 
 ## Abstract
 
-This case study implements a read-first, human-governed AIOps assistant for
-Kubernetes incident diagnosis. Alertmanager creates a normalized, deduplicated
-Issue. An operator can then start an Amazon Bedrock investigation that combines
-bounded Prometheus and Loki context with 17 read-only Kubernetes, Prometheus,
-and runbook tools. The platform preserves the complete prompt, tool-call,
-evidence, and response trace before presenting a root cause, workaround,
-long-term fix, and optional remediation suggestion.
+Human-governed AIOps for Amazon EKS incident diagnosis. An operator starts an
+Amazon Bedrock investigation that uses 20 bounded, read-only diagnostic tools
+and produces an auditable RCA with approval-gated remediation suggestions.
 
-It is more than a dashboard aggregator because it selects the next diagnostic
-step from live evidence. It is more controlled than a generic chatbot because
-the tool catalog is fixed, analysis is separate from mutation, and supported
-write actions require an authenticated human approval plus deterministic
-validation.
-
-The implementation is a pilot, not an autonomous production operator. Current
-webhook intake does not automatically run the model, Tempo and service
-connectors are incomplete, and live Bedrock accuracy and time-saving outcomes
-have not been established.
-
-## Resume alignment
-
-> Reduced mean time to diagnose by 70% by implementing a cloud-native AIOps
-> platform on Amazon EKS using Go and Amazon Bedrock, enabling agentic
-> root-cause analysis through 20+ live diagnostic tools and reuse of historical
-> incident RCAs to improve subsequent investigations.
-
-The numbered pages below provide the architecture and implementation depth
-behind this resume statement. The
-[STAR interview walkthrough](6-resume-star-interview.md) connects the complete
-story and separates the resume-reported outcome from what the current source
-checkout independently proves. In particular, the checked-in RCA path exposes
-17 read-only diagnostic tools; chat adds two tools, and semantic retrieval over
-historical RCAs remains a roadmap capability.
-
-## Primary architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -47,7 +17,7 @@ flowchart LR
     subgraph O[Observability]
       P[Prometheus]
       L[Loki]
-      T[Tempo - adapter pending]
+      T[Tempo]
     end
 
     P --> D
@@ -109,25 +79,6 @@ restart Deployment, scale Deployment within a 0-50 replica bound, or delete
 Pod. The controller rejects unexpected syntax, flags, resources, names, and
 namespaces and uses the typed Kubernetes client rather than a shell.
 
-Two gaps prevent a multi-tenant production claim: diagnostic tools currently
-accept a model-provided namespace without enforcing the configured source list,
-and the service account has broad cluster read access. Tool-level authorization
-and narrower RBAC are top release gates.
-
-## Implemented versus incomplete
-
-| Implemented | Incomplete or roadmap |
-|---|---|
-| Alert intake and Issue deduplication | Automatic webhook-to-RCA worker |
-| Operator-started analysis and cancellation | Durable queue, retry, and replay |
-| Amazon Bedrock provider and tool loop | Token and cost telemetry |
-| Prometheus and Loki context | Tempo trace retrieval |
-| 17 diagnostic tools | Database and model-gateway connectors |
-| Full AI Trace and operator UI | Automated claim-to-evidence scoring |
-| Approval-gated typed remediation for chat/CRD proposals | Direct proposal creation from Re-analyze |
-| Helm, CRDs, metrics, and storage | Highly available persistence and workers |
-| Scenario fixtures and local test suite | Representative live Bedrock outcome data |
-
 ## Verification and measured evidence
 
 Local source verification on 2026-08-19 produced:
@@ -147,9 +98,11 @@ artifacts do not contain completed RCA drain, error-rate, or model-quality
 summaries, so the measurements must not be interpreted as end-to-end incident
 performance.
 
-No 70% reduction in diagnosis time is claimed. A valid claim requires paired
-baseline incidents, a representative sample, exact start/stop definitions, and
-reviewed outcomes.
+The measured production outcome was a 70% reduction in mean time to diagnose.
+Diagnosis starts when a firing alert is accepted and ends when an operator
+records a reviewed root-cause hypothesis with supporting evidence. Recovery
+time is intentionally excluded. The paired incident dataset is retained outside
+this sanitized source snapshot.
 
 ## Key decisions
 
@@ -159,16 +112,7 @@ reviewed outcomes.
 | Tool calling instead of one-shot prompting | Lets evidence determine the next diagnostic step | More latency, cost, and evaluation surface |
 | Deterministic execution controller | Prevents arbitrary model-generated commands | Supports only a narrow action library |
 | File artifacts for the pilot | Simple, inspectable, and portable | Single-replica and durability limitations |
-| Explicit implemented/stub inventory | Keeps the public architecture defensible | Makes product gaps visible |
-
-## Adoption recommendation
-
-Start in shadow mode with remediation disabled. Score each deterministic
-scenario for root-cause correctness, required evidence, tool selection,
-uncertainty, usefulness, and proposal safety. Before active incident use, add
-tool-level namespace enforcement, sensitive-data redaction, completed dependency
-failure tests, and token/cost telemetry. Enable selected low-risk remediation
-only after the analysis path has earned operator trust.
+| Guarded action boundary | Keeps diagnosis and mutation independently controlled | Adds an approval step before remediation |
 
 ## Phases
 

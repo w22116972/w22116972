@@ -240,7 +240,7 @@ and an explicit production promotion.
 |---|---|
 | Alert filtering, resolution, normalization, and deduplication | Implemented |
 | Operator-started Bedrock tool loop | Implemented |
-| Read-only Kubernetes and Prometheus tool catalog | Implemented |
+| 20 read-only Kubernetes and Prometheus diagnostic tools | Implemented |
 | Prometheus and Loki context pre-fetch | Implemented |
 | Full model/tool transcript and AI Trace UI | Implemented |
 | Human approval and typed remediation execution | Implemented for chat/CRD-created proposals; disabled by default |

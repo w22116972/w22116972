@@ -24,6 +24,9 @@ designing, implementing, validating, and operating the solutions above.
 - Well-Architected Framework: [Migration Lens](docs/practices/aws/wellarchitected-migration-lens.md), [Operational Excellence](docs/practices/aws/wellarchitected-operational-excellence-pillar.md), [Performance Efficiency](docs/practices/aws/wellarchitected-performance-efficiency-pillar.md), [Reliability](docs/practices/aws/wellarchitected-reliability-pillar.md), and [Security](docs/practices/aws/wellarchitected-security-pillar.md)
 - Cloud foundations: [IAM Roles for Service Accounts](docs/practices/aws/use-iam-roles-for-service-account.md), [Terraform Architecture and Best Practices](docs/practices/aws/terraform-architecture-best-practices.md), and [Enterprise AWS Networking and Security](docs/practices/aws/enterprise-networking-security.md)
 - Application platforms and operations: [Serverless and Event-Driven Architecture](docs/practices/aws/serverless-event-driven-architecture.md), [AWS Observability and Operational Automation](docs/practices/aws/observability-operational-automation.md), [Disaster Recovery of AWS Workloads](docs/practices/aws/disaster-recovery.md), and [Customer Delivery and Handoff](docs/practices/aws/customer-delivery-handoff.md)
+- Migration and recovery references: [Rehost Migration Checklist](docs/practices/aws/rehost-migration-checklist.md), [Migration Firewall Approval Process](docs/practices/aws/migration-firewall-approval-process.md), [Private MGN Connectivity](docs/practices/aws/mgn-private-connectivity.md), [Cross-Region DR Orchestrator](docs/practices/aws/cross-region-dr-orchestrator.md), and [DynamoDB Cross-Account Backup](docs/practices/aws/dynamodb-cross-account-backup.md)
+- Modernization and platform references: [CQRS and Event Sourcing](docs/practices/aws/monolith-decomposition-cqrs-event-sourcing.md), [Private CA Sharing with RAM](docs/practices/aws/private-ca-ram.md), and [Terraform Tests with LocalStack](docs/practices/aws/terraform-tests-localstack.md)
+- Database migration references: [CI/CD with Terraform](docs/practices/aws/database-migration/ci-cd-database-migration-terraform.md), [Oracle to Aurora PostgreSQL](docs/practices/aws/database-migration/on-premises-oracle-to-aurora-postgresql.md), [Object Validation](docs/practices/aws/database-migration/oracle-aurora-postgresql-validation.md), [Aurora Global Database DR](docs/practices/aws/database-migration/oracle-dr-aurora-global-database.md), [Object Dependency Analysis](docs/practices/aws/database-migration/oracle-postgresql-object-analysis.md), and [RDS Oracle to PostgreSQL](docs/practices/aws/database-migration/rds-oracle-to-postgresql.md)
 
 
 #### EKS Best Practices
@@ -36,14 +39,14 @@ designing, implementing, validating, and operating the solutions above.
 ### Kubernetes Platform Engineering
 
 - Core platform: [Kubernetes Architecture](docs/practices/k8s/architecture.md), [Networking](docs/practices/k8s/networking.md), [Storage](docs/practices/k8s/storage.md), and [Cluster Administration](docs/practices/k8s/admin.md)
-- Workload operations: [Observability](docs/practices/k8s/observability.md), [Scheduling, Preemption, and Eviction](docs/practices/k8s/scheduling.md), [Cluster Scalability and High Availability](docs/practices/k8s/k8s-cluster-scalability-ha-bp.md), and [Envoy Gateway](docs/practices/k8s/envoy-gateway.md)
+- Workload operations: [Observability](docs/practices/k8s/observability.md), [Scheduling, Preemption, and Eviction](docs/practices/k8s/scheduling.md), [Cluster Scalability and High Availability](docs/practices/k8s/k8s-cluster-scalability-ha-bp.md), [Envoy Gateway](docs/practices/k8s/envoy-gateway.md), [AI-Powered Kubernetes Diagnostics](docs/practices/k8s/ai-powered-kubernetes-diagnostics-bedrock.md), and [Private EKS Service Access with PrivateLink](docs/practices/k8s/private-eks-service-access-privatelink-nlb.md)
 - Security and delivery: [Kubernetes Security](docs/practices/k8s/security.md), [Resource Governance and PID Protection](docs/practices/k8s/policy.md), [Secure Configuration and Secrets](docs/practices/k8s/k8s-secure-config-secret-bp.md), [Pod Security Standards](docs/practices/k8s/k8s-pod-security-standards-bp.md), [PKI and Certificates](docs/practices/k8s/k8s-pki-certificate-bp.md), [Helm Chart Best Practices](docs/practices/k8s/helm-bp.md), and [Dockerfile Best Practices](docs/practices/k8s/dockerfile-best-practices.md)
 
 
 ### DevSecOps
 
 - Security scanning: [Layered Trivy Security Scanning with GitLab CI/CD](docs/practices/devsecops/trivy-security-scanning-with-gitlab-ci.md)
-- Delivery and GitOps: [CI/CD Pipeline Best Practices](docs/practices/devsecops/cicd-pipeline-best-practices.md) and [Argo CD GitOps Best Practices](docs/practices/devsecops/gitops-argocd.md)
+- Delivery and GitOps: [CI/CD Pipeline Best Practices](docs/practices/devsecops/cicd-pipeline-best-practices.md), [Java Application Delivery to EKS](docs/practices/devsecops/ci-cd-deploy-java-application-to-eks.md), and [Argo CD GitOps Best Practices](docs/practices/devsecops/gitops-argocd.md)
 
 
 ### Performance Engineering
